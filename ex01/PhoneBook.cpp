@@ -31,6 +31,13 @@ public:
                   << nickname << "|"
                   << "\n";
     }
+    void ft_print2() const{
+        std::cout << "First Name:         " <<first_name << std::endl;
+        std::cout << "Last Name:          "  << last_name << std::endl;
+        std::cout << "Nickname:           " << nickname << std::endl;
+        std::cout << "Phone Number:       " << nbr_phone << std::endl;
+        std::cout << "The Darkest Secret: " << dark_secret << std::endl;
+    }
 };
 
 class PhoneBook
@@ -69,13 +76,17 @@ public:
         int i;
 
         i = 0;
-        std::cout << "Index     |First Name|Last Name |Nickname  \n";
+        std::cout << "     Index|First Name| Last Name|  Nickname|\n";
         while (i < count_contacts)
         {
             std::cout << i + 1 << "         |";
             contacts[i].ft_print();
             i++;
         }
+    }
+
+    void ft_searchable(int index) const{
+        contacts[index].ft_print2();
     }
 };
 
@@ -92,39 +103,73 @@ std::string ft_commands()
 {
     std::string command;
 
-    do
-    {
-        std::cout << "\nPlease Enter One Of The Following Commands :\nADD:    Save a new contact\nSEARCH: Display a specific contact\nEXIT:   Quit\n";
+    // do
+    // {
+        std::cout << "\nEnter One Of The Following Commands :\nADD:    Save a new contact\nSEARCH: Display a specific contact\nEXIT:   Quit\n";
         std::getline(std::cin, command);
-    } while (command != "ADD" && command != "SEARCH" && command != "EXIT");
+    // } while (command != "ADD" && command != "SEARCH" && command != "EXIT");
     return command;
 }
 
+
+
+std::string ft_space(std::string str, std::string out)
+{
+    int i = 0;
+    int j = 0;
+    int len = str.length();
+   
+    while(i < (10 - len))
+    {
+        out[i] = ' ';
+        i++;
+    }
+   while(i < 10)
+    {
+        out[i] = str[j];
+        i++;
+        j++;
+        if(len > 10)
+            out[9] = '.';
+    }
+    return out;
+} 
+
 int main()
 {
-    std::string command;
-    t_contact contact;
-    int i;
-    int count_contacts;
     PhoneBook book;
+    t_contact contact;
+    std::string command;
+    std::string out(10, ' ');
+    int count_contacts;
+    int index;
+    int i;
 
     i = 0;
     count_contacts = 0;
     do
     {
-         command = ft_commands();
+        command = ft_commands();
         if (command == "ADD")
         {
             std::cout << "Enter The First Name ";
             std::getline(std::cin, contact.first_name);
+            contact.first_name = ft_space(contact.first_name, out);
+
             std::cout << "Enter The Last Name ";
             std::getline(std::cin, contact.last_name);
+            contact.last_name = ft_space(contact.last_name, out);
+
             std::cout << "Enter The Nickname ";
             std::getline(std::cin, contact.nickname);
+            contact.nickname = ft_space(contact.nickname, out);
+
             std::cout << "Enter The Phone Number ";
             std::getline(std::cin, contact.nbr_phone);
+
             std::cout << "Enter The Darkest Secret ";
             std::getline(std::cin, contact.dark_secret);
+            
             book.ft_add_to_PhoneBook(contact.first_name, contact.last_name, contact.nickname, contact.nbr_phone, contact.dark_secret);
             std::cout << "\nYour Contact Has Been Added Seccessfully.\n";
             count_contacts++;
@@ -132,6 +177,12 @@ int main()
         else if (command == "SEARCH")
         {
             book.ft_display_PhoneBook();
+            std::cout << "\nEnter The Index Of The Contact That You Want To See\n";
+            std::cin >> index;
+            if(index < 0 || index > count_contacts)
+                std::cout << "Index Out Of Range";
+            else
+                book.ft_searchable(index-1);
         }
     } while (command != "EXIT");
 }
