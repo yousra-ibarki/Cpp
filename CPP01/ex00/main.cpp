@@ -9,22 +9,27 @@ std::string name;
 
 public:
 
+Zombie(std::string str_name){
+    name = str_name;
+}
+
 void announce()
 {
-    std::cout << "BraiiiiiiinnnzzzZ...";
+    std::cout << name << ": BraiiiiiiinnnzzzZ...";
 }
 
 };
 
-Zombie* newZombie( std::string name )
+Zombie* newZombie(std::string name)
 {
-    Zombie zombie;
-
-    zombie.
-}
+    Zombie zombie = Zombie(name);;
+'
+'}
 
 int main()
 {
-    Zombie zombie;
+    Zombie zombie("Foo");
+
+    zombie.announce();
 
 }
