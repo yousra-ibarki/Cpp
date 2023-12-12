@@ -17,8 +17,11 @@ public:
     void set_value(const std::string &namee){
         *name = namee;
     }
-    std::string get_value() const{
-        return *name;
+    // std::string get_value() const{
+    //     return *name;
+    // }
+    void announce(void){
+        std::cout << *name << std::endl;
     }
 };
 
@@ -31,12 +34,14 @@ Zombie *newZombie(std::string name){
 void randomChump(std::string name){
     Zombie zombie;
     zombie.set_value(name);
-    std::cout << zombie.get_value() << std::endl;
+   // std::cout << zombie.get_value() << std::endl;
+   zombie.announce();
 }
 
 int main()
 {
     Zombie *zom = newZombie("Shambler");
-    std::cout << zom->get_value() << "\n";
+    //std::cout << zom->get_value() << "\n";
+    zom->announce();
     randomChump("Vexmort");
 }
