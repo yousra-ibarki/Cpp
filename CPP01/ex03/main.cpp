@@ -1,72 +1,98 @@
 #include <iostream>
 
-class Weapon {
+class Weapon
+{
 private:
     std::string type;
 
 public:
-    // Weapon(){}
+    Weapon(std::string new_name){
+        type = new_name; 
+    }
     // ~Weapon(){}
-    void setType(std::string new_type){
+    void setType(std::string new_type)
+    {
         type = new_type;
     }
-    const std::string &getType(void) const{
+    const std::string &getType(void) const
+    {
         return type;
     }
 };
 
-class HumanA{
+class HumanA
+{
 private:
     Weapon *weapon;
     std::string name;
-public:
-    HumanA(){
-        weapon = new Weapon;
-    }
-    ~HumanA(){
-        delete weapon;
-    }
-    void set_value(const std::string new_name, const std::string new_type){
-        name = new_name;
-        weapon->setType(new_type);
-    }
-    void attack(){
-        std::cout << name << " attacks with their " << weapon->getType();
-    }
 
+public:
+    HumanA(std::string new_name, Weapon new_type)
+    {
+        name = new_name;
+        //weapon->setType(new_type);
+        weapon = &new_type;
+    }
+    // ~HumanA()
+    // {
+    //     delete weapon;
+    // }
+    // void setWeapon(const std::string new_name, Weapon new_type)
+    // {
+    //     name = new_name;
+    //     //weapon->setType(new_type);
+    //     weapon = &new_type;
+    // }
+    void attack()
+    {
+        std::cout << name << " attacks with their " << weapon->getType() << std::endl;
+    }
 };
 
-class HumanB{
+class HumanB
+{
 private:
     Weapon *weapon;
     std::string name;
-public:
-    HumanB(){
-        weapon = new Weapon;
-    }
-    ~HumanB(){
-        delete weapon;
-    }
-    void set_value(const std::string new_name, const std::string new_type){
-        name = new_name;
-        weapon->setType(new_type);
-    }
-    void attack(){
-        std::cout << name << " attacks with their " << weapon->getType();
-    }
 
+public:
+    HumanB(std::string new_name)
+    {
+        //weapon = new Weapon;
+        name = new_name;
+    }
+    // ~HumanB()
+    // {
+    //     delete weapon;
+    // }
+    void setWeapon(Weapon new_weapon)
+    {
+       // name = new_name;
+       weapon = &new_weapon;
+    }
+    void attack()
+    {
+        std::cout << name << " attacks with their " << weapon->getType() << std::endl;
+    }
 };
 
 int main()
 {
-    HumanA human1;
-    HumanB human2;
-    human1.set_value("Yousra", "GOMO GOMO");
-    human2.set_value("Merry", "Pistolee");
-    //const std::string &ref = weapon.getType();
-    //std::cout << ref;
-   // std::cout << "Weapon Type: " << weapon.getType() << std::endl;
-    human1.attack();
-    std::cout << std::endl;
-    human2.attack();
+    {
+        Weapon club = Weapon("crude spiked club");
+        HumanA bob("Bob", club);
+        bob.attack();
+        club.setType("some other type of club");
+        bob.attack();
+    }
+    {
+        Weapon club = Weapon("crude spiked club");
+        HumanB jim("Jim");
+        jim.setWeapon(club);
+        jim.attack();
+        club.setType("some other type of club");
+        jim.attack();
+    }
+    while(1);
+    return 0;
 }
