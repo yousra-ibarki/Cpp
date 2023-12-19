@@ -4,6 +4,20 @@
 #include <fcntl.h>
 #include <fstream>
 
+
+std::string ft_replace(int pos, std::string line, std::string str){
+    // std::cout << pos << std::endl;
+    // std::cout << "this is the output" << "\t" << line[pos] << std::endl;
+   // for(int j = 0; j < strlen(line.c_str()); j++){
+        for(int i = 0; i < strlen(str.c_str()); i++){
+            line[pos] = str[i];
+            i++;
+            pos++;
+        }
+    //}
+    return line;
+}
+
 int main(int ac, char **av)
 {
     if (ac <= 3)
@@ -14,22 +28,19 @@ int main(int ac, char **av)
         std::string s1 = av[2];
         std::string s2 = av[3];
         std::string line;
+        const char *linee;
         int repeat_str = 0;
 
-        // std::cout << file_name << "\t" <<s1 << "\t" << s2 << std::endl;
-       // open(av[1], O_RDWR);
         std::ifstream inputFile(file_name);
         std::ofstream outputFile(file_name+".replace");
         
         if(inputFile.is_open() && outputFile.is_open()){
            while(std::getline(inputFile, line)){
+                line = ft_replace(line.find(s1), line, s2);
                 outputFile << line << std::endl;
-                repeat_str += line.find(s1);
-                //std::cout << "["<< line << "]" << std::endl;
            }
             inputFile.close();
             outputFile.close();
-            std::cout << repeat_str;
         }
     }
 }
