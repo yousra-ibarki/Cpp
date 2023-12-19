@@ -1,0 +1,24 @@
+NAME = Unnecessary_violence
+
+SRCS = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+
+OBJS = $(SRCS:.c=.o)
+
+CC = c++ -std=c++98
+
+CFLAGS = -Wall -Wextra -Werror
+
+all: $(NAME)
+
+$(NAME):$(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
+
+clean:
+	@rm -f $(OBJS)
+
+fclean:clean
+	@rm -f $(NAME)
+
+re: fclean all
+
+.phony: re clean fclean all

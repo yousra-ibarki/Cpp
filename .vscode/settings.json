@@ -62,7 +62,10 @@
     "utility": "cpp",
     "vector": "cpp",
     "iomanip": "cpp",
-    "string.h": "c"
+    "string.h": "c",
+    "deque": "cpp",
+    "fstream": "cpp",
+    "stack": "cpp"
   },
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.cCompilerPath": "clang",
