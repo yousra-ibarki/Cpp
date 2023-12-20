@@ -4,6 +4,7 @@
 
 class Harl{
 private:
+char arr[4][8];
     void debug(void){
         std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!" << std::endl;
     }
@@ -22,30 +23,32 @@ public:
     FPtr f2;
     FPtr f3;
     FPtr f4;
+    FPtr arrr[4];
 
     Harl(){
+        arrr[0] = f1;
+        arrr[1] = f2;
+        arrr[2] = f3;
+        arrr[3] = f4;
+        
+        strcpy(arr[0], "debug");
+        strcpy(arr[1], "info");
+        strcpy(arr[2], "warning");
+        strcpy(arr[3], "error");
+
         f1 = &Harl::debug;
         f2 = &Harl::info;
         f3 = &Harl::warning;
         f4 = &Harl::error;
     }
-
-    void complain(std::string& level){
-        FPtr called;
-        int                                                                                                                                                                                                                                                                                                                                                                                                      
-        switch (1)
-        {
-        case "debug":
-            /* code */
-            break;
-        
-        default:
-            break;
+    void complain(std::string level){
+    FPtr called;
+    for(int i = 0; i < 4; i++){
+        if(level == arr[i]){
+            called = arrr[i];
+            std::cout << "hello" << arrr[i];
         }
-        debug();
-        info();
-        warning();
-        error();
+    }
     }
 
 };
