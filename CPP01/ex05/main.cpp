@@ -17,8 +17,31 @@ private:
         std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
     }
 public:
-    fc
-    void complain(std::string level){
+    typedef void (Harl::*FPtr)();
+    FPtr f1;
+    FPtr f2;
+    FPtr f3;
+    FPtr f4;
+
+    Harl(){
+        f1 = &Harl::debug;
+        f2 = &Harl::info;
+        f3 = &Harl::warning;
+        f4 = &Harl::error;
+    }
+
+    void complain(std::string& level){
+        FPtr called;
+        int                                                                                                                                                                                                                                                                                                                                                                                                      
+        switch (1)
+        {
+        case "debug":
+            /* code */
+            break;
+        
+        default:
+            break;
+        }
         debug();
         info();
         warning();

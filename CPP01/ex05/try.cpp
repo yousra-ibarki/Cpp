@@ -94,3 +94,22 @@ int main() {
 
     return 0;
 }
+
+
+typedef void (*FuncPtr)(int);  // creates a new name 'FuncPtr' for the function pointer type void(*)(int)
+
+void printNumber(int num) {
+    printf("%d\n", num);
+}
+
+void performOperation(FuncPtr operation, int num) {
+    operation(num);
+}
+
+int main() {
+    FuncPtr func = &printNumber;  // declaring a function pointer variable using the typedef
+
+    performOperation(func, 5);  // using the function pointer
+
+    return 0;
+}
