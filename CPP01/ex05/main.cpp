@@ -26,10 +26,6 @@ public:
     FPtr arrr[4];
 
     Harl(){
-        arrr[0] = f1;
-        arrr[1] = f2;
-        arrr[2] = f3;
-        arrr[3] = f4;
         
         strcpy(arr[0], "debug");
         strcpy(arr[1], "info");
@@ -40,15 +36,19 @@ public:
         f2 = &Harl::info;
         f3 = &Harl::warning;
         f4 = &Harl::error;
+        arrr[0] = f1;
+        arrr[1] = f2;
+        arrr[2] = f3;
+        arrr[3] = f4;
     }
     void complain(std::string level){
     FPtr called;
     for(int i = 0; i < 4; i++){
         if(level == arr[i]){
             called = arrr[i];
-            std::cout << "hello" << arrr[i];
         }
     }
+        (this->*called)();
     }
 
 };
