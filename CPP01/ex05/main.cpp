@@ -46,9 +46,11 @@ public:
     for(int i = 0; i < 4; i++){
         if(level == arr[i]){
             called = arrr[i];
+            (this->*called)();
+            exit(0);
         }
     }
-        (this->*called)();
+        std::cout << "Invalid Input" << std::endl;
     }
 
 };
