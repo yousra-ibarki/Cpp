@@ -77,6 +77,7 @@ public:
         else {
             std::cout << "Invalid function name" << std::endl;
             return;
+            std::string::repla
         }
 
         // Call the chosen function pointer
