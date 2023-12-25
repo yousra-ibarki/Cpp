@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cmath>
 
 class Fixed{
 private:
@@ -67,31 +66,88 @@ public:
     int toInt( void )const{
        return fixed_point / pow(2, fract_bit);
     }
-};
 
+    bool operator> (const Fixed& obj){
+        return fixed_point > obj.fixed_point; 
+    }
+
+    bool operator< (const Fixed& obj){
+        return fixed_point < obj.fixed_point;
+    }
+
+    bool operator>= (const Fixed& obj){
+        return fixed_point >= obj.fixed_point;
+    }
+
+    bool operator<= (const Fixed& obj){
+        return fixed_point <= obj.fixed_point;
+    }
+
+    bool operator== (const Fixed& obj){
+        return fixed_point == obj.fixed_point;
+    }
+
+    bool operator!= (const Fixed& obj){
+        return fixed_point != obj.fixed_point;
+    }
+    
+    Fixed operator* (const Fixed& obj1){
+        return (this->fixed_point + obj1.fixed_point);
+    }
+
+    Fixed operator+ (const Fixed& obj1){
+        return(this->fixed_point + obj1.fixed_point);
+    }
+
+    Fixed operator- (const Fixed& obj1){
+        return(this->fixed_point - obj1.fixed_point);
+    }
+
+    Fixed operator/ (const Fixed& obj1){
+        return(this->fixed_point / obj1.fixed_point);
+    }
+
+    Fixed operator++ (int){
+        Fixed obj;
+        obj.fixed_point = fixed_point++;
+        return obj;
+    }
+
+    Fixed operator ++ (){
+        Fixed obj;
+        obj.fixed_point = ++fixed_point;
+        return obj;
+    }
+    Fixed operator-- (){
+        Fixed obj;
+        obj.fixed_point = --fixed_point;
+        return obj;
+    }
+    Fixed operator-- (int){
+        Fixed obj;
+        obj.fixed_point = fixed_point--;
+        return obj;
+    }
+
+
+};
 
 std::ostream& operator<<(std::ostream& c, const Fixed& object){
     c << "" << object.toFloat() << "";
     return c;
 }
 
-int main( void )
-{ 
-    Fixed a; 
-    Fixed const b(10); 
-    Fixed const c(42.42f); 
-   // Fixed const d(b); 
 
-    a = Fixed(1234.4321f); 
-
-    std::cout << "a is " << a <<std::endl; 
-    std::cout << "b is " << b <<std::endl; 
-    std::cout << "c is " << c <<std::endl; 
-  //   std::cout << "d is " << d <<std::endl; 
-
-    std::cout << "a is " << a.toInt()<< " as integer"<<std::endl; 
-    std::cout << "b is " << b.toInt()<< " as integer"<<std::endl; 
-    std::cout << "c is " << c.toInt()<< " as integer"<<std::endl; 
- //   std::cout << "d is " << d.toInt()<< " as integer"<<std::endl; 
-    return 0; 
+int main( void ) {
+Fixed a;
+Fixed const b(Fixed(5.05f) * Fixed(2));
+std::cout << a << std::endl;
+std::cout << ++a << std::endl;
+std::cout << a << std::endl;
+std::cout << a++ << std::endl;
+std::cout << a << std::endl;
+std::cout << b << std::endl;
+std::cout << Fixed::max(a, b) << std::endl;
+return 0;
 }
+

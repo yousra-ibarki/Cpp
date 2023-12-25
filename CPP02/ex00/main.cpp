@@ -34,12 +34,9 @@ public:
         fixed_point = raw;
     }
 
-
-
 };
 
 
-#include <iostream> 
 int main( void )
 { 
     Fixed a; 
