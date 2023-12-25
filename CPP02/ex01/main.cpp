@@ -11,7 +11,7 @@ public:
         std::cout << "Default Constructor called\n";
     }
 // Copy Constructor
-    Fixed(Fixed &new_obj): fixed_point(new_obj.fixed_point) {
+    Fixed(Fixed &new_obj){
         std::cout << "Copy Constructor called\n";
         fixed_point = new_obj.fixed_point;
     }
