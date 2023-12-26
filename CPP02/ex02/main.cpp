@@ -92,20 +92,20 @@ public:
     }
     
     Fixed operator* (const Fixed& obj1){
-        return (this->fixed_point + obj1.fixed_point);
+        return (this->fixed_point * obj1.fixed_point);
     }
 
-    Fixed operator+ (const Fixed& obj1){
-        return(this->fixed_point + obj1.fixed_point);
-    }
+    // Fixed operator+ (const Fixed& obj1){
+    //     return(this->fixed_point + obj1.fixed_point);
+    // }
 
-    Fixed operator- (const Fixed& obj1){
-        return(this->fixed_point - obj1.fixed_point);
-    }
+    // Fixed operator- (const Fixed& obj1){
+    //     return(this->fixed_point - obj1.fixed_point);
+    // }
 
-    Fixed operator/ (const Fixed& obj1){
-        return(this->fixed_point / obj1.fixed_point);
-    }
+    // Fixed operator/ (const Fixed& obj1){
+    //     return(this->fixed_point / obj1.fixed_point);
+    // }
 
     Fixed operator++ (int){
         Fixed obj;
@@ -129,6 +129,19 @@ public:
         return obj;
     }
 
+    static int& min(int& fixed1, int &fixed2){
+        if(fixed1 <= fixed2)
+            return fixed1;
+        else
+            return fixed2;
+    }
+
+    static int& max(int& fixed1, int &fixed2){
+        if(fixed1 <= fixed2)
+            return fixed2;
+        else
+            return fixed1;
+    }
 
 };
 
@@ -147,7 +160,7 @@ std::cout << a << std::endl;
 std::cout << a++ << std::endl;
 std::cout << a << std::endl;
 std::cout << b << std::endl;
-std::cout << Fixed::max(a, b) << std::endl;
+// std::cout << Fixed::max(a, b) << std::endl;
 return 0;
 }
 
