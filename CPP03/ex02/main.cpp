@@ -51,7 +51,7 @@ public:
 class ScavTrap: public ClapTrap{
 public:
     ScavTrap(std::string name, ClapTrap& obj): ClapTrap(name){
-        obj.setVal(100, 50, 2);
+        obj.setVal(100, 50, 20);
         std::cout << "ScavTrap's Constructor called" << std::endl;
     }
     ~ScavTrap(){
@@ -68,6 +68,20 @@ public:
 //    }
 };
 
+class FragTrap: public ClapTrap{
+public:
+    FragTrap(std::string name, ClapTrap& obj1): ClapTrap(name){
+        obj1.setVal(100, 100, 30);
+        std::cout << "FragTrap's Constructor Called" << std::endl;
+    }
+    ~FragTrap(){
+        std::cout << "FragTrap's Constructor Called" << std::endl;
+    }
+
+    void hightFivesGuys(void){
+        std::cout << "Give Me High Fives 🙏🏻" << std::endl;
+    }
+};
 
 int main()
 {
@@ -80,4 +94,9 @@ int main()
     hel.attack("hibe");
     hel.takeDamage(19);
     hel.beRepaired(29);
+
+    FragTrap heel("monaim", targ);
+    heel.attack("yosra");
+    heel.takeDamage(12);
+    heel.beRepaired(102);
 }

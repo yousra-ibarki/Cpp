@@ -51,15 +51,11 @@ public:
 class ScavTrap: public ClapTrap{
 public:
     ScavTrap(std::string name, ClapTrap& obj): ClapTrap(name){
-        obj.setVal(100, 50, 2);
+        obj.setVal(100, 50, 20);
         std::cout << "ScavTrap's Constructor called" << std::endl;
     }
     ~ScavTrap(){
         std::cout << "ScavTrap's Destructor called" << std::endl;
-    }
-
-    void guardGate(){
-        std::cout << "ScavTrap is now  in Gate keeper mode." << std::endl;
     }
 //     void updateAttribute(ClapTrap& obj){
 //         std::cout << obj.getVal() << std::endl;
