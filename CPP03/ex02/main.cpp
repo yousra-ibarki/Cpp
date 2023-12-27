@@ -68,17 +68,6 @@ public:
 //    }
 };
 
-class FragTrap: public ClapTrap{
-    FragTrap(std::string name, ClapTrap& obj): ClapTrap(name){
-        obj.setVal(100, 50, 2);
-        std::cout << "FragTrap's Constructor Called" << std::endl;
-    }
-    ~FragTrap(){
-        std::cout << "FragTrap's Constructor Called" << std::endl;
-    }
-};
-
-
 
 int main()
 {
