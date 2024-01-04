@@ -6,6 +6,9 @@ protected:
     std::string type;
 public:
     virtual void makeSound() const = 0;
+    // { //why when in make makeSound = 0 it doesn't work
+    //     std::cout << "Quack Quack!" << std::endl;
+    // }
 
     std::string getType() const{
         return type;
@@ -20,6 +23,10 @@ public:
 
     void makeSound() const {
         std::cout << "Woof Woof!" << std::endl;
+    }
+    ~Dog(){
+        std::cout << "Dog's Destructor" << std::endl;
+        
     }
    
 };
@@ -43,10 +50,10 @@ int main()
     std::cout << i->getType() << ""<<std::endl; 
     i->makeSound(); //willoutputthecatsound! 
     j->makeSound(); 
-    // meta->makeSound(); 
+   // meta->makeSound(); 
     
-    // delete j;
-    // delete i;
-    // delete meta;
+    delete j;
+    //delete i;
+    //delete meta;
     return 0; 
 }
