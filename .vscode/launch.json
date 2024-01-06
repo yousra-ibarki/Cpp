@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/yousraibarki/Desktop/Cpp/CPP03",
-      "program": "/Users/yousraibarki/Desktop/Cpp/CPP03/build/Debug/outDebug"
+      "cwd": "/Users/yousraibarki/Desktop/Cpp/CPP04/ex03",
+      "program": "/Users/yousraibarki/Desktop/Cpp/CPP04/ex03/build/Debug/outDebug"
     }
   ]
 }

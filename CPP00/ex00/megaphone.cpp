@@ -19,7 +19,7 @@ int main(int ac, char **av)
 
     i = 0;
     if(ac == 1)
-        std::cout << "ENTER YOUR MESSAGE, IDIOT";
+        std::cout << "RINGGGGG!!! RINGGGGG!!! 📞🔊💢";
     while(av[++i])
     {
         j = 0;

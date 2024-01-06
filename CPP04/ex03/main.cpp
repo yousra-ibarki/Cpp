@@ -13,11 +13,17 @@ public:
     std::string const& getType() const{
         return old_type;
     }
+    virtual AMateria* clone() const = 0;
+    virtual void use(ICharacter& target);
+};
 
+
+class Ice : public AMateria{
+public:
+    
 
 
 };
-
 int main()
 {
 

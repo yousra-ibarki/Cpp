@@ -2,6 +2,9 @@
 #define ZOMBIE_HPP
 
 #include <iostream>
+#include <string>
+#include <iomanip>
+#include <dmalloc.h>
 
 class Zombie{
 private:
@@ -13,6 +16,8 @@ public:
     void announce(void);
 };
 
-Zombie* zombieHorde(int N, std::string name);
+Zombie *newZombie(std::string name);
+void randomChump(std::string name);
+
 
 #endif
