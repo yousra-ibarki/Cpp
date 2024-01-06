@@ -41,7 +41,7 @@ void PhoneBook::ft_display_PhoneBook() const{
         std::cout << "     Index|First Name| Last Name|  Nickname|\n";
         while (i < count_contacts)
     {
-        std::cout << i + 1 << "         |";
+        std::cout << std::setw(10) << i + 1 << "|";
         contacts[i].ft_print();
         i++;
     }
