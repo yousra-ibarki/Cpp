@@ -11,7 +11,7 @@ CXXFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) PhoneBook.hpp Contact.hpp
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
 %.o: %.c 

@@ -1,4 +1,6 @@
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
+
 
 void Contact::ft_add_name(const std::string &new_name, const std::string &new_last, const std::string &new_nickname){
     first_name = new_name;

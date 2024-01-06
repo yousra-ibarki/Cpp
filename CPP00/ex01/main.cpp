@@ -1,4 +1,6 @@
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
+
 void ft_check_good(std::string& str)
 {
     std::getline(std::cin, str);
