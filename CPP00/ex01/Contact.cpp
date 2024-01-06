@@ -12,10 +12,20 @@ void Contact::ft_add_nbrPhone(const std::string &new_nbrPhone, const std::string
 }
 
 void Contact::ft_print() const{
-    std::cout << first_name << "|"
-            << last_name << "|"
-            << nickname << "|"
-            << "\n";
+    std::string copy;
+
+    if(first_name.length() > 10){
+        std::strncpy(copy, first_name, 9);
+        copy[10] = '.';
+        std::cout << std::setw(10) << copy << "|";
+    }
+
+    else{ 
+        std::cout << std::setw(10) << first_name << "|";
+        std::cout << std::setw(10) << last_name << "|";
+        std::cout << std::setw(10) << nickname << "|";
+        std::cout << std::endl;
+    }
 }
 void Contact::ft_print_var() const{
         std::cout << "First Name:         " << first_name << std::endl;

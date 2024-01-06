@@ -6,7 +6,7 @@
 /*   By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:57:48 by yoibarki          #+#    #+#             */
-/*   Updated: 2023/12/09 15:28:11 by yoibarki         ###   ########.fr       */
+/*   Updated: 2024/01/06 12:28:27 by yoibarki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void PhoneBook::ft_display_PhoneBook() const{
     int i;
 
     i = 0;
+        std::cout << "____________________________________________\n";
         std::cout << "     Index|First Name| Last Name|  Nickname|\n";
         while (i < count_contacts)
     {

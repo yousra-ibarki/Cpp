@@ -8,23 +8,23 @@ std::string ft_commands()
     return command;
 }
 
-std::string ft_space(std::string str, std::string out)
-{
-    int i;
-    int j = 0;
-    int len = str.length();
+// std::string ft_space(std::string str, std::string out)
+// {
+//     int i;
+//     int j = 0;
+//     int len = str.length();
 
-    i = (10 - len);
-    while (i < 10)
-    {
-        out[i] = str[j];
-        i++;
-        j++;
-        if (len > 10)
-            out[9] = '.';
-    }
-    return out;
-}
+//     i = (10 - len);
+//     while (i < 10)
+//     {
+//         out[i] = str[j];
+//         i++;
+//         j++;
+//         if (len > 10)
+//             out[9] = '.';
+//     }
+//     return out;
+// }
 
 bool checkDigit(std::string str)
 {    
@@ -55,15 +55,15 @@ int main()
         {
             std::cout << "Enter The First Name :";
             std::getline(std::cin, contact.first_name);
-           contact.first_name = ft_space(contact.first_name, out);
+            //contact.first_name = ft_space(contact.first_name, out);
 
             std::cout << "Enter The Last Name :";
             std::getline(std::cin, contact.last_name);
-            contact.last_name = ft_space(contact.last_name, out);
+            //contact.last_name = ft_space(contact.last_name, out);
 
             std::cout << "Enter The Nickname :";
             std::getline(std::cin, contact.nickname);
-            contact.nickname = ft_space(contact.nickname, out);
+            //contact.nickname = ft_space(contact.nickname, out);
 
             std::cout << "Enter The Phone Number :";
             std::getline(std::cin, contact.nbr_phone);
@@ -81,7 +81,7 @@ int main()
             std::cout << "\nEnter The Index Of The Contact That You Want To See\n";
             std::getline(std::cin, index);
             int_index = std::atoi(index.c_str());
-            if (int_index < 0 || int_index > count_contacts || !checkDigit(index))
+            if (int_index <= 0 || int_index > count_contacts || !checkDigit(index))
                 std::cout << "\nIncorrect Or Index Out Of Range\n";
             else
                 book.ft_searchable(int_index - 1);
