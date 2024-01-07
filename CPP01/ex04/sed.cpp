@@ -2,12 +2,12 @@
 
 int ft_count(std::string line, std::string str1){
     int count = 0;
-    int pos = 0;
+    size_t pos = 0;
     while(((pos = line.find(str1, pos)) != std::string::npos)){
       count++;
       pos += str1.size();
     }
-   std::cout << count << std::endl;
+   //std::cout << count << std::endl;
     return count;
 }
 

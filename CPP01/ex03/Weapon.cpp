@@ -2,7 +2,7 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
-Weapon::Weapon(std::string new_name){
+Weapon::Weapon(const std::string& new_name){
     type = new_name; 
 }
 Weapon::~Weapon(){}
