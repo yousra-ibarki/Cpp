@@ -10,16 +10,13 @@ int main(int ac, char **av)
         std::string s1 = av[2];
         std::string s2 = av[3];
         std::string line;
-        unsigned long pos;
 
         std::ifstream inputFile(file_name);
         std::ofstream outputFile(file_name+".replace");
         
         if(inputFile.is_open() && outputFile.is_open()){
            while(std::getline(inputFile, line)){
-                pos = line.find(s1);
-               if(pos != (std::string::npos))
-                    line = ft_replace(pos, line, s2, s1);
+                    line = ft_replace(line, s2, s1);
                 outputFile << line << std::endl;
            }
             inputFile.close();

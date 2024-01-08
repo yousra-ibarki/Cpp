@@ -11,9 +11,11 @@ int ft_count(std::string line, std::string str1){
     return count;
 }
 
-std::string ft_replace(int pos, std::string line, std::string str2, std::string str1){
+std::string ft_replace(std::string line, std::string str2, std::string str1){
+    int pos;
     int count = ft_count(line, str1);
     for(int i = 0; i < count ; i++){
+    pos = line.find(str1);
     line.insert(pos, str2);
     pos = line.find(str1);
     line.erase(pos, strlen(str1.c_str()));
