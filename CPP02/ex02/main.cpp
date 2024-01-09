@@ -2,19 +2,19 @@
 
 
     Fixed::Fixed(): fixed_point(0) {
-        std::cout << "Default Constructor called\n";
+        // std::cout << "Default Constructor called\n";
     }
     Fixed::Fixed(Fixed &new_obj){
-        std::cout << "Copy Constructor called\n";
+        // std::cout << "Copy Constructor called\n";
         fixed_point = new_obj.fixed_point;
     }
     Fixed::Fixed (const int var) {
-        std::cout << "Int Constructor Called\n";
+        // std::cout << "Int Constructor Called\n";
         fixed_point = var *  pow(2, fract_bit);
        // std::cout << fixed_point << std::endl;
     }
     Fixed::Fixed (const float var1){
-        std::cout << "Float Constructor Called\n";
+        // std::cout << "Float Constructor Called\n";
         int integer;
         float fractional;
         float fixed_point1 ;
@@ -29,21 +29,21 @@
     }
 
     Fixed &Fixed::operator= (const Fixed &var){ 
-        std::cout << "Copy Assignment Operator called\n";
+        // std::cout << "Copy Assignment Operator called\n";
         //this->fixed_point = var.fixed_point;  //copying fixed point of a in fixed point of b
         fixed_point = var.fixed_point;
         return *this;
     }
 
     Fixed::~Fixed(){
-        std::cout << "Destructor called\n";
+        //std::cout << "Destructor called\n";
     }
     int Fixed::getRawBits( void) const{
-        std::cout << "getRawBits memeber function called\n";
+        //std::cout << "getRawBits memeber function called\n";
         return fixed_point;
     }
     void Fixed::setRawBits(int const raw){
-         std::cout << "getRawBits memeber function called\n";
+        //  std::cout << "getRawBits memeber function called\n";
         fixed_point = raw;
     }
 
@@ -103,41 +103,40 @@
         return tmp;
     }
 
-    Fixed operator++ (int){
-        Fixed tmp(*this)
-            this->fixed_point++;
+    Fixed Fixed::operator++ (int){
+        Fixed tmp = *this;
+            tmp.fixed_point++;
         return tmp;
     }
 
-    // Fixed operator++ (){
-    //     Fixed obj;
-    //     obj.fixed_point = ++fixed_point;
-    //     return obj;
-    // }
-    // Fixed operator-- (){
-    //     Fixed obj;
-    //     obj.fixed_point = --fixed_point;
-    //     return obj;
-    // }
-    // Fixed operator-- (int){
-    //     Fixed obj;
-    //     obj.fixed_point = fixed_point--;
-    //     return obj;
-    // }
+    Fixed &Fixed::Fixed::operator++ (){
+            ++(this->fixed_point);
+        return *this;
+    }
 
-    // static int& min(int& fixed1, int &fixed2){
-    //     if(fixed1 <= fixed2)
-    //         return fixed1;
-    //     else
-    //         return fixed2;
-    // }
+    Fixed &Fixed::operator-- (){
+        --(this->fixed_point);
+        return *this;
+    }
+    Fixed Fixed::operator-- (int){
+        Fixed tmp = *this;
+        tmp.fixed_point--;
+        return tmp;
+    }
 
-    // static int& max(int& fixed1, int &fixed2){
-    //     if(fixed1 <= fixed2)
-    //         return fixed2;
-    //     else
-    //         return fixed1;
-    // }
+    int&Fixed::min(int& fixed1, int &fixed2){
+        if(fixed1 <= fixed2)
+            return fixed1;
+        else
+            return fixed2;
+    }
+
+    int&Fixed::max(int& fixed1, int &fixed2){
+        if(fixed1 <= fixed2)
+            return fixed2;
+        else
+            return fixed1;
+    }
 
 
 std::ostream& operator<<(std::ostream& c, const Fixed& object){

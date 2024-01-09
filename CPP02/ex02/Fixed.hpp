@@ -34,10 +34,10 @@ public:
     Fixed operator- (const Fixed& obj1);
     Fixed operator/ (const Fixed& obj1);
     
-    // Fixed operator++ (int);
-    // Fixed operator ++ ();
-    // Fixed operator-- ();
-    // Fixed operator-- (int);
+    Fixed operator++ (int);
+    Fixed &operator++ ();
+    Fixed &operator-- ();
+    Fixed operator-- (int);
     
     static int& min(int& fixed1, int &fixed2);
     static int& max(int& fixed1, int &fixed2);
@@ -46,8 +46,10 @@ public:
 
 #endif
 
-// MyClass operator++(int) {
-//     MyClass temp(*this);  // Create a copy of the original object
-//     ++value;             // Increment the object's value
-//     return temp;         // Return the original object's value before the increment
-// }
+// 0
+// 0.00390625
+// 0.00390625
+// 0.00390625
+// 0.0078125
+// 10.1016
+// 10.1016
