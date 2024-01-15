@@ -2,18 +2,18 @@ NAME = Moar_brainz
 
 SRC = Zombie.cpp zombieHorde.cpp main.cpp
 
-OBJ = Zombie.o zombieHorde.o main.o
+OBJ = $(SRC:.cpp=.o)
 
 CXX = c++ -std=c++98
 
-CXXFLAGS = -Wall -Wextra -Werror 
+CXXFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 all : $(NAME)
 
-$(NAME): $(OBJ) Zombie.hpp
+$(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.c 
+%.o: %.cpp  Zombie.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 

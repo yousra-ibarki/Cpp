@@ -10,7 +10,7 @@ private:
     static const int fract_bit = 8;
 public:
     Fixed();
-    Fixed(Fixed &new_obj);
+    Fixed(const Fixed &new_obj);
     Fixed& operator= (const Fixed &var);
     ~Fixed();
     Fixed (const int var);

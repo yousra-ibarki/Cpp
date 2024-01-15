@@ -3,7 +3,7 @@
 int main(int ac, char **av)
 {
     if (ac <= 3)
-        std::cout << "Usage: ./program <filename> <s1> <s2>" << std::endl;
+        std::cout << "Usage: ./Sed <filename> <str1> <str2>" << std::endl;
     else
     {
         std::string file_name = av[1];

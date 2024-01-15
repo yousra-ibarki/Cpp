@@ -1,8 +1,8 @@
-NAME = Harl
+NAME = Sed
 
-SRC = main.cpp Harl.cpp
+SRC = main.cpp sed.cpp
 
-OBJ = main.o Harl.o
+OBJ = $(SRC:.cpp=.o)
 
 CXX = c++ -std=c++98
 
@@ -10,10 +10,10 @@ CXXFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) sed.hpp
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.cpp Harl.hpp
+%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 
@@ -25,4 +25,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : clean all fclean re libft
+HELLO : clean all fclean re libft

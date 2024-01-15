@@ -1,38 +1,28 @@
 #include "Fixed.hpp"
 
-
-//Default Constructor
     Fixed::Fixed(): fixed_point(0) {
-        std::cout << "Default Constructor called\n";
+        std::cout << "Default Constructor called" << std::endl;
     }
-// Copy Constructor
-    Fixed::Fixed(Fixed &new_obj){
-        std::cout << "Copy Constructor called\n";
-        fixed_point = new_obj.fixed_point;
+    Fixed::Fixed(const Fixed &new_obj){
+        std::cout << "Copy Constructor called" << std::endl;
+        *this = new_obj;
     }
 
-    //a copy assignment operator overload is just a correction of 
-    //the default behavior of the shallow copying which lead to 
-    //the double free and leaks 
-    Fixed&Fixed:: operator= (const Fixed &var){
-        std::cout << "Copy Assignment Operator called\n";
-        //this->fixed_point = var.fixed_point;  //copying fixed point of a in fixed point of b
-        fixed_point = var.fixed_point;
+    Fixed& Fixed::operator = (const Fixed &var){
+        std::cout << "Copy Assignment Operator called" << std::endl;
+        if(this != &var)
+            fixed_point = var.fixed_point;
         return *this;
     }
     Fixed::~Fixed(){
-        std::cout << "Destructor called\n";
-        // delete var;
+        std::cout << "Destructor called" << std::endl;
     }
-//Int Constructor
     Fixed::Fixed (const int var) {
-        std::cout << "Int Constructor Called\n";
+        std::cout << "Int Constructor Called" << std::endl;
         fixed_point = var *  pow(2, fract_bit);
-       // std::cout << fixed_point << std::endl;
     }
-// Float Constructor
     Fixed::Fixed (const float var1){
-        std::cout << "Float Constructor Called\n";
+        std::cout << "Float Constructor Called" << std::endl;
         int integer;
         float fractional;
         float fixed_point1 ;
@@ -43,16 +33,15 @@
             fixed_point = integer + 1;
         else
             fixed_point = integer;
-        //std::cout << "result : " << fixed_point << std::endl;
     }
 
 
     int Fixed::getRawBits( void) const{
-        std::cout << "getRawBits memeber function called\n";
+        std::cout << "getRawBits memeber function called" << std::endl;
         return fixed_point;
     }
     void Fixed::setRawBits(int const raw){
-         std::cout << "getRawBits memeber function called\n";
+         std::cout << "getRawBits memeber function called" << std::endl;
         fixed_point = raw;
     }
 

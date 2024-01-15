@@ -1,8 +1,8 @@
 NAME = Sed
 
-SRCs = main.cpp sed.cpp
+SRC = main.cpp sed.cpp
 
-OBJ = main.o sed.o
+OBJ = $(SRC:.cpp=.o)
 
 CXX = c++ -std=c++98
 
@@ -10,10 +10,10 @@ CXXFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
-$(NAME): $(OBJ) sed.hpp
+$(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.c 
+%.o: %.cpp sed.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 

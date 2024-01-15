@@ -1,13 +1,16 @@
 #include "Zombie.hpp"
 
 Zombie* zombieHorde(int N, std::string name){
-    if(N < 0)
-        exit(1);
+    if(N <= 0)
+    {
+        std::cout << "Error You Entred " << N << std::endl;
+        return 0;
+    }
     Zombie *zombie = new Zombie[N];
     for(int i = 0; i < N; i++){
         zombie[i].setName(name);
-        std::cout << i + 1 << "\t";
-        zombie[i].announce();
+        // std::cout << i + 1 << "\t";
+        // zombie[i].announce();
     } 
     return zombie;
 }

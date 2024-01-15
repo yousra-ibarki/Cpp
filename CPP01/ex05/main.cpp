@@ -8,5 +8,5 @@ int main(int ac, char **av)
         obj.complain(av[1]);   
     }
     else
-        std::cout << "Usage: <level: debug/info/warning/error>" << std::endl;
+        std::cout << "Usage: <debug/info/warning/error>" << std::endl;
 }

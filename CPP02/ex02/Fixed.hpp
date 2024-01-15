@@ -5,13 +5,13 @@
 
 class Fixed{
 private:
-    int fixed_point;
     static const int fract_bit = 8;
 public:
+    int fixed_point;
     Fixed();
-    Fixed(Fixed &new_obj);
-    Fixed (const int var);
-    Fixed (const float var1);
+    Fixed(const Fixed &new_obj);
+    Fixed (const int& var);
+    Fixed (const float& var1);
     Fixed& operator= (const Fixed &var);
     ~Fixed();
 
@@ -33,7 +33,6 @@ public:
     Fixed operator+ (const Fixed& obj1);
     Fixed operator- (const Fixed& obj1);
     Fixed operator/ (const Fixed& obj1);
-    
     Fixed operator++ (int);
     Fixed &operator++ ();
     Fixed &operator-- ();
@@ -53,3 +52,5 @@ public:
 // 0.0078125
 // 10.1016
 // 10.1016
+
+Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );

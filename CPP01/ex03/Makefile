@@ -2,7 +2,7 @@ NAME = Unnecessary_violence
 
 SRC = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 
-OBJ = main.o HumanA.o HumanB.o Weapon.o
+OBJ = $(SRC:.cpp=.o)
 
 CXX = c++ -std=c++98
 
@@ -10,10 +10,10 @@ CXXFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
-$(NAME): $(OBJ) HumanA.hpp HumanB.hpp
+$(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.c 
+%.o: %.cpp HumanA.hpp HumanB.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 

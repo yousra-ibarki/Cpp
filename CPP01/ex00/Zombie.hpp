@@ -4,12 +4,13 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
-#include <dmalloc.h>
 
 class Zombie{
 private:
     std::string name;
 public:
+
+
     Zombie();
     ~Zombie();
     void setName(const std::string &name);

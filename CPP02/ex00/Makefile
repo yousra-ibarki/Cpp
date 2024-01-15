@@ -10,10 +10,10 @@ CXXFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
-$(NAME): $(OBJ) Fixed.hpp
+$(NAME): $(OBJ) 
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.c 
+%.o: %.cpp Fixed.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 
@@ -25,4 +25,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : clean all fclean re libft
+.PHONY : clean all fclean re
