@@ -1,4 +1,4 @@
-#ifndef FIXED_HPP
+ #ifndef FIXED_HPP
 #define FIXED_HPP
 
 #include <iostream>
@@ -15,8 +15,6 @@ public:
     ~Fixed();
     Fixed (const int var);
     Fixed (const float var1);
-    int getRawBits( void) const;
-    void setRawBits(int const raw);
     float toFloat( void) const;
     int toInt( void )const;
 };

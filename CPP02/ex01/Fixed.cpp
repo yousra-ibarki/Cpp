@@ -3,6 +3,7 @@
     Fixed::Fixed(): fixed_point(0) {
         std::cout << "Default Constructor called" << std::endl;
     }
+
     Fixed::Fixed(const Fixed &new_obj){
         std::cout << "Copy Constructor called" << std::endl;
         *this = new_obj;
@@ -14,35 +15,19 @@
             fixed_point = var.fixed_point;
         return *this;
     }
+
     Fixed::~Fixed(){
         std::cout << "Destructor called" << std::endl;
     }
-    Fixed::Fixed (const int var) {
+
+    Fixed::Fixed (const int nbr) {
         std::cout << "Int Constructor Called" << std::endl;
-        fixed_point = var *  pow(2, fract_bit);
+        fixed_point = nbr * pow(2, fract_bit);
     }
-    Fixed::Fixed (const float var1){
+
+    Fixed::Fixed (const float nbr){
         std::cout << "Float Constructor Called" << std::endl;
-        int integer;
-        float fractional;
-        float fixed_point1 ;
-        fixed_point1 = var1 * pow(2, fract_bit);
-        integer = (int)fixed_point1;
-        fractional = (fixed_point1 - integer);        
-        if(fractional >= 0.5)
-            fixed_point = integer + 1;
-        else
-            fixed_point = integer;
-    }
-
-
-    int Fixed::getRawBits( void) const{
-        std::cout << "getRawBits memeber function called" << std::endl;
-        return fixed_point;
-    }
-    void Fixed::setRawBits(int const raw){
-         std::cout << "getRawBits memeber function called" << std::endl;
-        fixed_point = raw;
+        fixed_point = roundf(nbr * pow(2, fract_bit));
     }
 
     float Fixed::toFloat( void) const{

@@ -38,19 +38,9 @@ public:
     Fixed &operator-- ();
     Fixed operator-- (int);
     
-    static int& min(int& fixed1, int &fixed2);
-    static int& max(int& fixed1, int &fixed2);
+    static Fixed max(const Fixed& obj1, const Fixed& obj2);
+    static Fixed min(const Fixed& obj1, const Fixed& obj2);
 
 };
 
 #endif
-
-// 0
-// 0.00390625
-// 0.00390625
-// 0.00390625
-// 0.0078125
-// 10.1016
-// 10.1016
-
-Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );

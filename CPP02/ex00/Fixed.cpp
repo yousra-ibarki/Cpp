@@ -16,6 +16,8 @@ Fixed &Fixed::operator= (const Fixed &var){
     return *this;
 }
 
+
+
 Fixed::~Fixed(){
     std::cout << "Destructor called\n";
 }
