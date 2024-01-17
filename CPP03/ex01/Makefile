@@ -1,19 +1,19 @@
-NAME = SerenaMyLove!
+NAME = Brainz
 
-SRC = main.cpp ClapTrap.cpp ScanvTrap.cpp
+SRC = ClapTrap.cpp main.cpp ScavTrap.cpp
 	
-OBJ = main.o ClapTrap.o
+OBJ = $(SRC:.cpp=.o)
 
 CXX = c++ -std=c++98
 
-CXXFLAGS = -Wall -Wextra -Werror 
+CXXFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 all : $(NAME)
 
-$(NAME): $(OBJ) ClapTrap.hpp ScanvTrap.hpp
+$(NAME): $(OBJ) ClapTrap.hpp ScavTrap.hpp
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.c 
+%.o: %.cpp ClapTrap.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 

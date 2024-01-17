@@ -1,19 +1,19 @@
-NAME = Aaaaand...OPEN!
+NAME = Brainz
 
-SRC = main.cpp ClapTrap.cpp
+SRC = ClapTrap.cpp main.cpp
 	
-OBJ = main.o ClapTrap.o
+OBJ = $(SRC:.cpp=.o)
 
 CXX = c++ -std=c++98
 
-CXXFLAGS = -Wall -Wextra -Werror 
+CXXFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 all : $(NAME)
 
-$(NAME): $(OBJ) ClapTrap.hpp
+$(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.c 
+%.o: %.cpp ClapTrap.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 

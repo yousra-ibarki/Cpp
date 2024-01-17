@@ -100,7 +100,7 @@ Fixed Fixed::operator-(const Fixed &obj1)
     return tmp;
 }
 
-Fixed Fixed::operator/(const Fixed &obj1)
+Fixed Fixed::operator/( Fixed &obj1) const
 {
     Fixed tmp;
     tmp.fixed_point = this->fixed_point / obj1.fixed_point;
@@ -156,14 +156,18 @@ std::ostream &operator<<(std::ostream &c, const Fixed &object)
 
 int main(void)
 {
-    Fixed a;
+    Fixed a(1.3f);
     Fixed const b(Fixed(5.05f) * Fixed(2));
-    std::cout << a << std::endl;
-    std::cout << ++a << std::endl;
-    std::cout << a << std::endl;
-    std::cout << a++ << std::endl;
-    std::cout << a << std::endl;
-    std::cout << b << std::endl;
-    std::cout << Fixed::max(a, b) << std::endl;
+    std::cout << a + b << std::endl;
+    std::cout << a - b << std::endl;
+    std::cout << a * b << std::endl;
+    std::cout << b / a << std::endl;
+    // std::cout << a << std::endl;
+    // std::cout << ++a << std::endl;
+    // std::cout << a << std::endl;
+    // std::cout << a++ << std::endl;
+    // std::cout << a << std::endl;
+    // std::cout << b << std::endl;
+    // std::cout << Fixed::max(a, b) << std::endl;
     return 0;
 }

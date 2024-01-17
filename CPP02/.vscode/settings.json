@@ -1,5 +1,6 @@
 {
   "files.associations": {
+    "html": "first.html",
     "__bit_reference": "cpp",
     "__config": "cpp",
     "__debug": "cpp",
@@ -59,7 +60,11 @@
     "typeinfo": "cpp",
     "unordered_map": "cpp",
     "utility": "cpp",
-    "vector": "cpp"
+    "vector": "cpp",
+    "deque": "cpp",
+    "fstream": "cpp",
+    "iomanip": "cpp",
+    "stack": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "clang",
   "C_Cpp_Runner.cppCompilerPath": "clang++",

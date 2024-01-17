@@ -1,7 +1,6 @@
 #include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
 
-
 int main()
 {
     ClapTrap targ("yousra");

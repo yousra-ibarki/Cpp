@@ -32,7 +32,7 @@ public:
     Fixed operator* (const Fixed& obj1);
     Fixed operator+ (const Fixed& obj1);
     Fixed operator- (const Fixed& obj1);
-    Fixed operator/ (const Fixed& obj1);
+    Fixed operator/ ( Fixed& obj1) const;
     Fixed operator++ (int);
     Fixed &operator++ ();
     Fixed &operator-- ();
