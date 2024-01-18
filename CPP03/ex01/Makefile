@@ -10,7 +10,7 @@ CXXFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 all : $(NAME)
 
-$(NAME): $(OBJ) ClapTrap.hpp ScavTrap.hpp
+$(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
 %.o: %.cpp ClapTrap.hpp

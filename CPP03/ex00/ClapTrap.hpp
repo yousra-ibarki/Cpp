@@ -13,6 +13,8 @@ public:
     ClapTrap(std::string newName);
     ~ClapTrap();
     ClapTrap(ClapTrap& cpyObj);
+    ClapTrap& operator=(ClapTrap const& obj1);
+
 
     void attack(const std::string& target);
     void takeDamage(unsigned int amount);

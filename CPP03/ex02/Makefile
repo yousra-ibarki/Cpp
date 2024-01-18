@@ -13,7 +13,7 @@ all : $(NAME)
 $(NAME): $(OBJ) ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.cpp ClapTrap.hpp
+%.o: %.cpp ClapTrap.hpp FragTrap.hpp ScavTrap.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 

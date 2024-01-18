@@ -8,6 +8,9 @@ class ScavTrap: public ClapTrap{
 public:
     ScavTrap(std::string name, ClapTrap& obj);
     ~ScavTrap();
+    ScavTrap& operator=(ScavTrap const& obj);
+   ScavTrap(ScavTrap const& obj);
+
 
     void guardGate();
 //     void updateAttribute(ClapTrap& obj){
