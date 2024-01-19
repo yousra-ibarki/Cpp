@@ -6,15 +6,19 @@
 class ClapTrap{
 private:
     std::string name;
-    int hitPoints;
-    int energyPoints;
-    int attackDamage;
+    unsigned int hitPoints;
+    unsigned int energyPoints;
+    unsigned int attackDamage;
 public:
-    ClapTrap(std::string newName);
+    ClapTrap();
+    ClapTrap(std::string const& newName);
     ~ClapTrap();
-    void setVal(int newHitPoints, int newEnergyPoints, int newAttackDamage);
+    ClapTrap(ClapTrap &cpyObj);
+    ClapTrap& operator=(ClapTrap const& obj1);
+
+    void setVal(unsigned int newHitPoints, unsigned int newEnergyPoints, unsigned int newAttackDamage);
     int getVal();
-    // ClapTrap(ClapTrap& cpyObj);
+
     void attack(const std::string& target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);

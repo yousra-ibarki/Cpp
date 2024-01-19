@@ -1,49 +1,88 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string newName) : name(newName), hitPoints(10), energyPoints(10), attackDamage(0)
+ClapTrap::ClapTrap(std::string const& newName) : name(newName)
 {
+    this->hitPoints = 10;
+    this->energyPoints = 10;
+    this->attackDamage = 0;
     std::cout << "ClapTrap's Constructor Called\n";
 }
+
 ClapTrap::~ClapTrap()
 {
     std::cout << "ClapTrap's Destructor Called\n";
 }
-void ClapTrap::setVal(int newHitPoints, int newEnergyPoints, int newAttackDamage)
-{
-    hitPoints = newHitPoints;
-    energyPoints = newEnergyPoints;
-    attackDamage = newAttackDamage;
+
+ClapTrap::ClapTrap(){
+    std::cout << "Default Constructor Called\n";
 }
-int ClapTrap::getVal()
-{
-    return attackDamage;
+
+ClapTrap& ClapTrap::operator=(ClapTrap const& obj1){
+    if(this != &obj1)
+    {
+        this->name = obj1.name;
+        this->hitPoints = obj1.hitPoints;
+        this->energyPoints = obj1.energyPoints;
+        this->attackDamage = obj1.attackDamage;
+    }
+    return *this;
 }
-// ClapTrap(ClapTrap& cpyObj){
-//     std::cout << "Copy Constructor Called\n";
-//     this->name = cpyObj.name;
-//     this->hitPoints = cpyObj.hitPoints;
-//     this->energyPoints = cpyObj.energyPoints;
-//     this->attackDamage = cpyObj.attackDamage;
-// }
+
+ClapTrap::ClapTrap(ClapTrap& cpyObj)
+{
+    std::cout << "Copy Constructor Called\n";
+    *this = cpyObj;
+}
+
 
 void ClapTrap::attack(const std::string &target)
 {
-    if (energyPoints > 0)
-        energyPoints -= 1;
-    std::cout << "ClapTrap " << name << " attacks " << target << ", causing " << attackDamage << " points of damage!" << std::endl;
+    if (this->energyPoints > 0 && this->hitPoints > 0)
+    {
+        this->energyPoints -= 1;
+        std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing " << this->attackDamage << " points of damage! he has now " << this->energyPoints << " energy points and " << this->hitPoints << " hit points" << std::endl;
+    }
+    else if(this->energyPoints == 0)
+        std::cout << "ClapTrap " << this->name << " cannot attack " << target << ", because he has no eneregy points " << this->energyPoints << std::endl;
+    else   
+        std::cout << "ClapTrap " << this->name << " cannot attack " << target << ", because he has no hit points " << this->hitPoints << std::endl;
 }
+
 void ClapTrap::takeDamage(unsigned int amount)
-{
-    if (hitPoints > 0)
-        hitPoints -= amount;
-    std::cout << "ClapTrap " << name << " took " << amount << " amount of damage" << std::endl;
+{   
+    if (this->hitPoints > amount)
+        this->hitPoints -= amount;
+    else if(this->hitPoints > 0)
+        this->hitPoints = 0;
+    std::cout << "ClapTrap " << name << " took " << amount << " amount of damage he has now " << this->hitPoints << " hit poits" << std::endl;
+
 }
+
 void ClapTrap::beRepaired(unsigned int amount)
 {
-    if (energyPoints > 0 && hitPoints > 0)
+    if (this->energyPoints > 0 && this->hitPoints > 0)
     {
-        hitPoints += amount;
-        energyPoints -= 1;
+        this->hitPoints += amount;
+        this->energyPoints -= 1;
+        std::cout << "ClapTrap " << name << " get " << amount << " amout of repairing points he has now " << this->energyPoints << " energy points and " << this->hitPoints << " hit points" << std::endl;
+
     }
-    std::cout << "ClapTrap " << name << " get " << amount << " amout of repaired points" << std::endl;
+    else if(this->energyPoints == 0)
+        std::cout << "ClapTrap " << name << " cannot repair itself, because he has no energy points " << this->energyPoints << std::endl;
+    else if(this->hitPoints == 0)
+        std::cout << "ClapTrap " << name << " cannot repair itself, because he has no hit points " << this->hitPoints << std::endl;
+
+
+}
+
+void ClapTrap::setVal(unsigned int newHitPoints, unsigned int newEnergyPoints, unsigned int newAttackDamage)
+{
+    this->hitPoints = newHitPoints;
+    this->energyPoints = newEnergyPoints;
+    this->attackDamage = newAttackDamage;
+}
+
+int ClapTrap::getVal()
+{
+    return this->attackDamage;
 }

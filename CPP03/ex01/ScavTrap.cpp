@@ -4,11 +4,11 @@
 
     ScavTrap::ScavTrap():ClapTrap(){
         std::cout << "Default ScavTrap's Constructor called" << std::endl;
-        ClapTrap::setVal(100, 50, 2);
+        setVal(100, 50, 2);
     }
 
     ScavTrap::ScavTrap(std::string const name): ClapTrap(name){
-       setVal(100, 50, 20);
+        setVal(100, 50, 20);
         std::cout << "ScavTrap's Constructor called" << std::endl;
     }
     ScavTrap::~ScavTrap(){

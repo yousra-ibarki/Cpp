@@ -5,18 +5,21 @@
 
 int main()
 {
-    ClapTrap targ("yousra");
-    targ.attack("nourdin");
-    targ.takeDamage(4);
-    targ.beRepaired(3);
+    ClapTrap obj("yousra");
+    obj.attack("nourdin");
+    obj.takeDamage(4);
+    obj.beRepaired(3);
 
-    ScavTrap hel("khadija", targ);
-    hel.attack("hibe");
-    hel.takeDamage(19);
-    hel.beRepaired(29);
+    ScavTrap obj1("khadija");
+    obj1.attack("hibe");
+    obj1.takeDamage(19);
+    obj1.beRepaired(29);
+    obj1.guardGate();
 
-    FragTrap heel("monaim", targ);
-    heel.attack("yousra");
-    heel.takeDamage(12);
-    heel.beRepaired(102);
+    FragTrap obj2("monaim");
+    obj2.attack("yousra");
+    obj2.takeDamage(12);
+    obj2.beRepaired(102);
+    obj2.hightFivesGuys();
+
 }

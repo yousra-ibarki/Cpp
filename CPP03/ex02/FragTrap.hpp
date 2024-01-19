@@ -5,8 +5,11 @@
 
 class FragTrap: public ClapTrap{
 public:
-    FragTrap(std::string name, ClapTrap& obj1);
+    FragTrap();
+    FragTrap(std::string const& name);
+    FragTrap(FragTrap const& obj);
     ~FragTrap();
+    FragTrap& operator=(FragTrap const& obj);
 
     void hightFivesGuys(void);
 };

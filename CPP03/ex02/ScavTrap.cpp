@@ -1,9 +1,15 @@
 #include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name, ClapTrap &obj) : ClapTrap(name)
+ScavTrap::ScavTrap() : ClapTrap()
 {
-    obj.setVal(100, 50, 20);
+    setVal(100, 50, 20);
+    std::cout << "Default ScavTrap's Constructor called" << std::endl;
+}
+
+ScavTrap::ScavTrap(std::string const& name) : ClapTrap(name)
+{
+    setVal(100, 50, 20);
     std::cout << "ScavTrap's Constructor called" << std::endl;
 }
 ScavTrap::~ScavTrap()
@@ -11,12 +17,18 @@ ScavTrap::~ScavTrap()
     std::cout << "ScavTrap's Destructor called" << std::endl;
 }
 
+ScavTrap &ScavTrap::operator=(ScavTrap const &obj)
+{
+    if (this != &obj)
+        ClapTrap::operator=(obj);
+    return *this;
+}
+ScavTrap::ScavTrap(ScavTrap const &obj)
+{
+    *this = obj;
+}
+
 void ScavTrap::guardGate()
 {
-    std::cout << "ScavTrap is now  in Gate keeper mode." << std::endl;
+    std::cout << "ScavTrap is now in Gate keeper mode." << std::endl;
 }
-//     void updateAttribute(ClapTrap& obj){
-//         std::cout << obj.getVal() << std::endl;
-//         obj.setVal(100, 50, 20);
-//         std::cout << obj.getVal() << std::endl;
-//    }

@@ -1,4 +1,4 @@
-NAME = Brainz
+NAME = RepetitveWork
 
 SRC = ClapTrap.cpp main.cpp ScavTrap.cpp FragTrap.cpp
 	
