@@ -1,4 +1,4 @@
-NAME = Brainz
+NAME = Aaaaand...Open!
 
 SRC = ClapTrap.cpp main.cpp
 	

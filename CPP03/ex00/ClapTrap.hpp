@@ -6,11 +6,12 @@
 class ClapTrap{
 private:
     std::string name;
-    int hitPoints;
-    int energyPoints;
-    int attackDamage;
+    unsigned int hitPoints;
+    unsigned int energyPoints;
+    unsigned int attackDamage;
 public:
     ClapTrap(std::string newName);
+    ClapTrap();
     ~ClapTrap();
     ClapTrap(ClapTrap& cpyObj);
     ClapTrap& operator=(ClapTrap const& obj1);

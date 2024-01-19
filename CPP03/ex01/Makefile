@@ -1,4 +1,4 @@
-NAME = Brainz
+NAME = SerenaMyLove
 
 SRC = ClapTrap.cpp main.cpp ScavTrap.cpp
 	

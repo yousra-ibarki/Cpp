@@ -1,8 +1,14 @@
     #include "ScavTrap.hpp"
     #include "ClapTrap.hpp"
 
-    ScavTrap::ScavTrap(std::string name, ClapTrap& obj): ClapTrap(name){
-        obj.setVal(100, 50, 2);
+
+    ScavTrap::ScavTrap():ClapTrap(){
+        std::cout << "Default ScavTrap's Constructor called" << std::endl;
+        ClapTrap::setVal(100, 50, 2);
+    }
+
+    ScavTrap::ScavTrap(std::string const name): ClapTrap(name){
+       setVal(100, 50, 20);
         std::cout << "ScavTrap's Constructor called" << std::endl;
     }
     ScavTrap::~ScavTrap(){
@@ -17,6 +23,7 @@
     ScavTrap::ScavTrap(ScavTrap const& obj){
         *this = obj;
     }
+    
     void ScavTrap::guardGate(){
         std::cout << "ScavTrap is now  in Gate keeper mode." << std::endl;
     }
