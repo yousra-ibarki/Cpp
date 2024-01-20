@@ -2,9 +2,9 @@
 
 int main()
 {
-    ClapTrap targ("Yousra");
-    targ.attack("Hiba");
-    targ.takeDamage(4);
-    // targ.takeDamage(56);
-    targ.beRepaired(3);
+    ClapTrap targ("");
+    targ.attack("");
+    targ.takeDamage(5);
+    targ.takeDamage(100);
+    targ.beRepaired(5);
 }

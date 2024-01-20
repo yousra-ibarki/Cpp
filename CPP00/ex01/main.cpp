@@ -66,7 +66,7 @@ int main()
 
             book.ft_add_to_PhoneBook(contact.first_name, contact.last_name, contact.nickname, contact.nbr_phone, contact.dark_secret);
             std::cout << "\nYour Contact Has Been Added Seccessfully.\n";
-            if(count_contacts < 2)
+            if(count_contacts < 8)
                 count_contacts++;
             
         }

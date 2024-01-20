@@ -1,59 +1,21 @@
-#include <iostream>
-#include <string>
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
 
-class Animal{
-protected:
-    std::string type;
-public:
-    virtual void makeSound() const = 0;
-    // { //why when in make makeSound = 0 it doesn't work
-    //     std::cout << "Quack Quack!" << std::endl;
-    // }
-
-    std::string getType() const{
-        return type;
-    }
-};
-
-class Dog : public Animal{
-public:
-    Dog(){
-        type = "Dog";
-    }
-
-    void makeSound() const {
-        std::cout << "Woof Woof!" << std::endl;
-    }
-    ~Dog(){
-        std::cout << "Dog's Destructor" << std::endl;
-        
-    }
-   
-};
-
-class Cat : public Animal{
-public:
-   Cat(){
-    type = "Cat";
-   }
-   void makeSound() const {
-    std::cout << "Meow Meow!" << std::endl;
-   }
-};
 
 int main() 
 { 
-    //const Animal* meta = new Animal(); 
+    const Animal* meta = new Animal(); 
     const Animal* j = new Dog(); 
     const Animal* i = new Cat(); 
     std::cout << j->getType() << ""<<std::endl; 
     std::cout << i->getType() << ""<<std::endl; 
-    i->makeSound(); //willoutputthecatsound! 
+    i->makeSound(); //will output the cat sound! 
     j->makeSound(); 
-   // meta->makeSound(); 
+   meta->makeSound(); 
     
     delete j;
-    //delete i;
-    //delete meta;
+    delete i;
+    delete meta;
     return 0; 
 }
