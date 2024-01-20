@@ -3,28 +3,30 @@
 #include "Dog.hpp"
 #include "Brain.hpp"
 
-
-
+void function(){
+    system("leaks IDontWantToSetTheWorldOnFire");
+}
 
 int main() 
 {
-    // Animal* arr[100];
-    // int i;
-    // for(i = 0; i < 50; i++){
-    //     arr[i] = new Dog();
-    // }
-    // for(int j = i; j < 100; j++){
-    //     arr[j] = new Cat();
-    // }
-    // for(i = 0; i < 100; i++){
-    //     delete arr[i];
-    // }
+    atexit(function);
+    Animal* arr[10];
+    int i;
+    for(i = 0; i < 5; i++){
+        arr[i] = new Dog();
+    }
+    for(int j = i; j < 10; j++){
+        arr[j] = new Cat();
+    }
+    for(i = 0; i < 10; i++){
+        delete arr[i];
+    }
     
 
-    const Animal*j= new Dog(); 
-    const Animal*i= new Cat(); 
-    delete j; //should not create a leak 
-    delete i; 
+    // const Animal*j= new Dog(); 
+    // const Animal*i= new Cat(); 
+    // delete j; //should not create a leak 
+    // delete i; 
   //  while(1);
     return 0;
 }
