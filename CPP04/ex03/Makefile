@@ -1,6 +1,6 @@
 NAME = Interface
 
-SRC = main.cpp Cure.cpp Ice.cpp Interface.cpp Icharacter.cpp  AMateria.cpp Character.cpp MateriaSource.cpp
+SRC = main.cpp Cure.cpp Ice.cpp  AMateria.cpp Character.cpp MateriaSource.cpp
 	
 OBJ = $(SRC:.cpp=.o)
 
@@ -13,7 +13,7 @@ all : $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.cpp Cure.cpp Ice.hpp Interface.hpp Icharacter.hpp  AMateria.hpp Character.hpp MateriaSource.hpp
+%.o: %.cpp Cure.cpp Ice.hpp Icharacter.hpp  AMateria.hpp Character.hpp MateriaSource.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 

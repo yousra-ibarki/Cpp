@@ -2,10 +2,10 @@
 #include "AMateria.hpp"
 
 MateriaSource::MateriaSource(){
-this->nbrLearn = 0;
-for(int i = 0; i < this->MateSize; i++){
-    this->materias[i] = 0;
-}
+    this->nbrLearn = 0;
+    for(int i = 0; i < this->MateSize; i++){
+        this->materias[i] = 0;
+    }
 }
 MateriaSource::MateriaSource(const MateriaSource &obj){
     *this = obj;
@@ -31,13 +31,13 @@ MateriaSource::~MateriaSource(){
 
 void MateriaSource::learnMateria(AMateria *materia){
     if(this->nbrLearn < this->MateSize){
-        this->materias[this->nbrLearn] = materias;
+        this->materias[this->nbrLearn] = materia;
     this->nbrLearn++;
     }
 }
 AMateria *MateriaSource::createMateria(std::string const &type){
     for(int i = 0; i < this->MateSize; i++){
-        if(this->materias[i]->getType() = type){
+        if(this->materias[i]->getType() == type){
             return this->materias[i]->clone();
         }
     }

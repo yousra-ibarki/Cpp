@@ -2,6 +2,7 @@
 #define CHARACTER_HPP
 
 #include "ICharacter.hpp"
+#include "AMateria.hpp"
 
 class Character: public ICharacter{
 private:
@@ -18,8 +19,8 @@ public:
     Character& operator=(const Character& obj);
 
     std::string const &getName() const;
-    void equip(AMateria *m);
     void unequip(int idx);
+    void equip(AMateria *m);
     void use(int idx, ICharacter &target);
 };
 

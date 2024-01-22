@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "ICharacter.hpp"
+class ICharacter;
 
 class AMateria
 {
@@ -10,29 +11,16 @@ protected:
     std::string old_type;
     
 public:
-    AMateria(){
-    }
-    virtual ~AMateria(){
-    }
-    AMateria& operator=(const AMateria& obj){
-        this->old_type = obj.old_type;
-    }
+    AMateria();
+    virtual ~AMateria();
+    AMateria& operator=(const AMateria& obj);
 
-    AMateria(std::string const &type)
-    {
-        old_type = type;
-        std::cout << "AMateria Constructor" << std::endl;
-    }
+    AMateria(std::string const &type);
 
-    std::string const &getType() const
-    {
-        return this->old_type;
-    }
+    std::string const &getType() const;
     virtual AMateria *clone() const = 0;
 
-    virtual void use(ICharacter &target){
-        (void)target;
-    };
+    virtual void use(ICharacter &target);
 };
 
 #endif

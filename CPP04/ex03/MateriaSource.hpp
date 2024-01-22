@@ -1,7 +1,8 @@
 #ifndef MATERIASOURCE_HPP
 #define MATERIASOURCE_HPP
 
-class MateriaSource{
+#include "IMateriaSource.hpp"
+class MateriaSource : public IMateriaSource{
 private:
     static const int MateSize = 4;
     AMateria* materias[MateSize];
