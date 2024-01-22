@@ -1,15 +1,17 @@
 #include "Animal.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "Brain.hpp"
 
-void function(){
-    system("leaks IDontWantToSetTheWorldOnFire");
-}
+// void function(){
+//     system("leaks IDontWantToSetTheWorldOnFire");
+// }
 
 int main() 
 {
-    atexit(function);
+    //atexit(function);
     Animal* arr[10];
     int i;
     for(i = 0; i < 5; i++){
@@ -21,12 +23,21 @@ int main()
     for(i = 0; i < 10; i++){
         delete arr[i];
     }
-    
 
-    // const Animal*j= new Dog(); 
-    // const Animal*i= new Cat(); 
-    // delete j; //should not create a leak 
+    
+    // const WrongAnimal* ii = new WrongCat();
+    // std::cout << std::endl;
+    // const Animal* j= new Dog(); 
+    // std::cout << std::endl;
+    // const Animal* i= new Cat(); 
+    // std::cout << std::endl << std::endl;
+
+    // delete ii;
+    // std::cout << std::endl;
+    // delete j; 
+    // std::cout << std::endl;
     // delete i; 
+
   //  while(1);
     return 0;
 }

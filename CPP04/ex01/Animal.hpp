@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <string>
-// #include "Cat.hpp"
 
 class Animal{
 protected:

@@ -15,12 +15,15 @@ Brain::~Brain()
     std::cout << "Brain's Destructor" << std::endl;
 }
 
-Brain::Brain(const Brain& obj){
+Brain::Brain(const Brain &obj)
+{
+    std::cout << "Brain's Copy Constructor" << std::endl;
     *this = obj;
 }
 
-// Brain& Brain::operator=(const Brain& obj){
-//     if(this != &obj)
-//         this->
-//     return *this;
-// }
+Brain &Brain::operator=(const Brain &obj)
+{
+    if (this != &obj)
+        *this = obj;
+    return *this;
+}

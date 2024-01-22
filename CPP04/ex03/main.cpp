@@ -1,30 +1,36 @@
 #include <iostream>
+#include "Cure.hpp"
+#include "Ice.hpp"
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 
-class AMateria{
-protected:
-    std::string old_type;
-    //your methods here
+
+class IMateriaSource
+{
 public:
-    AMateria(std::string const& type){
-        old_type = type;
-        std::cout << "AMateria Constructor" << std::endl;
-    }
-    std::string const& getType() const{
-        return old_type;
-    }
-    virtual AMateria* clone() const = 0;
-    virtual void use(ICharacter& target);
+    virtual ~IMateriaSource() {}
+    virtual void learnMateria(AMateria *) = 0;
+    virtual AMateria *createMateria(std::string const &type) = 0;
 };
 
 
-class Ice : public AMateria{
-public:
-    
-
-
-};
 int main()
 {
-
+    IMateriaSource *src = new MateriaSource();
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+    ICharacter *me = new Character("me");
+    AMateria *tmp;
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+    tmp = src->createMateria("cure");
+    me->equip(tmp);
+    ICharacter *bob = new Character("bob");
+    me->use(0, *bob);
+    me->use(1, *bob);
+    delete bob;
+    delete me;
+    delete src;
+    return 0;
 }

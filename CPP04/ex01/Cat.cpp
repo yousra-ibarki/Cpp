@@ -11,19 +11,22 @@ Cat::~Cat()
 {
     delete obj;
     std::cout << "Cat's Destructor" << std::endl;
-
 }
 
-Cat::Cat(const Cat& obj){
+Cat::Cat(const Cat &obj)
+{
+    std::cout << "Cat's Copy Constructor" << std::endl;
     *this = obj;
 }
 
-Cat& Cat::operator=(const Cat& obj){
-    if(this != &obj)
+Cat &Cat::operator=(const Cat &obj)
+{
+    if (this != &obj)
         this->type = obj.type;
     return *this;
 }
 
-void Cat::makeSound() const {
+void Cat::makeSound() const
+{
     std::cout << "Meow Meow!" << std::endl;
-   }
+}

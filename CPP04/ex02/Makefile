@@ -1,6 +1,6 @@
 NAME = AbstractClass
 
-SRC = Animal.cpp main.cpp Dog.cpp Cat.cpp Brain.cpp
+SRC = Animal.cpp main.cpp Dog.cpp Cat.cpp Brain.cpp WrongAnimal.cpp WrongCat.cpp
 	
 OBJ = $(SRC:.cpp=.o)
 
@@ -13,7 +13,7 @@ all : $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.cpp Animal.hpp Dog.hpp Cat.hpp Brain.hpp
+%.o: %.cpp Animal.hpp Dog.hpp Cat.hpp Brain.hpp WrongCat.hpp WrongCat.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 
