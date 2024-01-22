@@ -1,10 +1,9 @@
 #include "Ice.hpp"
 
-Ice::Ice()
+Ice::Ice() : AMateria("ice")
 {
-    this->old_type = "ice";
 };
-Ice::Ice(const Ice &obj)
+Ice::Ice(const Ice &obj) : AMateria("ice")
 {
     *this = obj;
 };

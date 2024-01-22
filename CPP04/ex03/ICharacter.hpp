@@ -13,14 +13,5 @@ public:
     virtual void use(int idx, ICharacter &target) = 0;
 };
 
-class Chracter: public ICharacter{
-public:
-    std::string const &getName() const {
-        return "Naaame";
-    }
-    void equip(AMateria *m){
-        
-    }
-};
 
 #endif

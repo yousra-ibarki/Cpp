@@ -3,17 +3,9 @@
 #include "Ice.hpp"
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
-
-
-
-class IMateriaSource
-{
-public:
-    virtual ~IMateriaSource() {}
-    virtual void learnMateria(AMateria *) = 0;
-    virtual AMateria *createMateria(std::string const &type) = 0;
-};
-
+#include "Character.hpp"
+#include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"
 
 int main()
 {

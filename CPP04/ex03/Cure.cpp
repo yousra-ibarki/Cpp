@@ -1,23 +1,22 @@
 #include "Cure.hpp"
 #include "ICharacter.hpp"
 
-Cure::Cure()
+Cure::Cure() : AMateria("cure")
 {
-    this->old_type = "cure";
-};
-Cure::Cure(const Cure &obj)
+}
+Cure::Cure(const Cure &obj) : AMateria("cure")
 {
     *this = obj;
-};
+}
 Cure &Cure::operator=(const Cure &obj)
 {
     if (this != &obj)
         this->old_type = obj.old_type;
     return *this;
-};
+}
 Cure::~Cure(){
 
-};
+}
 
 AMateria *Cure::clone() const
 {

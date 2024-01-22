@@ -11,10 +11,8 @@ protected:
     
 public:
     AMateria(){
-        std::cout << "AMateria Constructor" << std::endl;
     }
-    ~AMateria(){
-        std::cout << "AMateria Destructor" << std::endl;
+    virtual ~AMateria(){
     }
     AMateria& operator=(const AMateria& obj){
         this->old_type = obj.old_type;
@@ -28,10 +26,13 @@ public:
 
     std::string const &getType() const
     {
-        return old_type;
+        return this->old_type;
     }
     virtual AMateria *clone() const = 0;
-    virtual void use(ICharacter &target);
+
+    virtual void use(ICharacter &target){
+        (void)target;
+    };
 };
 
 #endif
