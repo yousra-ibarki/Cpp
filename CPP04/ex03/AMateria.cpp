@@ -16,7 +16,6 @@ AMateria &AMateria::operator=(const AMateria &obj)
 AMateria::AMateria(std::string const &type)
 {
     old_type = type;
-    std::cout << "AMateria Constructor" << std::endl;
 }
 
 std::string const &AMateria::getType() const
