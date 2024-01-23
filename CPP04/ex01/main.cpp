@@ -10,69 +10,55 @@ void function()
   system("leaks IDontWantToSetTheWorldOnFire");
 }
 
-// int main()
-// {
-//     //atexit(function);
-//     Animal* arr[10];
-//     int i;
-//     for(i = 0; i < 5; i++){
-//         arr[i] = new Dog();
-//     }
-//     for(int j = i; j < 10; j++){
-//         arr[j] = new Cat();
-//     }
-//     for(i = 0; i < 10; i++){
-//         delete arr[i];
-//     }
-//  return 0;
-// }
 
 int main()
 {
   atexit(function);
+  std::cout << std::endl << "˚˚˚˚˚˚˚˚˚˚ Normal Test ˚˚˚˚˚˚˚˚˚˚" << std::endl << std::endl;
+  Animal* arr[4];
+    int i;
+    std::cout << std::endl << "˚˚˚˚˚˚˚˚˚˚Constructors˚˚˚˚˚˚˚˚˚˚" << std::endl << std::endl;
+    for(i = 0; i < 2; i++){
+        arr[i] = new Dog();
+    }
+    for(int j = i; j < 4; j++){
+        arr[j] = new Cat();
+    }
+    std::cout << std::endl << "˚˚˚˚˚˚˚˚˚˚Destructors˚˚˚˚˚˚˚˚˚˚" << std::endl << std::endl;
+    for(i = 0; i < 4; i++){
+        delete arr[i];
+    }
+  std::cout << std::endl << "˚˚˚˚˚˚˚˚˚˚ Deep Copy Test ˚˚˚˚˚˚˚˚˚˚" << std::endl << std::endl;
 
-  Animal *origin = new Dog();
-  Animal *copy = new Dog();
-  Animal *extra = new Cat();
+  Animal *originDog = new Dog();
+  Animal *copyDog = new Dog();
 
-  std::cout << origin->getType() << std::endl;
-  std::cout << copy->getType() << std::endl;
-  std::cout << extra->getType() << std::endl;
+  Animal *originCat = new Cat();
+  Animal *copyCat = new Cat();
+
+  std::cout << originDog->getType() << std::endl;
+  std::cout << copyDog->getType() << std::endl;
+
+  std::cout << originCat->getType() << std::endl;
+  std::cout << copyCat->getType() << std::endl;
 
   std::cout << std::endl;
 
-  *origin = *copy;
-  copy->setType("DOOOOG");
+  *originCat = *copyCat;
+  originCat->setType("CAAAAT");
 
-  std::cout << origin->getType() << std::endl;
-  std::cout << extra->getType() << std::endl;
-  std::cout << copy->getType() << std::endl;
+  *originDog = *copyDog;
+  originDog->setType("DOOOOG");
 
-  delete origin;
-  delete extra;
-  delete copy;
+  std::cout << originDog->getType() << std::endl;
+  std::cout << copyDog->getType() << std::endl;
+
+  std::cout << originCat->getType() << std::endl;
+  std::cout << copyCat->getType() << std::endl;
+
+  delete copyCat;
+  delete originDog;
+  delete originCat;
+  delete copyDog;
   return 0;
 }
-
-
-// int main()
-// {
-//   atexit(function);
-//   Animal *origin = new Cat();
-//   Animal *copy = new Cat();
-
-//   std::cout << origin->getType() << std::endl;
-//   std::cout << copy->getType() << std::endl;
-
-//   std::cout << std::endl;
-
-//   *origin = *copy;  
-//   origin->setType("CAAAT");
-
-//   std::cout << origin->getType() << std::endl;
-//   std::cout << copy->getType() << std::endl;
-
-//   delete copy;
-//   delete origin;
-//   return 0;
-// }
