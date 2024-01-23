@@ -1,14 +1,22 @@
 #include <iostream>
-#include "Cure.hpp"
-#include "Ice.hpp"
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
-#include "Character.hpp"
-#include "IMateriaSource.hpp"
-#include "MateriaSource.hpp"
+#include "./Includes/Cure.hpp"
+#include "./Includes/Ice.hpp"
+#include "./Includes/AMateria.hpp"
+#include "./Includes/ICharacter.hpp"
+#include "./Includes/Character.hpp"
+#include "./Includes/IMateriaSource.hpp"
+#include "./Includes/MateriaSource.hpp"
+
+void function()
+{
+  system("leaks Interface");
+}
+
 
 int main()
 {
+  atexit(function);
+
     IMateriaSource *src = new MateriaSource();
     src->learnMateria(new Ice());
     src->learnMateria(new Cure());

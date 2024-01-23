@@ -13,7 +13,7 @@ all : $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.cpp Cure.cpp Ice.hpp Icharacter.hpp  AMateria.hpp Character.hpp MateriaSource.hpp
+%.o: %.cpp ./Includes/Cure.cpp ./Includes/Ice.hpp ./Includes/Icharacter.hpp  ./Includes/AMateria.hpp ./Includes/Character.hpp ./Includes/MateriaSource.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 

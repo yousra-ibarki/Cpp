@@ -9,7 +9,8 @@ int main()
     const Animal* i= new Cat(); 
     j->makeSound();
     i->makeSound();
-    delete j; //should not create a leak 
+
+    delete j;
     delete i; 
     return 0;
 }

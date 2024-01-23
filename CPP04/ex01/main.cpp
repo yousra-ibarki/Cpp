@@ -5,6 +5,7 @@
 #include "Dog.hpp"
 #include "Brain.hpp"
 
+
 void function()
 {
   system("leaks IDontWantToSetTheWorldOnFire");
@@ -36,6 +37,8 @@ int main()
   Animal *originCat = new Cat();
   Animal *copyCat = new Cat();
 
+  std::cout << std::endl;
+
   std::cout << originDog->getType() << std::endl;
   std::cout << copyDog->getType() << std::endl;
 
@@ -50,11 +53,14 @@ int main()
   *originDog = *copyDog;
   originDog->setType("DOOOOG");
 
+  
   std::cout << originDog->getType() << std::endl;
   std::cout << copyDog->getType() << std::endl;
 
   std::cout << originCat->getType() << std::endl;
   std::cout << copyCat->getType() << std::endl;
+
+  std::cout << std::endl;
 
   delete copyCat;
   delete originDog;

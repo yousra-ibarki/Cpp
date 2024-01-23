@@ -1,9 +1,10 @@
-#include "Character.hpp"
+#include "./Includes/Character.hpp"
 
 Character::Character() {}
 
 Character::Character(const Character &obj)
 {
+    
     *this = obj;
 }
 Character::Character(const std::string &name)
