@@ -16,6 +16,9 @@ public:
 
     virtual void makeSound() const;
     std::string getType() const;
+    void setType(const std::string& type){
+		this->type = type;
+	}
 };
 
 #endif

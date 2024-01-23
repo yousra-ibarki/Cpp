@@ -5,11 +5,12 @@
 #include "Dog.hpp"
 #include "Brain.hpp"
 
-void function(){
-    system("leaks IDontWantToSetTheWorldOnFire");
+void function()
+{
+  system("leaks IDontWantToSetTheWorldOnFire");
 }
 
-// int main() 
+// int main()
 // {
 //     //atexit(function);
 //     Animal* arr[10];
@@ -25,16 +26,53 @@ void function(){
 //     }
 //  return 0;
 // }
-    
-  int main()
+
+int main()
 {
-    atexit(function);
-const Animal* j = new Dog();
-const Animal* i = new Cat();
+  atexit(function);
 
-delete j;//should not create a leak
-delete i;
+  Animal *origin = new Dog();
+  Animal *copy = new Dog();
+  Animal *extra = new Cat();
 
-  //  while(1);
-    return 0;
+  std::cout << origin->getType() << std::endl;
+  std::cout << copy->getType() << std::endl;
+  std::cout << extra->getType() << std::endl;
+
+  std::cout << std::endl;
+
+  *origin = *copy;
+  copy->setType("DOOOOG");
+
+  std::cout << origin->getType() << std::endl;
+  std::cout << extra->getType() << std::endl;
+  std::cout << copy->getType() << std::endl;
+
+  delete origin;
+  delete extra;
+  delete copy;
+  return 0;
 }
+
+
+// int main()
+// {
+//   atexit(function);
+//   Animal *origin = new Cat();
+//   Animal *copy = new Cat();
+
+//   std::cout << origin->getType() << std::endl;
+//   std::cout << copy->getType() << std::endl;
+
+//   std::cout << std::endl;
+
+//   *origin = *copy;  
+//   origin->setType("CAAAT");
+
+//   std::cout << origin->getType() << std::endl;
+//   std::cout << copy->getType() << std::endl;
+
+//   delete copy;
+//   delete origin;
+//   return 0;
+// }

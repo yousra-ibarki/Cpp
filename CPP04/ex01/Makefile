@@ -6,7 +6,7 @@ OBJ = $(SRC:.cpp=.o)
 
 CXX = c++ -std=c++98
 
-CXXFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 
 all : $(NAME)
 

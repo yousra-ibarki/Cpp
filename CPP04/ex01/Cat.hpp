@@ -7,15 +7,19 @@
 class Cat : public Animal
 {
 private:
-    Brain* obj;
+    Brain* CatBrain;
 public:
     Cat();
     ~Cat();
 
+    void setType(const std::string name){
+        this->type = name;
+    }
     Cat(const Cat &obj);
     Cat &operator=(const Cat &obj);
     
     void makeSound() const;
+    Brain* getBrain() const;
 };
 
 #endif
