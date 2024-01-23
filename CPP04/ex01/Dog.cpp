@@ -4,13 +4,13 @@ Dog::Dog()
 {
     std::cout << "Dog's Constructor" << std::endl;
     type = "Dog";
-    obj = new Brain();
+    DogBrain = new Brain();
 
 }
 
 Dog::~Dog()
 {
-    delete obj;
+    delete DogBrain;
     std::cout << "Dog's Destructor" << std::endl;
 }
 
@@ -27,6 +27,8 @@ Dog::Dog(const Dog& obj)
 
 Dog& Dog::operator=(const Dog& obj){
     if(this != &obj)
-        this->type = obj.type;
+    {
+        this->type = new [obj.type];
+    }
     return *this;
 }
