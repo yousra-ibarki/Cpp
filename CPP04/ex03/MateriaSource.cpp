@@ -26,7 +26,11 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &obj){
     return *this;
 }
 MateriaSource::~MateriaSource(){
-
+    for(int i = 0; i < this->MateSize; i++)
+    {
+        if(this->materias[i] != NULL)
+            delete this->materias[i];
+    }
 }
 
 void MateriaSource::learnMateria(AMateria *materia){

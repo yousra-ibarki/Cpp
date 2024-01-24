@@ -4,10 +4,8 @@
 #include "Animal.hpp"
 
 class Brain{
-private:
-    std::string ideas[100];
-
 public:
+    std::string ideas[100];
     Brain();
 
     Brain(const Brain& obj);

@@ -7,6 +7,13 @@ Character::Character(const Character &obj)
     
     *this = obj;
 }
+
+Character::~Character() {
+	for (int i = 0; i < this->nbr_equiped; i++) {
+		delete this->inventory[i];
+	}
+}
+
 Character::Character(const std::string &name)
 {
     this->name = name;
@@ -34,7 +41,6 @@ Character &Character::operator=(const Character &obj)
 std::string const &Character::getName() const
 {
     return this->name;
-    ;
 }
 void Character::equip(AMateria *m)
 {

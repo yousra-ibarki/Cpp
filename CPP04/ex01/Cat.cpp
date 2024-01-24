@@ -18,7 +18,6 @@ Cat::Cat(const Cat &obj)
     std::cout << "Cat's Copy Constructor" << std::endl;
     this->type = obj.type;
     this->CatBrain = new Brain(*obj.CatBrain);
-    // *this = obj;
 }
 
 Cat &Cat::operator=(const Cat &obj)
@@ -36,4 +35,8 @@ Cat &Cat::operator=(const Cat &obj)
 void Cat::makeSound() const
 {
     std::cout << "Meow Meow!" << std::endl;
+}
+
+Brain* Cat::getBrain() const{
+    return this->CatBrain;
 }

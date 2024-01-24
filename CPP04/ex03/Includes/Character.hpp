@@ -14,7 +14,7 @@ private:
     AMateria* inventory[invSize];
 public:
     Character();
-
+    ~Character();
     Character(const Character& obj);  
     Character(const std::string& name);
 
