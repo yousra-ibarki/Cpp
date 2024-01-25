@@ -1,5 +1,5 @@
-#include "./Includes/MateriaSource.hpp"
-#include "./Includes/AMateria.hpp"
+#include "MateriaSource.hpp"
+#include "AMateria.hpp"
 
 MateriaSource::MateriaSource(){
     this->nbrLearn = 0;

@@ -12,7 +12,6 @@ public:
     Brain& operator=(const Brain& obj);
 
     ~Brain();
-
 };
 
 #endif

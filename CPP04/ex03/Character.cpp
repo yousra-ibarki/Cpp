@@ -1,18 +1,6 @@
-#include "./Includes/Character.hpp"
+#include "Character.hpp"
 
 Character::Character() {}
-
-Character::Character(const Character &obj)
-{
-    
-    *this = obj;
-}
-
-Character::~Character() {
-	for (int i = 0; i < this->nbr_equiped; i++) {
-		delete this->inventory[i];
-	}
-}
 
 Character::Character(const std::string &name)
 {
@@ -24,6 +12,17 @@ Character::Character(const std::string &name)
     }
 }
 
+Character::~Character() {
+	for (int i = 0; i < this->nbr_equiped; i++) {
+		delete this->inventory[i];
+	}
+}
+
+Character::Character(const Character &obj)
+{
+    *this = obj;
+}
+
 Character &Character::operator=(const Character &obj)
 {
     if (this != &obj)
@@ -32,7 +31,7 @@ Character &Character::operator=(const Character &obj)
         this->nbr_equiped = obj.nbr_equiped;
         for (int i = 0; i < this->invSize; i++)
         {
-            this->inventory[i] = obj.inventory[i]->clone(); // add somthing
+            this->inventory[i] = obj.inventory[i]->clone();
         }
     };
     return *this;
@@ -42,6 +41,7 @@ std::string const &Character::getName() const
 {
     return this->name;
 }
+
 void Character::equip(AMateria *m)
 {
     if (this->nbr_equiped < this->invSize)
@@ -50,6 +50,7 @@ void Character::equip(AMateria *m)
         this->nbr_equiped++;
     }
 }
+
 void Character::unequip(int idx)
 {
     if (idx >= 0 && idx < this->nbr_equiped)

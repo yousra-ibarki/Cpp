@@ -1,12 +1,7 @@
 #include "Zombie.hpp"
 
-// void function(){
-//     system("leaks Moar_brainz");
-// }
-
 int main()
 {
-    // atexit(function);
    int n = 48;
     Zombie *zombie;
     zombie = zombieHorde(n, "Gravemind");

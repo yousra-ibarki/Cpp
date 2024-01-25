@@ -4,13 +4,8 @@
 #include "Cat.hpp"
 #include "WrongCat.hpp"
 
-void function(){
-    
-}
-
 int main() 
 { 
-    atexit(function);
     std::cout << std::endl << "°°°°°°°°°°Right Animals°°°°°°°°°°" << std::endl << std::endl;
     std::cout << "--Constructors--" << std::endl;
     const Animal* meta = new Animal(); 
@@ -24,21 +19,22 @@ int main()
     j->makeSound(); 
     meta->makeSound();
     std::cout << std::endl << "--Destructors--" << std::endl;
-    delete j;
     delete i;
+    delete j;
     delete meta;
 
     std::cout << std::endl << "°°°°°°Wrong Animals°°°°°°°°°°" << std::endl << std::endl;
     std::cout << "--Constructors--" << std::endl;
-    const WrongAnimal* metaa = new WrongAnimal(); 
-    const WrongAnimal* ii = new WrongCat(); 
-    std::cout << std::endl << "--Wrong Animals and their Sounds--" << std::endl;
-    std::cout << ii->getType() << ""<<std::endl; 
-    ii->makeSound();
-    metaa->makeSound(); 
+
+    const WrongAnimal* worngCat = new WrongCat(); 
+
+    std::cout << std::endl << "--Wrong Animal--" << std::endl;
+
+    std::cout << worngCat->getType() << ""<<std::endl; 
+    worngCat->makeSound();
+    
     std::cout << std::endl << "--Destructors--" << std::endl;
 
-    delete ii;
-    delete metaa;
+    delete worngCat;
     return 0; 
 }

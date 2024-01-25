@@ -2,9 +2,9 @@
 
 int main()
 {
-    ClapTrap targ("");
-    targ.attack("");
-    targ.takeDamage(5);
-    targ.takeDamage(100);
-    targ.beRepaired(5);
+    ClapTrap obj("Z4P-T1V3");
+    obj.attack("Yousra");
+    obj.takeDamage(5);
+    obj.takeDamage(1);
+    obj.beRepaired(5);
 }

@@ -3,14 +3,8 @@
 #include "Cat.hpp"
 
 
-void function()
-{
-  system("leaks AbstractClass");
-}
-
 int main()
 {
-  atexit(function);
 
   Animal *arr[4];
   int i;

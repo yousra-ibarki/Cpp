@@ -1,6 +1,7 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(){
+    this->name = "Def_Boot";
     this->attackDamage = 0;
     this->hitPoints = 10;
     this->energyPoints = 10;
@@ -9,7 +10,6 @@ ClapTrap::ClapTrap(){
 
 ClapTrap::ClapTrap(std::string newName) : name(newName), hitPoints(10), energyPoints(10), attackDamage(0)
 {
-    this->name = newName;
     std::cout << "Constructor Called\n";
 }
 ClapTrap::~ClapTrap()
@@ -30,7 +30,7 @@ ClapTrap& ClapTrap::operator=(ClapTrap const& obj1){
 
 ClapTrap::ClapTrap(ClapTrap &cpyObj)
 {
-    std::cout << "Copy Constructor Called\n";
+    std::cout << "Copy Constructor Called" << std::endl;
     *this = cpyObj;
 }
 

@@ -9,7 +9,7 @@
 
 class PhoneBook{
 private:
-    static const int max_size = 2;
+    static const int max_size = 8;
     int i;
     int count_contacts;
     Contact contacts[max_size];

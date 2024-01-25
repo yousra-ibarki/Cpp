@@ -4,7 +4,7 @@
 #include <iostream>
 
 class ClapTrap{
-private:
+protected:
     std::string name;
     unsigned int hitPoints;
     unsigned int energyPoints;
@@ -12,13 +12,9 @@ private:
 public:
     ClapTrap();
     ClapTrap(std::string const& newName);
-    ~ClapTrap();
+    virtual ~ClapTrap();
     ClapTrap(ClapTrap &cpyObj);
     ClapTrap& operator=(ClapTrap const& obj1);
-
-
-    void setVal(unsigned int newHitPoints, unsigned int newEnergyPoints, unsigned int newAttackDamage);
-    int getVal();
 
     void attack(const std::string& target);
     void takeDamage(unsigned int amount);

@@ -6,11 +6,11 @@ OBJ = $(SRC:.cpp=.o)
 
 CXX = c++ -std=c++98
 
-CXXFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CXXFLAGS = -Wall -Wextra -Werror 
 
 all : $(NAME)
 
-$(NAME): $(OBJ) ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
+$(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
 %.o: %.cpp ClapTrap.hpp FragTrap.hpp ScavTrap.hpp

@@ -14,6 +14,10 @@ ClapTrap::~ClapTrap()
 }
 
 ClapTrap::ClapTrap(){
+    this->name = "Def_Boot";
+    this->hitPoints = 10;
+    this->energyPoints = 10;
+    this->attackDamage = 0;
     std::cout << "Default Constructor Called\n";
 }
 
@@ -73,16 +77,4 @@ void ClapTrap::beRepaired(unsigned int amount)
         std::cout << "ClapTrap " << name << " cannot repair itself, because he has no hit points " << this->hitPoints << std::endl;
 
 
-}
-
-void ClapTrap::setVal(unsigned int newHitPoints, unsigned int newEnergyPoints, unsigned int newAttackDamage)
-{
-    this->hitPoints = newHitPoints;
-    this->energyPoints = newEnergyPoints;
-    this->attackDamage = newAttackDamage;
-}
-
-int ClapTrap::getVal()
-{
-    return this->attackDamage;
 }

@@ -25,5 +25,5 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal& obj)
 }
 
 std::string WrongAnimal::getType() const{
-        return type;
+    return type;
 }
