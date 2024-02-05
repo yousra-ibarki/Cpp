@@ -12,6 +12,7 @@ private:
     const int   gradeToSign;
     const int   executedGrade;
     const       std::string name;
+    const       std::string target;
 public:
     class GradeTooHighException : public std::exception{
     public: 
@@ -21,18 +22,30 @@ public:
     public:
         const char *what() const throw();
     };
-    
+     class GradeNotCompatibleSign : public std::exception{
+    public:
+        const char* what() const throw();
+    };
+    class GradeNotCompatibleExec : public std::exception{
+    public:
+        const char* what() const throw();
+    };
     AForm();
-    AForm(const std::string name, int gradeToSign, int executedGrade);
+    AForm(const std::string name, const std::string target,int gradeToSign, int executedGrade);
     virtual ~AForm();
     AForm(const AForm& obj);
     AForm&          operator=(const AForm& obj);
     int             getGradeToSign() const;
     int             getExecutedGrade() const;
     bool            getSign() const;
-    std::string     getName() const;
+    const std::string&  getName() const;
+    const std::string&  getTarget() const;
 
-    virtual void    beSigned(Bureaucrat& obj) = 0;
+    virtual void execute() const = 0;
+    int checkToExecute(Bureaucrat const& executor) const;
+
+
+    void    beSigned(Bureaucrat& obj);
 };
 
 #endif

@@ -12,7 +12,7 @@ Bureaucrat::~Bureaucrat()
 }
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name)
 {
-    std::cout << "Bureaucrat Created" << std::endl;
+    // std::cout << "Bureaucrat Created" << std::endl;
     if(grade < 1)
         throw GradeTooHighException();
     else if(grade > 150)

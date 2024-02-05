@@ -1,7 +1,7 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-AForm::AForm() :  gradeToSign(150), executedGrade(150), name("AForm's name"){
+AForm::AForm() :  gradeToSign(150), executedGrade(150), name("AForm's name"), target("NonTarget"){
     this->sign = false;
 }
 
@@ -9,14 +9,14 @@ AForm::~AForm(){
 
 }
 
-AForm::AForm(const std::string name, int gradeToSign, int executedGrade):gradeToSign(gradeToSign), executedGrade(executedGrade),  name(name) {
+AForm::AForm(const std::string name, const std::string target,int gradeToSign, int executedGrade):gradeToSign(gradeToSign), executedGrade(executedGrade),  name(name), target(target) {
     if(gradeToSign < 1 || executedGrade < 1)
         throw Bureaucrat::GradeTooHighException();
     else if(gradeToSign > 150 || executedGrade > 150)
         throw Bureaucrat::GradeTooLowException();
 }
 
-AForm::AForm(const AForm& obj): gradeToSign(obj.gradeToSign), executedGrade(obj.executedGrade), name(obj.name) {
+AForm::AForm(const AForm& obj): gradeToSign(obj.gradeToSign), executedGrade(obj.executedGrade), name(obj.name), target(obj.target) {
     this->sign = obj.sign;
 }
 
@@ -33,7 +33,7 @@ int AForm::getGradeToSign() const{
 int AForm::getExecutedGrade() const{
     return this->executedGrade;
 }
-std::string AForm::getName() const{
+const std::string& AForm::getName() const{
     return this->name;
 }
 bool AForm::getSign() const
@@ -41,16 +41,29 @@ bool AForm::getSign() const
     return this->sign;
 }
 
-// void AForm::beSigned(Bureaucrat& Bur){
-//     if(Bur.getGrade() <= this->gradeToSign){
-//         this->sign = true;
-//         std::cout << "Bureaucrat " << Bur.getName() << " Signed The AForm " << this->getName() << " Succefully!" << std::endl;
-//     }
-//     else{
-//         std::cout << "Bureaucrat " << Bur.getName() << " couldn't sign the AForm" << this->getName() << " Because The Grade Is Too Low!" << std::endl;
-//         throw Bureaucrat::GradeTooLowException();
-//     }
-// }
+const std::string& AForm::getTarget() const {
+	return this->target;
+}
+
+void AForm::beSigned(Bureaucrat& Bur){
+    if(Bur.getGrade() <= this->gradeToSign){
+        this->sign = true;
+        std::cout << "Bureaucrat " << Bur.getName() << " Signed The AForm " << this->getName() << " Succefully!" << std::endl;
+    }
+    else{
+        std::cout << "Bureaucrat " << Bur.getName() << " couldn't sign the AForm" << this->getName() << " Because The Grade Is Too Low!" << std::endl;
+        throw Bureaucrat::GradeTooLowException();
+    }
+}
+
+int AForm::checkToExecute(const Bureaucrat& bure) const{
+    if(this->sign == false)
+        throw AForm::GradeNotCompatibleSign();
+    if(bure.getGrade() > this->executedGrade)
+        throw AForm::GradeTooLowException();
+    std::cout << "The Form Has Been Signed Seccesfully" << std::endl;
+    this->execute();
+}
 
 const char* AForm::GradeTooHighException::what() const throw(){
             return "AForm's Grade Too High";
@@ -59,5 +72,13 @@ const char* AForm::GradeTooHighException::what() const throw(){
 const char* AForm::GradeTooLowException::what() const throw(){
             return "AForm's Grade Too Low";
 }
+
+const char* AForm::GradeNotCompatibleSign::what() const throw(){
+    return "The Grade is not compatible To Sign!";
+}
+const char* AForm::GradeNotCompatibleExec::what() const throw(){
+    return "The Grade is not compatible To Execute!";
+}
+
 
 

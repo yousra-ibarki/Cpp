@@ -13,25 +13,35 @@
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat &obj)
 {
-    os << "Bureaucrat's Name " << obj.getName() << std::endl;
-    os << "Bureaucrat's Grade " << obj.getGrade() << std::endl;
+    os << "Bureaucrat's Name " << obj.getName();
+    os << " With Grade " << obj.getGrade() << std::endl;
     return os;
 }
 
 
 
 int main() {
-	Bureaucrat yousra("yousra", 145);
-	ShrubberyCreationForm form1("Abricot");
-	std::cout << yousra << std::endl;
 	try{
-		yousra.incrementGrade(8);
+		Bureaucrat yousra("yousra", 150);
 		std::cout << yousra << std::endl;
+		ShrubberyCreationForm form1("Abricot");
+		yousra.incrementGrade(5);
+		std::cout << yousra << std::endl;
+		form1.execute(yousra);
 	}
 	catch(std::exception& ex){
 		std::cout << ex.what()<< std::endl;
 	}
-	// form1.execute(yousra);
+	// try{
+	// 	Bureaucrat yousra("yousra", 150);
+	// 	std::cout << yousra << std::endl;
+	// 	AForm *obj = new ShrubberyCreationForm("Abricot");
+	// 	obj->execute(yousra);
+	// }
+	// catch(std::exception& ex){
+	// 	std::cout << ex.what()<< std::endl;
+	// }
+		// delete obj;
 	std::cout << std::endl;
 	
 }
