@@ -77,8 +77,7 @@ int main() {
 	std::cout << std::endl;
 
 	try {
-		Bureaucrat yuno("Yuno", 151);
-		std::cout << "HELLO WORLD!!!" << std::endl;
+		Bureaucrat merry("merry", 151);
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
@@ -86,8 +85,7 @@ int main() {
 	std::cout << std::endl;
 
 	try {
-		Bureaucrat yuno("Yuno", -1);
-		std::cout << "HELLO WORLD!!!" << std::endl;
+		Bureaucrat merry("merry", -1);
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
@@ -119,7 +117,7 @@ int main() {
 
 	std::cout << std::endl;
 
-	// Form::beSigned()
+	// Form::beSigned();
 	try {
 		budgets->beSigned(*poor);
 	} catch (std::exception& e) {

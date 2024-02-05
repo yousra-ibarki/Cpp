@@ -23,7 +23,7 @@ public:
     };
     Form();
     Form(const std::string name, int gradeToSign, int executedGrade);
-    ~Form();
+    virtual ~Form();
     Form(const Form& obj);
     Form& operator=(const Form& obj);
     int getGradeToSign() const;
