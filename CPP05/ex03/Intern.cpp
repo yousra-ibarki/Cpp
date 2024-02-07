@@ -18,8 +18,29 @@ Intern& Intern::operator=(const Intern& obj){
     return *this;
 }
 
-void Intern::makeForm(std::string nameForm, std::string targetForm){
-    (void) nameForm;
-    (void) targetForm;
-    std::cout << "makeForm member Function" << std::endl;
+AForm* Intern::makeForm(std::string nameForm, std::string targetForm){
+    t_form form[3];
+    AForm *objForm = NULL;
+
+    form[0].name = "ShrubberyCreationForm";
+    form[0].form = new ShrubberyCreationForm(targetForm);
+
+    form[1].name = "RobotomyRequestForm";
+    form[1].form = new RobotomyRequestForm(targetForm);
+
+    form[2].name = "PresidentialPardonForm";
+    form[2].form = new PresidentialPardonForm(targetForm);
+
+    for(int i = 0; i < 3; i++)
+    {
+        if(form[i].name == nameForm)
+            objForm = form[i].form;
+        else
+            delete form[i].form;
+    }
+    if(objForm != NULL)
+        std::cout << "The Intern Has Created The Form Successfully!" << std::endl;
+    else
+        std::cout << "The Intern couldn't Create The Form Successfully!" << std::endl;
+    return objForm;
 }

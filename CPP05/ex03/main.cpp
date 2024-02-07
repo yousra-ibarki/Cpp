@@ -3,6 +3,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "AForm.hpp"
+#include "Intern.hpp"
 
 // std::ostream &operator<<(std::ostream &os,AForm &obj)
 // {
@@ -38,6 +39,9 @@ int main() {
 		PresidentialPardonForm form3("Merry");
 		yousra.executeForm(form3);
 		std::cout << std::endl;
+		Intern *yo = new Intern();
+
+		yo->makeForm("ShruberyCreationForm", "nourdin");
 	}
 	catch(std::exception& ex){
 		std::cout << ex.what()<< std::endl;
