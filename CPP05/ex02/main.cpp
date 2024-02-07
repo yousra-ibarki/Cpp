@@ -1,5 +1,7 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "AForm.hpp"
 
 // std::ostream &operator<<(std::ostream &os,AForm &obj)
@@ -22,26 +24,23 @@ std::ostream &operator<<(std::ostream &os, Bureaucrat &obj)
 
 int main() {
 	try{
-		Bureaucrat yousra("yousra", 150);
+		Bureaucrat yousra("yousra", 11);
 		std::cout << yousra << std::endl;
 		ShrubberyCreationForm form1("Abricot");
-		yousra.incrementGrade(5);
+		
+		yousra.incrementGrade(6);
 		std::cout << yousra << std::endl;
-		form1.execute(yousra);
+		yousra.executeForm(form1);
+		std::cout << std::endl;
+		RobotomyRequestForm form2("Asmaa");
+		yousra.executeForm(form2);
+		std::cout << std::endl;
+		PresidentialPardonForm form3("Merry");
+		yousra.executeForm(form3);
+		std::cout << std::endl;
 	}
 	catch(std::exception& ex){
 		std::cout << ex.what()<< std::endl;
 	}
-	// try{
-	// 	Bureaucrat yousra("yousra", 150);
-	// 	std::cout << yousra << std::endl;
-	// 	AForm *obj = new ShrubberyCreationForm("Abricot");
-	// 	obj->execute(yousra);
-	// }
-	// catch(std::exception& ex){
-	// 	std::cout << ex.what()<< std::endl;
-	// }
-		// delete obj;
-	std::cout << std::endl;
 	
 }

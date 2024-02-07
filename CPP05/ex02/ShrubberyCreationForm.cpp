@@ -33,46 +33,49 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
     return *this;
 }
 
-void ShrubberyCreationForm::execute() const
+void ShrubberyCreationForm::checkToExecute(Bureaucrat const &executor) const
 {
     // std::cout << "this grade " << this->gradeSign << " Bureaucrat's grade " << executor.getGrade() << std::endl;
-    // if (this->gradeSign == executor.getGrade())
-    // {
-    //     std::cout << "it works" << std::endl;
-    //     // executor.incrementGrade(8);
-    //     if (this->gradeExec == executor.getGrade())
-    //     {
-            std::ofstream file(target + "_shrubbery");
-            if (file.is_open())
-            {
-                file << "         ; ; ;                               " << std::endl;
-                file << "       ;        ;  ;     ;;    ;             " << std::endl;
-                file << "    ;                 ;         ;  ;         " << std::endl;
-                file << "                    ;                        " << std::endl;
-                file << "                   ;                ;;       " << std::endl;
-                file << "   ;          ;            ;              ;  " << std::endl;
-                file << "   ;            ';,        ;               ; " << std::endl;
-                file << "   ;              'b      *                  " << std::endl;
-                file << "    ;              '$    ;;                ;;" << std::endl;
-                file << "   ;    ;           $:   ;:               ;  " << std::endl;
-                file << " ;;      ;  ;;      *;  @@:        ;   ; ;   " << std::endl;
-                file << "              ;     :@,@@:   ,;**:'   ;      " << std::endl;
-                file << "  ;      ;,         :@@*: ;;**'      ;   ;   " << std::endl;
-                file << "           ';o;    ;:@@';@*@'  ;             " << std::endl;
-                file << "   ;  ;       'bq,;;:,@@*'   ,*      ;  ;    " << std::endl;
-                file << "              ,p$q8,:@@'  ;p*'      ;        " << std::endl;
-                file << "       ;     '  ; '@@Pp@@*'    ;  ;          " << std::endl;
-                file << "        ;  ; ;;    Y7'.'     ;  ;            " << std::endl;
-                file << "                  :@@:.                      " << std::endl;
-                file << "                 .:@:'.                      " << std::endl;
-                file << "               .::@@:.                       " << std::endl;
-            }
-            file.close();
+    if (executor.getGrade() > this->gradeSign)
+        throw GradeNotCompatibleSign();
+    if (executor.getGrade() > this->gradeExec)
+        throw GradeNotCompatibleExec();
+    else
+    {
+        std::ofstream file(target + "_shrubbery");
+        if (file.is_open())
+        {
+            file << "         ; ; ;                               " << std::endl;
+            file << "       ;        ;  ;     ;;    ;             " << std::endl;
+            file << "    ;                 ;         ;  ;         " << std::endl;
+            file << "                    ;                        " << std::endl;
+            file << "                   ;                ;;       " << std::endl;
+            file << "   ;          ;            ;              ;  " << std::endl;
+            file << "   ;            ';,        ;               ; " << std::endl;
+            file << "   ;              'b      *                  " << std::endl;
+            file << "    ;              '$    ;;                ;;" << std::endl;
+            file << "   ;    ;           $:   ;:               ;  " << std::endl;
+            file << " ;;      ;  ;;      *;  @@:        ;   ; ;   " << std::endl;
+            file << "              ;     :@,@@:   ,;**:'   ;      " << std::endl;
+            file << "  ;      ;,         :@@*: ;;**'      ;   ;   " << std::endl;
+            file << "           ';o;    ;:@@';@*@'  ;             " << std::endl;
+            file << "   ;  ;       'bq,;;:,@@*'   ,*      ;  ;    " << std::endl;
+            file << "              ,p$q8,:@@'  ;p*'      ;        " << std::endl;
+            file << "       ;     '  ; '@@Pp@@*'    ;  ;          " << std::endl;
+            file << "        ;  ; ;;    Y7'.'     ;  ;            " << std::endl;
+            file << "                  :@@:.                      " << std::endl;
+            file << "                 .:@:'.                      " << std::endl;
+            file << "               .::@@:.                       " << std::endl;
+        }
+        std::cout << "The File Has Been Created Successfully!" << std::endl;
+        file.close();
+    }
 }
-//         else
-//             throw ShrubberyCreationForm::GradeNotCompatibleExec();
-//     }
-//     else
-//         throw ShrubberyCreationForm::GradeNotCompatibleSign();
-// }
+
+const char* ShrubberyCreationForm::GradeNotCompatibleSign::what() const throw(){
+    return "The Grade is not compatible To Sign!";
+}
+const char* ShrubberyCreationForm::GradeNotCompatibleExec::what() const throw(){
+    return "The Grade is not compatible To Execute!";
+}
 

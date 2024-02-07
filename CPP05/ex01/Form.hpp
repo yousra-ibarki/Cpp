@@ -32,6 +32,10 @@ public:
     std::string getName() const;
     void beSigned(Bureaucrat& obj);
 
+    virtual void checkToExecute(const Bureaucrat& bure) const = 0;
+
+    
+
 
 };
 

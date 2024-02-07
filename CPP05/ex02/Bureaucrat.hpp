@@ -5,7 +5,7 @@
 #include <exception>
 #include "AForm.hpp"
 
-class AForm;
+// class AForm;
 class Bureaucrat{
 private:
     const std::string name;
@@ -31,6 +31,8 @@ public:
     void decrementGrade();
     void incrementGrade(int amount);
     void decrementGrade(int amount);
+    void executeForm(AForm const &form);
+
     void signForm(AForm& formObj);
     
 };

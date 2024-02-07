@@ -22,14 +22,7 @@ public:
     public:
         const char *what() const throw();
     };
-     class GradeNotCompatibleSign : public std::exception{
-    public:
-        const char* what() const throw();
-    };
-    class GradeNotCompatibleExec : public std::exception{
-    public:
-        const char* what() const throw();
-    };
+
     AForm();
     AForm(const std::string name, const std::string target,int gradeToSign, int executedGrade);
     virtual ~AForm();
@@ -41,11 +34,10 @@ public:
     const std::string&  getName() const;
     const std::string&  getTarget() const;
 
-    virtual void execute() const = 0;
-    int checkToExecute(Bureaucrat const& executor) const;
+    // virtual void execute(Bureaucrat const& executor) const = 0;
+    virtual void checkToExecute(Bureaucrat const& executor) const = 0;
 
-
-    void    beSigned(Bureaucrat& obj);
+    void    beSigned(Bureaucrat& Bur);
 };
 
 #endif

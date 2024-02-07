@@ -1,5 +1,6 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 AForm::AForm() :  gradeToSign(150), executedGrade(150), name("AForm's name"), target("NonTarget"){
     this->sign = false;
@@ -56,28 +57,12 @@ void AForm::beSigned(Bureaucrat& Bur){
     }
 }
 
-int AForm::checkToExecute(const Bureaucrat& bure) const{
-    if(this->sign == false)
-        throw AForm::GradeNotCompatibleSign();
-    if(bure.getGrade() > this->executedGrade)
-        throw AForm::GradeTooLowException();
-    std::cout << "The Form Has Been Signed Seccesfully" << std::endl;
-    this->execute();
-}
-
 const char* AForm::GradeTooHighException::what() const throw(){
             return "AForm's Grade Too High";
 }
 
 const char* AForm::GradeTooLowException::what() const throw(){
             return "AForm's Grade Too Low";
-}
-
-const char* AForm::GradeNotCompatibleSign::what() const throw(){
-    return "The Grade is not compatible To Sign!";
-}
-const char* AForm::GradeNotCompatibleExec::what() const throw(){
-    return "The Grade is not compatible To Execute!";
 }
 
 
