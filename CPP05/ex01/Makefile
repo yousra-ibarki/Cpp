@@ -1,4 +1,4 @@
-NAME = Bureaucrat!
+NAME = FormUp
 
 SRC = main.cpp Bureaucrat.cpp Form.cpp
 	

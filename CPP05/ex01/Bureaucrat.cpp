@@ -34,11 +34,11 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &obj)
     return *this;
 }
 
-int Bureaucrat::getGrade()
+int Bureaucrat::getGrade() const
 {
     return this->grade;
 }
-std::string Bureaucrat::getName()
+std::string Bureaucrat::getName() const
 {
     return this->name;
 }

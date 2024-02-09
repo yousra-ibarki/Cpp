@@ -34,7 +34,6 @@ public:
     const std::string&  getName() const;
     const std::string&  getTarget() const;
 
-    // virtual void execute(Bureaucrat const& executor) const = 0;
     virtual void checkToExecute(Bureaucrat const& executor) const = 0;
 
     void    beSigned(Bureaucrat& Bur);

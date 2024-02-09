@@ -21,17 +21,21 @@ public:
     };
 
     Bureaucrat();
+    Bureaucrat(const Bureaucrat& obj);
     Bureaucrat(const std::string& name, int grade);
     ~Bureaucrat();
-    Bureaucrat(const Bureaucrat& obj);
     Bureaucrat& operator=(const Bureaucrat& obj);
-    std::string getName();
-    int getGrade();
+
+
     void incrementGrade();
     void decrementGrade();
     void incrementGrade(int amount);
     void decrementGrade(int amount);
+    
     void signForm(Form& formObj);
+
+    std::string getName() const;
+    int getGrade() const;
     
 };
 

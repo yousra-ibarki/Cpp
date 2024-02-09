@@ -25,13 +25,16 @@ public:
     ~Bureaucrat();
     Bureaucrat(const Bureaucrat& obj);
     Bureaucrat& operator=(const Bureaucrat& obj);
-    std::string getName() const;
-    int getGrade() const;
+
     void incrementGrade();
     void decrementGrade();
     void incrementGrade(int amount);
     void decrementGrade(int amount);
+
     void executeForm(AForm const &form);
+    
+    std::string getName() const;
+    int getGrade() const;
 
     void signForm(AForm& formObj);
     

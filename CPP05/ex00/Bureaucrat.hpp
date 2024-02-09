@@ -19,17 +19,23 @@ public:
     };
 
     Bureaucrat();
+    Bureaucrat(const Bureaucrat& obj);
     Bureaucrat(const std::string& name, int grade);
     ~Bureaucrat();
-    Bureaucrat(const Bureaucrat& obj);
+
     Bureaucrat& operator=(const Bureaucrat& obj);
-    std::string getName();
-    int getGrade();
+
     void incrementGrade();
     void decrementGrade();
     void incrementGrade(int amount);
     void decrementGrade(int amount);
+
+    std::string getName() const;
+    int getGrade() const;
+
+
     
 };
+    std::ostream &operator<<(std::ostream &os, const Bureaucrat &obj);
 
 #endif
