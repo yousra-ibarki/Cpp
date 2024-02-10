@@ -10,6 +10,7 @@
 
 class Intern{
 private:
+        AForm *objForm;
     typedef struct s_form{
         AForm *form;
         std::string name;

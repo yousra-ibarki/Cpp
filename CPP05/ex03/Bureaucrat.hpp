@@ -4,6 +4,7 @@
 #include <iostream>
 #include <exception>
 #include "AForm.hpp"
+#include "Intern.hpp"
 
 // class AForm;
 class Bureaucrat{
@@ -33,6 +34,9 @@ public:
     void decrementGrade(int amount);
     void executeForm(AForm const &form);
 
+    Bureaucrat clone(void){
+        return Bureaucrat(*this);
+    }
     void signForm(AForm& formObj);
     
 };

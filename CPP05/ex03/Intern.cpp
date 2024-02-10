@@ -1,26 +1,32 @@
 #include "Intern.hpp"
 
-Intern::Intern(){
+Intern::Intern()
+{
     std::cout << "Intern Constructor Called" << std::endl;
 }
 
-Intern::~Intern(){
+Intern::~Intern()
+{
     std::cout << "Intern Destructor Called" << std::endl;
 }
 
-Intern::Intern(const Intern& obj){
+Intern::Intern(const Intern &obj)
+{
     *this = obj;
 }
 
-Intern& Intern::operator=(const Intern& obj){
-    if(this != &obj)
+Intern &Intern::operator=(const Intern &obj)
+{
+    if (this != &obj)
         *this = obj;
     return *this;
 }
 
-AForm* Intern::makeForm(std::string nameForm, std::string targetForm){
+AForm *Intern::makeForm(std::string nameForm, std::string targetForm)
+{
     t_form form[3];
-    AForm *objForm = NULL;
+    Bureaucrat a;
+    this->objForm = NULL;
 
     form[0].name = "ShrubberyCreationForm";
     form[0].form = new ShrubberyCreationForm(targetForm);
@@ -30,17 +36,19 @@ AForm* Intern::makeForm(std::string nameForm, std::string targetForm){
 
     form[2].name = "PresidentialPardonForm";
     form[2].form = new PresidentialPardonForm(targetForm);
-
-    for(int i = 0; i < 3; i++)
+    for (int i = 0; i < 3; i++)
     {
-        if(form[i].name == nameForm)
+        if (form[i].name == nameForm)
+        {
             objForm = form[i].form;
+            // objForm->checkToExecute(a.clone());
+        }
         else
             delete form[i].form;
     }
-    if(objForm != NULL)
-        std::cout << "The Intern Has Created The Form Successfully!" << std::endl;
+    if (objForm != NULL)
+        std::cout << "Intern creates " << nameForm << std::endl;
     else
-        std::cout << "The Intern couldn't Create The Form Successfully!" << std::endl;
+        std::cout << "usage: <Forms: |ShrubberyCreationForm\t|RobotomyRequestForm\t|PresidentialPardonForm|>" << std::endl;
     return objForm;
 }

@@ -7,7 +7,6 @@ AForm::AForm() :  gradeToSign(150), executedGrade(150), name("AForm's name"), ta
 }
 
 AForm::~AForm(){
-
 }
 
 AForm::AForm(const std::string name, const std::string target,int gradeToSign, int executedGrade):gradeToSign(gradeToSign), executedGrade(executedGrade),  name(name), target(target) {

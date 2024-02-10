@@ -5,46 +5,26 @@
 #include "AForm.hpp"
 #include "Intern.hpp"
 
-// std::ostream &operator<<(std::ostream &os,AForm &obj)
-// {
-//     os << "Name " << obj.getName() << std::endl;
-//     os << "Grade To Sign " << obj.getGradeToSign() << std::endl;
-//     os << "Grade To Execute " << obj.getExecutedGrade() << std::endl;
-//     os << "Sign " << obj.getSign() << std::endl;
-//     return os;
-// }
-
-std::ostream &operator<<(std::ostream &os, Bureaucrat &obj)
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &obj)
 {
-    os << "Bureaucrat's Name " << obj.getName();
-    os << " With Grade " << obj.getGrade() << std::endl;
-    return os;
+	os << "Bureaucrat " << obj.getName() << " has a Grade " << obj.getGrade() << std::endl;
+	return os;
 }
 
-
-
-int main() {
-	try{
-		Bureaucrat yousra("yousra", 11);
-		std::cout << yousra << std::endl;
-		ShrubberyCreationForm form1("Abricot");
-		
-		yousra.incrementGrade(6);
-		std::cout << yousra << std::endl;
-		yousra.executeForm(form1);
-		std::cout << std::endl;
-		RobotomyRequestForm form2("Asmaa");
-		yousra.executeForm(form2);
-		std::cout << std::endl;
-		PresidentialPardonForm form3("Merry");
-		yousra.executeForm(form3);
-		std::cout << std::endl;
-		Intern *yo = new Intern();
-
-		yo->makeForm("ShruberyCreationForm", "nourdin");
+int main()
+{
+	try
+	{
+		Bureaucrat Mehdi("Mehdi", 2);
+		Intern someRandomIntern;
+		AForm *rrf;
+		rrf = someRandomIntern.makeForm("ShrubberyCreationForm", "Bender");
 	}
-	catch(std::exception& ex){
-		std::cout << ex.what()<< std::endl;
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
 	}
-	
+
+	std::cout << std::endl;
+	return 0;
 }
