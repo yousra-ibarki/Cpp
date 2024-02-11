@@ -10,7 +10,7 @@ int main()
 {
     try
     {
-        Bureaucrat Mehdi("Mehdi", 2);
+        Bureaucrat Mehdi("NULL", 149+10);
         std::cout << Mehdi << std::endl;
         Mehdi.incrementGrade();
         std::cout << Mehdi << std::endl;

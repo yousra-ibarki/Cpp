@@ -7,11 +7,13 @@
 #include <limits>
 
 class ScalarConverter{
-public:
+private:
     ScalarConverter();
-    ~ScalarConverter();
-    ScalarConverter(const ScalarConverter& obj);
     ScalarConverter& operator=(const ScalarConverter& obj);
+    ScalarConverter(const ScalarConverter& obj);
+
+public:
+    ~ScalarConverter();
     static void convert(std::string str);
 };
 

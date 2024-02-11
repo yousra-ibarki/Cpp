@@ -3,7 +3,6 @@
 int main(int ac, char **av)
 {
 
-   // ScalarConverter::convert("a");
    if (ac > 1)
    {
       try
@@ -19,5 +18,8 @@ int main(int ac, char **av)
          std::cout << "out of range " << e.what() << std::endl;
       }
    }
+   else  
+      std::cout << "Error: Enter A Parameter" << std::endl;
    return 0;
 }
+   
