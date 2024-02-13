@@ -2,7 +2,7 @@
 
 Bureaucrat::Bureaucrat() : name("Default Bureaucrat")
 {
-    this->grade = 15;
+    this->grade = 2;
 }
 Bureaucrat::~Bureaucrat()
 {

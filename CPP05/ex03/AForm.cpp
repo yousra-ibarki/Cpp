@@ -2,7 +2,7 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-AForm::AForm() :  gradeToSign(150), executedGrade(150), name("Default"), target("NonTarget"){
+AForm::AForm() :  gradeToSign(1), executedGrade(1), name("Default"), target("NonTarget"){
     this->sign = false;
 }
 

@@ -15,10 +15,13 @@ int main()
 {
 	try
 	{
-		Bureaucrat Mehdi("Mehdi", 2);
+		Bureaucrat Bob("Bob", 150);
 		Intern someRandomIntern;
 		AForm *rrf;
-		rrf = someRandomIntern.makeForm("PresidentialPardonForm", "Bender");
+		rrf = someRandomIntern.makeForm("ShrubberyCreationForm", "Bender");
+		rrf->beSigned(Bob);
+		Bob.signForm(*rrf);
+
 	}
 	catch (std::exception &e)
 	{

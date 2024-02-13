@@ -23,7 +23,6 @@ Intern &Intern::operator=(const Intern &obj)
 AForm *Intern::makeForm(std::string nameForm, std::string targetForm)
 {
     t_form form[3];
-    Bureaucrat a;
     this->objForm = NULL;
 
     form[0].name = "ShrubberyCreationForm";
@@ -39,14 +38,18 @@ AForm *Intern::makeForm(std::string nameForm, std::string targetForm)
         if (form[i].name == nameForm)
         {
             objForm = form[i].form;
-            objForm->checkToExecute(a.clone());
         }
         else
+        {
             delete form[i].form;
+        }
     }
     if (objForm != NULL)
         std::cout << "Intern creates " << nameForm << std::endl;
     else
+    {
         std::cout << "usage: <Forms: |ShrubberyCreationForm\t|RobotomyRequestForm\t|PresidentialPardonForm|>" << std::endl;
+        exit(0);
+    }
     return objForm;
 }
