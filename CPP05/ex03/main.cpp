@@ -18,13 +18,11 @@ int main()
 		Bureaucrat Mehdi("Mehdi", 2);
 		Intern someRandomIntern;
 		AForm *rrf;
-		rrf = someRandomIntern.makeForm("ShrubberyCreationForm", "Bender");
+		rrf = someRandomIntern.makeForm("PresidentialPardonForm", "Bender");
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-
-	std::cout << std::endl;
 	return 0;
 }

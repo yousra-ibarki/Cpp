@@ -36,14 +36,15 @@ void RobotomyRequestForm::beSigned(Bureaucrat& obj){
 
 void RobotomyRequestForm::checkToExecute(Bureaucrat const &executor) const
 {
-    // std::cout << "this grade " << this->gradeSign << " Bureaucrat's grade " << executor.getGrade() << std::endl;
     if (executor.getGrade() > this->gradeSign)
         throw GradeNotCompatibleSign();
+    else
+        std::cout << this->target << " Has Been Signed by " << executor.getName() << " Successfully " << std::endl;
     if (executor.getGrade() > this->gradeExec)
         throw GradeNotCompatibleExec();
     else
     {
-        std::cout << "NOISE KHKHKHKHKH" << std::endl;
+        std::cout << "Makes some drilling noises..." << std::endl;
         std::cout << this->target << " Has Been Robotomized Successfully " << std::endl;
     }
 }

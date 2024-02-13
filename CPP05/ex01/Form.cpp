@@ -1,6 +1,6 @@
 #include "Form.hpp"
 
-Form::Form() :  gradeToSign(150), executedGrade(150), name("Form's name"){
+Form::Form() :  gradeToSign(150), executedGrade(150), name("Default"){
     this->sign = false;
 }
 
@@ -43,7 +43,7 @@ bool Form::getSign() const
 void Form::beSigned(Bureaucrat& Bur){
     if(Bur.getGrade() <= this->gradeToSign){
         this->sign = true;
-        std::cout << "Bureaucrat " << Bur.getName() << " Signed The Form " << this->getName() << " Succefully!" << std::endl;
+        std::cout << Bur.getName() << " Signed The Form " << this->getName() << " Succefully!" << std::endl;
     }
     else{
         std::cout << "Bureaucrat " << Bur.getName() << " couldn't sign the Form" << this->getName() << " Because The Grade Is Too Low!" << std::endl;

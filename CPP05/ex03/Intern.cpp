@@ -2,12 +2,10 @@
 
 Intern::Intern()
 {
-    std::cout << "Intern Constructor Called" << std::endl;
 }
 
 Intern::~Intern()
 {
-    std::cout << "Intern Destructor Called" << std::endl;
 }
 
 Intern::Intern(const Intern &obj)
@@ -41,7 +39,7 @@ AForm *Intern::makeForm(std::string nameForm, std::string targetForm)
         if (form[i].name == nameForm)
         {
             objForm = form[i].form;
-            // objForm->checkToExecute(a.clone());
+            objForm->checkToExecute(a.clone());
         }
         else
             delete form[i].form;

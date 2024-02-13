@@ -2,17 +2,14 @@
 
 Bureaucrat::Bureaucrat() : name("Default Bureaucrat")
 {
-    std::cout << "Default Bureaucrat Created" << std::endl;
     this->grade = 15;
 }
 Bureaucrat::~Bureaucrat()
 {
-    std::cout << "Bureaucrat Destroyed" << std::endl;
 
 }
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name)
 {
-    // std::cout << "Bureaucrat Created" << std::endl;
     if(grade < 1)
         throw GradeTooHighException();
     else if(grade > 150)

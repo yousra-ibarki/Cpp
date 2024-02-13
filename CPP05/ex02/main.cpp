@@ -12,27 +12,38 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &obj)
 
 int main()
 {
+	try{
+		std::cout << "∞∞∞∞∞∞∞∞ShrubberyCreationForm∞∞∞∞∞∞∞∞" << std::endl;
+		Bureaucrat Bob("Bob", 14);
+		ShrubberyCreationForm tree("Abricot");
+		std::cout << Bob << std::endl;
+		tree.checkToExecute(Bob);
+		std::cout << std::endl;
+	}
+	catch (std::exception &e){
+		std::cout << e.what() << std::endl;
+	}
+
 	try
 	{
-		Bureaucrat Mehdi("Mehdi", 2);
-		ShrubberyCreationForm tree("Abricot");
-		RobotomyRequestForm robot("Pan");
-		PresidentialPardonForm pardon("Yousra");
-		std::cout << Mehdi << std::endl;
-		Mehdi.incrementGrade();
-		std::cout << Mehdi << std::endl;
-		Mehdi.decrementGrade();
-		std::cout << Mehdi << std::endl;
-		Mehdi.decrementGrade(10);
-		std::cout << Mehdi << std::endl;
-		Mehdi.incrementGrade(10);
-		std::cout << Mehdi << std::endl;
+		std::cout << "∞∞∞∞∞∞∞∞RobotomyRequestForm∞∞∞∞∞∞∞∞" << std::endl;
+		Bureaucrat Jean("Jean", 5);
+		RobotomyRequestForm robot("Electricity");
+		std::cout << Jean << std::endl;
+		robot.checkToExecute(Jean);
 		std::cout << std::endl;
-		tree.checkToExecute(Mehdi);
-		std::cout << std::endl;
-		robot.checkToExecute(Mehdi);
-		std::cout << std::endl;
-		pardon.checkToExecute(Mehdi);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try
+	{
+		std::cout << "∞∞∞∞∞∞∞∞PresidentialPardonForm∞∞∞∞∞∞∞∞" << std::endl;
+		Bureaucrat Franc("Franc", 15);
+		PresidentialPardonForm pardon("Tax");
+		std::cout << Franc << std::endl;
+		pardon.checkToExecute(Franc);
 		std::cout << std::endl;
 	}
 	catch (std::exception &e)
@@ -44,3 +55,48 @@ int main()
 	return 0;
 }
 
+// int main() {
+// 	{
+// 		AForm *f = new PresidentialPardonForm("ouahidi");
+// 		Bureaucrat	b("noureddine", 5);
+// 		try
+// 		{
+// 			f->beSigned(b);
+// 			f->checkToExecute(b);
+// 		}
+// 		catch(std::exception &e){
+// 			std::cerr << "Error: " <<"\033[31m"<< e.what()<<"\033[0m"<<std::endl;;
+// 		}
+// 		delete f;
+// 	}
+// 	std::cout<<"<<==========================================>>\n";
+// 	{
+// 		AForm *f = new ShrubberyCreationForm("ouahidi");
+// 		Bureaucrat	b("noureddine", 14);
+// 		try
+// 		{
+// 			f->beSigned(b);
+// 			f->checkToExecute(b);
+// 		}
+// 		catch(std::exception &e){
+// 			std::cerr << "Error: " <<"\033[31m"<< e.what()<<"\033[0m"<<std::endl;;
+// 		}
+// 		delete f;
+
+// 	}
+// 	std::cout<<"<<==========================================>>\n";
+// 	{
+// 		AForm *f = new RobotomyRequestForm("ouahidi");
+// 		Bureaucrat	b("noureddine", 45);
+// 		try
+// 		{
+// 			f->beSigned(b);
+// 			f->checkToExecute(b);
+// 		}
+// 		catch(std::exception &e){
+// 			std::cerr << "Error: " <<"\033[31m"<< e.what()<<"\033[0m"<<std::endl;;
+// 		}
+// 		delete f;
+// 	}
+// 	return 0;
+// }

@@ -35,9 +35,10 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void ShrubberyCreationForm::checkToExecute(Bureaucrat const &executor) const
 {
-    // std::cout << "this grade " << this->gradeSign << " Bureaucrat's grade " << executor.getGrade() << std::endl;
     if (executor.getGrade() > this->gradeSign)
         throw GradeNotCompatibleSign();
+    else
+        std::cout << "The File Has Been Signed by " << executor.getName() <<" Successfully!" << std::endl;
     if (executor.getGrade() > this->gradeExec)
         throw GradeNotCompatibleExec();
     else

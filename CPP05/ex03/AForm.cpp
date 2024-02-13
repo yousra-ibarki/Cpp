@@ -2,7 +2,7 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-AForm::AForm() :  gradeToSign(150), executedGrade(150), name("AForm's name"), target("NonTarget"){
+AForm::AForm() :  gradeToSign(150), executedGrade(150), name("Default"), target("NonTarget"){
     this->sign = false;
 }
 
@@ -48,7 +48,7 @@ const std::string& AForm::getTarget() const {
 void AForm::beSigned(Bureaucrat& Bur){
     if(Bur.getGrade() <= this->gradeToSign){
         this->sign = true;
-        std::cout << "Bureaucrat " << Bur.getName() << " Signed The AForm " << this->getName() << " Succefully!" << std::endl;
+        std::cout << Bur.getName() << " Signed The Form " << this->getName() << " Succefully!" << std::endl;
     }
     else{
         std::cout << "Bureaucrat " << Bur.getName() << " couldn't sign the AForm" << this->getName() << " Because The Grade Is Too Low!" << std::endl;

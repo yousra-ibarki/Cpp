@@ -2,12 +2,10 @@
 
 Bureaucrat::Bureaucrat() : name("Default Bureaucrat")
 {
-    std::cout << "Default Bureaucrat Created" << std::endl;
     this->grade = 15;
 }
 Bureaucrat::~Bureaucrat()
 {
-    std::cout << "Bureaucrat Destroyed" << std::endl;
 
 }
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name)

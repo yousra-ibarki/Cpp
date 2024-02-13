@@ -8,24 +8,38 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &obj)
 
 int main()
 {
+    try{
+        Bureaucrat Bob("Bob", 149+10);
+        std::cout << Bob << std::endl;
+        Bob.incrementGrade();
+        std::cout << Bob << std::endl;
+    }
+    catch (std::exception &e){
+        std::cout << e.what() << std::endl;
+    }
+
+    try{
+        Bureaucrat franc("franc", -1);
+        std::cout << franc << std::endl;
+        franc.decrementGrade();
+        std::cout << franc << std::endl;
+    }
+    catch (std::exception &e){
+        std::cout << e.what() << std::endl;
+    }
+
     try
     {
-        Bureaucrat Mehdi("NULL", 149+10);
-        std::cout << Mehdi << std::endl;
-        Mehdi.incrementGrade();
-        std::cout << Mehdi << std::endl;
-        Mehdi.decrementGrade();
-        std::cout << Mehdi << std::endl;
-        Mehdi.decrementGrade(10);
-        std::cout << Mehdi << std::endl;
-        Mehdi.incrementGrade(10);
-        std::cout << Mehdi << std::endl;
+        Bureaucrat B("Valid", 45);
+        std::cout << B << std::endl;
+        B.decrementGrade(10);
+        std::cout << B << std::endl;
+        B.incrementGrade(10);
+        std::cout << B << std::endl;
     }
     catch (std::exception &e)
     {
         std::cout << e.what() << std::endl;
     }
-
-    std::cout << std::endl;
     return 0;
 }
