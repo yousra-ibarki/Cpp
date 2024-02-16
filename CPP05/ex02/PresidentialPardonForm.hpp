@@ -9,6 +9,7 @@ private:
     int gradeExec;
     std::string target;
     std::string president;
+    bool sign;
 public:
     class GradeNotCompatibleSign : public std::exception{
     public:
@@ -24,9 +25,9 @@ public:
     PresidentialPardonForm(const PresidentialPardonForm& obj);
     PresidentialPardonForm& operator=(PresidentialPardonForm const& obj);
 
-    void checkToExecute(const Bureaucrat& bure) const;
+    void execute(const Bureaucrat& bure) const;
 
-    void    beSigned(Bureaucrat& obj);
+    void    beSigned(Bureaucrat& obj) ;
 };
 
 #endif

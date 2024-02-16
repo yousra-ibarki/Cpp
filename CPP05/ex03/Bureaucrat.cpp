@@ -2,7 +2,7 @@
 
 Bureaucrat::Bureaucrat() : name("Default Bureaucrat")
 {
-    this->grade = 2;
+    this->grade = 15;
 }
 Bureaucrat::~Bureaucrat()
 {
@@ -10,6 +10,7 @@ Bureaucrat::~Bureaucrat()
 }
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name)
 {
+    // std::cout << "Bureaucrat Created" << std::endl;
     if(grade < 1)
         throw GradeTooHighException();
     else if(grade > 150)
@@ -94,5 +95,5 @@ void Bureaucrat::signForm(AForm& formObj){
 }
 
 void Bureaucrat::executeForm(AForm const &form){
-    form.checkToExecute(*this);
+    form.execute(*this);
 }

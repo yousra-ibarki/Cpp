@@ -10,6 +10,7 @@ class ShrubberyCreationForm : public AForm{
 private:
     int gradeSign;
     int gradeExec;
+    bool sign;
     std::string target;
 public:
      class GradeNotCompatibleSign : public std::exception{
@@ -27,7 +28,8 @@ public:
     ShrubberyCreationForm(const ShrubberyCreationForm& obj);
     ShrubberyCreationForm& operator=(const ShrubberyCreationForm& obj);
 
-    void checkToExecute(const Bureaucrat& bure) const;
+    void execute(const Bureaucrat& bure) const;
+    void    beSigned(Bureaucrat& Bur) ;
 
 };
 

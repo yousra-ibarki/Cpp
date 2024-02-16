@@ -8,7 +8,6 @@ class Bureaucrat;
 
 class AForm {
 private:
-    bool        sign;
     const int   gradeToSign;
     const int   executedGrade;
     const       std::string name;
@@ -30,14 +29,12 @@ public:
     AForm&          operator=(const AForm& obj);
     int             getGradeToSign() const;
     int             getExecutedGrade() const;
-    bool            getSign() const;
     const std::string&  getName() const;
     const std::string&  getTarget() const;
 
-    // virtual void execute(Bureaucrat const& executor) const = 0;
-    virtual void checkToExecute(Bureaucrat const& executor) const = 0;
+    virtual void execute(Bureaucrat const& executor) const = 0;
 
-    void    beSigned(Bureaucrat& Bur);
+    virtual void    beSigned(Bureaucrat& Bur) = 0;
 };
 
 #endif

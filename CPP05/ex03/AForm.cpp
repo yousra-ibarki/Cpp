@@ -2,11 +2,11 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-AForm::AForm() :  gradeToSign(1), executedGrade(1), name("Default"), target("NonTarget"){
-    this->sign = false;
+AForm::AForm() :  gradeToSign(150), executedGrade(150), name("Default"), target("NonTarget"){
 }
 
 AForm::~AForm(){
+
 }
 
 AForm::AForm(const std::string name, const std::string target,int gradeToSign, int executedGrade):gradeToSign(gradeToSign), executedGrade(executedGrade),  name(name), target(target) {
@@ -17,7 +17,6 @@ AForm::AForm(const std::string name, const std::string target,int gradeToSign, i
 }
 
 AForm::AForm(const AForm& obj): gradeToSign(obj.gradeToSign), executedGrade(obj.executedGrade), name(obj.name), target(obj.target) {
-    this->sign = obj.sign;
 }
 
 AForm& AForm::operator=(const AForm& obj){
@@ -36,25 +35,11 @@ int AForm::getExecutedGrade() const{
 const std::string& AForm::getName() const{
     return this->name;
 }
-bool AForm::getSign() const
-{
-    return this->sign;
-}
 
 const std::string& AForm::getTarget() const {
 	return this->target;
 }
 
-void AForm::beSigned(Bureaucrat& Bur){
-    if(Bur.getGrade() <= this->gradeToSign){
-        this->sign = true;
-        std::cout << Bur.getName() << " Signed The Form " << this->getName() << " Succefully!" << std::endl;
-    }
-    else{
-        std::cout << "Bureaucrat " << Bur.getName() << " couldn't sign the AForm" << this->getName() << " Because The Grade Is Too Low!" << std::endl;
-        throw Bureaucrat::GradeTooLowException();
-    }
-}
 
 const char* AForm::GradeTooHighException::what() const throw(){
             return "AForm's Grade Too High";

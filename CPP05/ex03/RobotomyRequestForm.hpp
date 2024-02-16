@@ -7,6 +7,7 @@ class RobotomyRequestForm : public AForm{
 private:
     int gradeSign;
     int gradeExec;
+    bool sign;
     std::string target;
     std::string robotName;
 public:
@@ -23,8 +24,8 @@ public:
     ~RobotomyRequestForm();
     RobotomyRequestForm(const RobotomyRequestForm& obj);
     RobotomyRequestForm& operator=(const RobotomyRequestForm& obj);
-    void    beSigned(Bureaucrat& obj);
-    void    checkToExecute(Bureaucrat const &executor) const;
+    void    beSigned(Bureaucrat& Bur) ;
+    void    execute(Bureaucrat const &executor) const;
 
 };
 

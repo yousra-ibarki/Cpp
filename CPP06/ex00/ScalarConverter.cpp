@@ -1,7 +1,5 @@
 #include "ScalarConverter.hpp"
 
-// double result = static_cast<double>(integerValue);
-
 ScalarConverter::ScalarConverter()
 {
     std::cout << "Constructor Called" << std::endl;
@@ -32,7 +30,6 @@ void ScalarConverter::convert(std::string str)
     float fType = 0.0;
     double dType = 0.0;
 
-    // For displaying one single character
     if ((str.length() == 1 && str[0] >= 65 && str[0] <= 90) || (str[0] >= 97 && str[0] <= 122 && str.length() == 1))
     {
         std::cout << "char: " << str[0] << std::endl;
@@ -48,7 +45,6 @@ void ScalarConverter::convert(std::string str)
 
     iType = std::atoi(str.c_str());
 
-    // For displaying the infinity
     if (str == "-inf" || str == "-inff")
     {
         std::cout << "char: impossible" << std::endl;
@@ -69,7 +65,6 @@ void ScalarConverter::convert(std::string str)
         std::cout << "double: " << dType << std::endl;
         return ;
     }
-    // For displaying the nan and nanf
     else if (str == "nan" || str == "nanf")
     {
         std::cout << "char: impossible" << std::endl;
@@ -81,15 +76,16 @@ void ScalarConverter::convert(std::string str)
         return;
     }
 
-    // iType = stoi(str);
-    // For displaying the characters
     if (iType > 32 && iType < 127)
     {
         cType = static_cast<char>(iType);
         std::cout << "char: '" << cType << "'" << std::endl;
     }
-    else
+    else if((iType >= 0 && iType <= 32) || iType == 127)
         std::cout << "char: Non displayable" << std::endl;
+    else
+        std::cout << "char: Out of Range" << std::endl;
+
 
     std::cout << "int: " << iType << std::endl;
     fType = std::atof(str.c_str());

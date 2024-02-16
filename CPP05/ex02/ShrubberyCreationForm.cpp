@@ -4,6 +4,7 @@ ShrubberyCreationForm::ShrubberyCreationForm()
 {
     this->gradeSign = 145;
     this->gradeExec = 137;
+    this->sign = false;
     this->target = "Default Target";
 }
 
@@ -11,6 +12,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
 {
     this->gradeSign = 145;
     this->gradeExec = 137;
+    this->sign = false;
     this->target = target;
 }
 
@@ -29,16 +31,24 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
     {
         this->gradeSign = obj.gradeSign;
         this->gradeExec = obj.gradeExec;
+        this->sign = obj.sign;
     }
     return *this;
 }
 
-void ShrubberyCreationForm::checkToExecute(Bureaucrat const &executor) const
+void ShrubberyCreationForm::beSigned(Bureaucrat& Bur) {
+    if(Bur.getGrade() <= this->gradeSign){
+        this->sign = true;
+        std::cout << Bur.getName() << " Signed The Form " << this->target << " Succefully!" << std::endl;
+    }
+    else{
+        std::cout << "Bureaucrat " << Bur.getName() << " couldn't sign the AForm" << this->target << " Because The Grade Is Too Low!" << std::endl;
+        throw Bureaucrat::GradeTooLowException();
+    }
+}
+
+void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-    if (executor.getGrade() > this->gradeSign)
-        throw GradeNotCompatibleSign();
-    else
-        std::cout << "The File Has Been Signed by " << executor.getName() <<" Successfully!" << std::endl;
     if (executor.getGrade() > this->gradeExec)
         throw GradeNotCompatibleExec();
     else
@@ -68,7 +78,7 @@ void ShrubberyCreationForm::checkToExecute(Bureaucrat const &executor) const
             file << "                 .:@:'.                      " << std::endl;
             file << "               .::@@:.                       " << std::endl;
         }
-        std::cout << "The File Has Been Created Successfully!" << std::endl;
+        std::cout <<  this->target << " Has Been Created Successfully!" << std::endl;
         file.close();
     }
 }

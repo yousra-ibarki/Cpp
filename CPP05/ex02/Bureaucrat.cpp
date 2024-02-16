@@ -95,5 +95,5 @@ void Bureaucrat::signForm(AForm& formObj){
 }
 
 void Bureaucrat::executeForm(AForm const &form){
-    form.checkToExecute(*this);
+    form.execute(*this);
 }

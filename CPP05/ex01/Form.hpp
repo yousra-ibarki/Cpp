@@ -26,10 +26,12 @@ public:
     virtual ~Form();
     Form(const Form& obj);
     Form& operator=(const Form& obj);
+
     int getGradeToSign() const;
     int getExecutedGrade() const;
     bool getSign() const;
     std::string getName() const;
+    
     void beSigned(Bureaucrat& obj);
 
 };

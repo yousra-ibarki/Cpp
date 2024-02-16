@@ -21,13 +21,10 @@ int main()
 	try
 	{
 		Bureaucrat Bob("Bob", 2);
-		Form yo("Tax", 15, 2);
-		std::cout << Bob << std::endl;
+		Form yo("Tax", 150, 1);
 		std::cout << yo << std::endl;
-		yo.beSigned(Bob);
 		Bob.signForm(yo);
 		std::cout << std::endl;
-		std::cout << Bob << std::endl;
 		std::cout << yo << std::endl;
 	}
 	catch (std::exception &e)

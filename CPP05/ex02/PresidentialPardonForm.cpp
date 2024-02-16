@@ -4,6 +4,7 @@
 PresidentialPardonForm::PresidentialPardonForm(){
     this->gradeSign = 25;
     this->gradeExec = 5;
+    this->sign = false;
     this->target = "Default Target";
 }
 
@@ -11,6 +12,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target)
 {
     this->gradeSign = 25;
     this->gradeExec = 5;
+    this->sign = false;
     this->target = target;
 }
 
@@ -26,20 +28,24 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
     if(this != &obj){
         this->gradeSign = obj.gradeSign;
         this->gradeExec = obj.gradeExec;
+        this->sign = obj.sign;
     }
     return *this;
 }
 
-void PresidentialPardonForm::beSigned(Bureaucrat& obj){
-    (void) obj;
+void PresidentialPardonForm::beSigned(Bureaucrat& Bur) {
+    if(Bur.getGrade() <= this->gradeSign){
+        this->sign = true;
+        std::cout << Bur.getName() << " Signed The Form " << this->target << " Succefully!" << std::endl;
+    }
+    else{
+        std::cout << "Bureaucrat " << Bur.getName() << " couldn't sign the AForm" << this->target << " Because The Grade Is Too Low!" << std::endl;
+        throw Bureaucrat::GradeTooLowException();
+    }
 }
 
-void PresidentialPardonForm::checkToExecute(Bureaucrat const &executor) const
+void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
-    if (executor.getGrade() > this->gradeSign)
-        throw GradeNotCompatibleSign();
-    else
-        std::cout << this->target << " Has Been Signed by " << executor.getName() << " Successfully!" << std::endl;
     if (executor.getGrade() > this->gradeExec)
         throw GradeNotCompatibleExec();
     else

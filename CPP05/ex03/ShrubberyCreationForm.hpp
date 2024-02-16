@@ -10,6 +10,7 @@ class ShrubberyCreationForm : public AForm{
 private:
     int gradeSign;
     int gradeExec;
+    bool sign;
     std::string target;
 public:
      class GradeNotCompatibleSign : public std::exception{
@@ -20,16 +21,15 @@ public:
     public:
         const char* what() const throw();
     };
+
     ShrubberyCreationForm();
     ShrubberyCreationForm(std::string target);
     ~ShrubberyCreationForm();
     ShrubberyCreationForm(const ShrubberyCreationForm& obj);
     ShrubberyCreationForm& operator=(const ShrubberyCreationForm& obj);
-    int getGrade() const{
-        return gradeSign;
-    }
-    // void execute(Bureaucrat const& executor) const;
-    void checkToExecute(const Bureaucrat& bure) const;
+
+    void execute(const Bureaucrat& bure) const;
+    void    beSigned(Bureaucrat& Bur) ;
 
 };
 
