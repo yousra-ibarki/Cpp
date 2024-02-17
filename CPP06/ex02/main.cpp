@@ -5,7 +5,7 @@
 #include <cstdlib>
 
 Base *generate(void)
-{ // Up_casting in dynamic cast
+{ 
     int nbr;
     srand(time(NULL));
 

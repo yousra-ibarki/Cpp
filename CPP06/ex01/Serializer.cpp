@@ -27,6 +27,6 @@ uintptr_t Serializer::serialize(Data* ptr)
 }
  
  
-// Data* Serializer::deserializ(uintptr_t raw){
-
-// }
+Serializer::Data* Serializer::deserialize(uintptr_t raw){    
+        return reinterpret_cast<Data*>(raw);
+}

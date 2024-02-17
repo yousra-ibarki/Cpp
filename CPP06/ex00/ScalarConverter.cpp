@@ -24,7 +24,6 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &obj)
 
 void ScalarConverter::convert(std::string str)
 {
-    (void)str;
     std::string cType = "";
     int iType = 0;
     float fType = 0.0;
@@ -49,11 +48,11 @@ void ScalarConverter::convert(std::string str)
     {
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
-        fType = -std::numeric_limits<double>::infinity();
+        fType = -std::numeric_limits<float>::infinity();
         std::cout << "float: " << fType << "f" << std::endl;
         dType = -std::numeric_limits<double>::infinity();
         std::cout << "double: " << dType << std::endl;
-        return ;
+        return;
     }
     else if (str == "inf" || str == "inff")
     {
@@ -63,7 +62,7 @@ void ScalarConverter::convert(std::string str)
         std::cout << "float: " << fType << "f" << std::endl;
         dType = std::numeric_limits<double>::infinity();
         std::cout << "double: " << dType << std::endl;
-        return ;
+        return;
     }
     else if (str == "nan" || str == "nanf")
     {
@@ -81,11 +80,10 @@ void ScalarConverter::convert(std::string str)
         cType = static_cast<char>(iType);
         std::cout << "char: '" << cType << "'" << std::endl;
     }
-    else if((iType >= 0 && iType <= 32) || iType == 127)
+    else if ((iType >= 0 && iType <= 32) || iType == 127)
         std::cout << "char: Non displayable" << std::endl;
     else
         std::cout << "char: Out of Range" << std::endl;
-
 
     std::cout << "int: " << iType << std::endl;
     fType = std::atof(str.c_str());
@@ -106,6 +104,6 @@ void ScalarConverter::convert(std::string str)
             d = ".0";
         }
     }
-        std::cout << "float: " << fType << f << std::endl;
-        std::cout << "double: " << dType << d << std::endl;
+    std::cout << "float: " << fType << f << std::endl;
+    std::cout << "double: " << dType << d << std::endl;
 }

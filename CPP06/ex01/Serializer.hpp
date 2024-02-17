@@ -6,7 +6,6 @@
 
 class Serializer{
 private:
-
     Serializer();
     Serializer(const Serializer& obj);
     Serializer& operator=(const Serializer& obj);
@@ -19,9 +18,7 @@ public:
     } Data;
     Data data;
     ~Serializer();
-    static Data* deserialize(uintptr_t raw){
-        return reinterpret_cast<Data*>(raw);
-    }
+    static Data* deserialize(uintptr_t raw);
     static uintptr_t serialize(Data* ptr);
 
 };
