@@ -5,7 +5,7 @@
 #include <cstdlib>
 
 Base *generate(void)
-{ 
+{
     int nbr;
     srand(time(NULL));
 
@@ -45,21 +45,27 @@ void identify(Base &p)
         std::cout << "The Actual type of the pointer is A" << std::endl;
         (void)var;
     }
-    catch (std::bad_cast &e){}
+    catch (std::bad_cast &e)
+    {
+    }
     try
     {
         B &var = dynamic_cast<B &>(p);
         std::cout << "The Actual type of the pointer is B" << std::endl;
         (void)var;
     }
-    catch (std::bad_cast &e){}
+    catch (std::bad_cast &e)
+    {
+    }
     try
     {
         C &var = dynamic_cast<C &>(p);
         std::cout << "The Actual type of the pointer is C" << std::endl;
         (void)var;
     }
-    catch (std::bad_cast &e){}
+    catch (std::bad_cast &e)
+    {
+    }
 }
 
 int main()

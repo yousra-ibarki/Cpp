@@ -6,12 +6,7 @@
 
 
 template <typename T>
-T add(T num1, T num2) {
-   return (num1 + num2);
-}
-
-template <typename T>
-void swap(T arg1, T arg2){
+void swap(T &arg1, T &arg2){
     T tmpArg;
     tmpArg = arg2;
     arg2 = arg1;

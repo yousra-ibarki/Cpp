@@ -1,19 +1,6 @@
 
 #include "whatever.hpp"
 
-// int main()
-// {
-//     int arg1;
-//     int arg2;
-//     int out;
-
-//     arg1 = 10;
-//     arg2 = 20;
-
-//     swap<int>(arg1, arg2);
-
-// }
-
 int main(void)
 {
     int a = 2;

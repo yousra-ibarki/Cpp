@@ -3,9 +3,12 @@
 
 #include <iostream>
 
-template <typename T>
-void iter(T arg1, T arg2, T *arg3()){
-    
+template <typename T, typename Fp>
+void iter(T *arr, T len, Fp funptr){
+    for(int i = 0; i < len; i++)
+    {
+        funptr(arr[i]);
+    }
 }
 
 
