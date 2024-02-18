@@ -29,7 +29,7 @@ int main()
 	try
 	{
 		std::cout << "∞∞∞∞∞∞∞∞RobotomyRequestForm∞∞∞∞∞∞∞∞" << std::endl << std::endl;
-		Bureaucrat Jean("Jean", 44);
+		Bureaucrat Jean("Jean", 123);
 		RobotomyRequestForm *robot = new RobotomyRequestForm("Electricity");
 		std::cout << std::endl;
 		Jean.signForm(*robot);

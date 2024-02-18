@@ -1,6 +1,6 @@
 NAME = Base
 
-SRC = main.cpp 
+SRC = main.cpp Base.cpp fnct.cpp
 	
 OBJ = $(SRC:.cpp=.o)
 
@@ -13,7 +13,7 @@ all : $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.cpp A.hpp B.hpp C.hpp Base.hpp
+%.o: %.cpp A.hpp B.hpp C.hpp Base.hpp fnct.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 
