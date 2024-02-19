@@ -20,8 +20,8 @@ int main()
 {
 	try
 	{
-		Bureaucrat Bob("Bob", 2);
-		Form yo("Tax", 150, 1);
+		Bureaucrat Bob("Bob", 10);
+		Form yo("Tax", 5, 1);
 		std::cout << yo << std::endl;
 		Bob.signForm(yo);
 		std::cout << std::endl;
