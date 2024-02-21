@@ -7,6 +7,7 @@ template <class T>
 class Array{
 private:
     T *arr;
+    int size;
 public:
     Array(){
         arr= new T; 
@@ -21,8 +22,17 @@ public:
     }
 
     Array& operator=(const Array& obj){
-        (void)obj;
+        delete[] arr;
+        arr = new arr;
+        this->arr = obj.arr;
         return *this;
+    }
+
+    Array& operator[](int i){
+        if(i > size)
+            std::cout << "index out of bounds" << std::endl;
+        else
+            return arr[i];
     }
 
     unsigned int size() const{
