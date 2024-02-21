@@ -4,47 +4,63 @@
 #include <iostream>
 
 template <class T>
-class Array{
+class Array
+{
 private:
     T *arr;
-    int size;
-public:
-    Array(){
-        arr= new T; 
-    };
+    int _size;
 
-    Array(unsigned int n){
-        arr = new T[n];
+public:
+    Array() : arr(NULL), _size(0){};
+
+    Array(unsigned int _size) : _size(_size)
+    {
+        arr = new T[_size];
     }
 
-    Array(const Array& obj){
+    Array(const Array &obj) : arr(NULL)
+    {
         *this = obj;
     }
 
-    Array& operator=(const Array& obj){
-        delete[] arr;
-        arr = new arr;
-        this->arr = obj.arr;
+    Array &operator=(const Array &obj)
+    {
+        if (this->arr != NULL)
+            delete[] this->arr;
+        this->_size = obj._size;
+        this->arr = new T[_size];
+
+        for (int i = 0; i < this->_size; i++)
+        {
+            this->arr[i] = obj.arr[i];
+        }
         return *this;
     }
 
-    Array& operator[](int i){
-        if(i > size)
-            std::cout << "index out of bounds" << std::endl;
+    T &operator[](int i)
+    {
+        if (i >= this->_size || i < 0)
+            throw Array::Exception();
         else
-            return arr[i];
+            return this->arr[i];
     }
 
-    unsigned int size() const{
-        unsigned int i = 0;
-        while(arr[i])
-            i++;
-        return i;
+    unsigned int size() const
+    {
+        return this->_size;
     }
-    ~Array(){
-
+    ~Array()
+    {
+        delete[] this->arr;
     };
-
+    class Exception : public std::exception
+    {
+    public:
+        const char *what() const throw()
+        {
+            return "invalid index";
+        }
+    };
 };
 
 #endif
