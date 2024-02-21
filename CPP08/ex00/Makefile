@@ -1,6 +1,6 @@
 NAME = easyFind
 
-SRC = main.cpp #Array.tpp
+SRC = main.cpp
 	
 OBJ = $(SRC:.cpp=.o)
 
