@@ -13,10 +13,10 @@ int main(){
     // for(int j = 0; j < size;  j++)
     //     std::cout << j << std::endl;
     try{
-        easyfind(vec, 10);
+        easyfind(vec, 3);
 
     }
     catch(unsigned long a){
-        std::cout <<  a << " this occurrence did not found" << std::endl;
+        std::cout <<  a << " is not int the first parameter" << std::endl;
     }
 }   
