@@ -44,7 +44,7 @@ void Span::longestSpan(){
         throw(ExceptionSpan());
         int max = *std::max_element(elementN.begin(), elementN.end());
         int min = *std::min_element(elementN.begin(), elementN.end());
-        std::cout << "the longest span is: " << max - min << std::endl;
+        std::cout << "The Longest Span is: " << max - min << std::endl;
     }
     catch(std::exception &ex)
     {
@@ -59,23 +59,34 @@ void Span::shortestSpan(){
     try{
         if(elementN.size() == 2 || elementN.size() == 0)
         throw(ExceptionSpan());
-        for(size_t i = 0; i < elementN.size(); i++)
+        for(size_t i = 0; i < this->N; ++i)
         {
-            for(size_t j = i + 1 ; j < elementN.size(); j++)
+            for(size_t j = i + 1 ; j < this->N; ++j)
             {
                 minSpan = elementN[j] - elementN[i];
-                if(minS < 0)
-                    minS *= -1;
                 if(minSpan < minS)
                     minS = minSpan;
             }
+            std::cout << minS << std::endl;
         }
-        std::cout << "the longest span is: " << minS << std::endl;
+        //         if(minS < 0)
+        //             minS *= -1;
+        // std::cout << "The Shortes Span is: " << minS << std::endl;
 
     }
     catch(std::exception &ex)
     {
         std::cout << ex.what() << std::endl;
+    }
+}
+
+void Span::addNumbers(){
+    elementN.reserve(this->N);
+        srand(time(NULL));
+    for(unsigned int i = 1; i < this->N; i++)
+    {
+        // elementN.push_back(rand() % 1000);
+        elementN.push_back(i*2);
     }
 }
 

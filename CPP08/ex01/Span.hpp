@@ -27,7 +27,11 @@ public:
 
     void shortestSpan();
 
+    void addNumbers();
+
     void ft_display() ;
+
+
     class ExceptionSpan : public std::exception{
     public:
         const char* what() const throw();
