@@ -1,6 +1,6 @@
-NAME = MutatedAbomination
+NAME = btc
 
-SRC = main.cpp 
+SRC = main.cpp BitcoinExchange.cpp
 	
 OBJ = $(SRC:.cpp=.o)
 
@@ -13,7 +13,7 @@ all : $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.cpp MutanStack.hpp
+%.o: %.cpp BitcoinExchange.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 

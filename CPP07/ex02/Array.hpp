@@ -45,6 +45,14 @@ public:
             return this->arr[i];
     }
 
+    T &operator[](int i) const
+    {
+        if (i >= this->_size || i < 0)
+            throw Array::Exception();
+        else
+            return this->arr[i];
+    }
+
     unsigned int size() const
     {
         return this->_size;
