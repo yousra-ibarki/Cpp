@@ -21,7 +21,7 @@ public:
     Bitcoin(const Bitcoin& obj);
     Bitcoin& operator=(const Bitcoin& obj);
 
-    void split();
+     std::map<std::string, double> split(char* str);
 
 
 };
