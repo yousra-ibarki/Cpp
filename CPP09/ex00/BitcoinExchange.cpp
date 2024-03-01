@@ -26,18 +26,24 @@ Bitcoin &Bitcoin::operator=(const Bitcoin &obj)
     return *this;
 }
 
-std::map<std::string, double> Bitcoin::split(char *str)
+std::map<std::string, std::string> Bitcoin::split(char* str)
 {
     this->file.open(str);
     std::string token;
+    std::string token1;
     while (this->file.eof() == false)
     {
         std::getline(this->file, this->line);
         std::istringstream iss(line);
-        while(getline(iss, token, ',')){
-            std::cout << "line " << token << std::endl;
-            data.
-        }
+        this->it = data.begin();
+        getline(iss, token, ',');
+        getline(iss, token1, ',');
+        data[token] = token1;
     }
+        // for(it = data.begin() ; it != data.end(); it++)
+        //  {   std::cout << it->first << " = ";
+        //     std::cout << it->second << std::endl;}
     return this->data;
 }
+
+v

@@ -10,8 +10,8 @@
 
 class Bitcoin{
 private:
-    std::map<std::string, double> data;
-    std::map<std::string, double>::iterator it;
+    std::map<std::string, std::string> data;
+    std::map<std::string, std::string>::iterator it;
     std::string line;
     std::ifstream file;
 
@@ -22,7 +22,9 @@ public:
     Bitcoin(const Bitcoin& obj);
     Bitcoin& operator=(const Bitcoin& obj);
 
-     std::map<std::string, double> split(char* str);
+    std::map<std::string, std::string> split(char* str);
+
+    void pars(char *str);
 
 
 };

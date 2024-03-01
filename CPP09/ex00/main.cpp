@@ -3,7 +3,7 @@
 
 int main(int ac, char **av){
 
-    // (void)av;
+    (void)av;
     if(ac != 2)
     {    
         std::cout << "Error: could not open file." << std::endl;
@@ -12,6 +12,7 @@ int main(int ac, char **av){
     else{
         Bitcoin obj;
 
-        obj.split(av[1]);
+        obj.split("data.csv");
+        obj.pars(av[1]);
     }
 }
