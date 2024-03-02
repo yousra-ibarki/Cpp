@@ -13,6 +13,7 @@ int main(int ac, char **av){
         Bitcoin obj;
 
         obj.split("data.csv");
+        // obj.display();
         obj.pars(av[1]);
     }
 }

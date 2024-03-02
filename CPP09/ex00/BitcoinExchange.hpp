@@ -14,6 +14,7 @@ private:
     std::map<std::string, std::string>::iterator it;
     std::string line;
     std::ifstream file;
+    std::ifstream file2;
 
 public:
     Bitcoin();
@@ -24,8 +25,11 @@ public:
 
     std::map<std::string, std::string> split(std::string str);
 
+    std::string ft_split(std::string str);
+
     void pars(char *str);
 
+    void display();
 
 };
 
