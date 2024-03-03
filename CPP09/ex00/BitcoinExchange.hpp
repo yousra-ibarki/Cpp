@@ -4,6 +4,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cctype>
+#include <cstdlib>
 #include <map>
 #include <sstream>
 
@@ -15,6 +17,11 @@ private:
     std::string line;
     std::ifstream file;
     std::ifstream file2;
+    std::string arr[3];
+    float result;
+    std::string tokenKey;
+    std::string tokenValue;
+
 
 public:
     Bitcoin();
@@ -25,7 +32,9 @@ public:
 
     std::map<std::string, std::string> split(std::string str);
 
-    std::string ft_split(std::string str);
+    int splitParsKey();
+
+    int splitParsValue();
 
     void pars(char *str);
 
