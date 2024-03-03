@@ -2,10 +2,11 @@
 
 int main(int ac, char **av)
 {
-    if(ac > 1)
+    if(ac == 2)
     {
         RPN obj;
-        obj.parsFill(av);
+        obj.parsFill(av[1]);
+        // obj.display();
         // obj.ft_RPN(av);
     }
     else{

@@ -16,13 +16,32 @@ RPN& RPN::operator=(const RPN& obj){
     return *this;
 }
 
-// void RPN::ft_RPN(char **str){
+// std::string &RPN::split(){
+//     std::istringstream iss(this->input);
 
+//     std::getline(iss, this->token, ' ');
+//     std::cout << token << " this is token" << std::endl;
+//     return token;
 // }
 
-void RPN::parsFill(char **str){
-    for(int i = 1; str[i]; i++)
-    {
-            std::cout << "string = " << str[i] << std::endl;
-    }
+void RPN::parsFill(char *str){
+  
+}
+
+void RPN::display() {
+   
+}
+
+
+std::istringstream string("1 2 3 4 5 6 7 8 9* - +  + + + + + +");
+std::string token;
+
+
+while(string >> token) == 1
+{
+    if (isdegit(toke))
+        push
+        else if (...)
+        if(token == +)
+            data.push(second)
 }

@@ -3,12 +3,17 @@
 
 #include <iostream> 
 #include <vector>
+#include <cctype>
+#include <cstdlib>
+#include <sstream>
 
 class RPN
 {
 private:
-std::vector<std::string> polish;
 
+
+    int nbr;
+    std::string input;
 
 public:
     RPN();
@@ -16,9 +21,13 @@ public:
     ~RPN();
     RPN &operator=(const RPN &obj);
 
-    // void ft_RPN(char** str);
+    std::string &split();
 
-    void parsFill(char** str);
+    void calcul();
+
+    void parsFill(char* str);
+
+    void display() ;
 };
 
 #endif
