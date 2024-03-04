@@ -1,0 +1,10 @@
+BitcoinExchange.cpp
+BitcoinExchange.hpp
+BitcoinExchange.o
+Makefile
+btc
+data.csv
+l
+main.cpp
+main.o
+try.csv

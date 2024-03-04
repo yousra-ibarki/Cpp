@@ -57,10 +57,12 @@ public:
     {
         return this->_size;
     }
+
     ~Array()
     {
         delete[] this->arr;
     };
+    
     class Exception : public std::exception
     {
     public:

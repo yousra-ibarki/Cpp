@@ -19,6 +19,10 @@ private:
     std::ifstream file2;
     std::string arr[3];
     float result;
+    int flag;
+    int year;
+    int month;
+    int days;
     std::string tokenKey;
     std::string tokenValue;
 
