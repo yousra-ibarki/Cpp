@@ -32,9 +32,9 @@ public:
 
     std::map<std::string, std::string> split(std::string str);
 
-    int splitParsKey();
+    void splitParsKey();
 
-    int splitParsValue();
+    void splitParsValue();
 
     void pars(char *str);
 

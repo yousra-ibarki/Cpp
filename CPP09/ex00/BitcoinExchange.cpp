@@ -22,7 +22,6 @@ Bitcoin &Bitcoin::operator=(const Bitcoin &obj)
         this->it = obj.it;
         this->line = obj.line;
         this->data = obj.data;
-        // this->file2 = obj.file2;
         this->result = obj.result;
     }
     return *this;
@@ -46,14 +45,17 @@ std::map<std::string, std::string> Bitcoin::split(std::string str)
     file.close();
 }
 
-int Bitcoin::splitParsKey()
+void Bitcoin::splitParsKey()
 {
+    int year = 0;
+    int month = 0;
+    int days = 0;
     std::string tokenValue;
-    int nbr;
+    // int nbr;
     std::istringstream iss(this->tokenKey);
     int i = 0;
     if (this->tokenKey == "date" || this->tokenKey == "\0")
-        return 0;
+        return;
     while (getline(iss, tokenValue, '-') && i < 3)
     {
         this->arr[i] = tokenValue;
@@ -61,73 +63,119 @@ int Bitcoin::splitParsKey()
     }
     if (this->arr[0].length() == 4)
     {
-        nbr = std::atoi(this->arr[0].c_str());
-        if (nbr > 2022 || nbr < 2009)
+        year = std::atoi(this->arr[0].c_str());
+        // if(year % 4 == 0)
+        //     flag2 = 29;
+        // else if(year % 4 != 0)
+        //     flag2 = 28;
+        if (year > 2022 || year < 2009)
         {
             // std::cout << "Error: bad input => " << this->arr[0] << "-" << this->arr[1] << "-" << this->arr[2] << std::endl;
-            return 0;
+            return;
         }
     }
     else
     {
-        std::cout << this->arr[0] << " Invalid Input!" << std::endl;
-        return 0;
+        std::cout << year << " Invalid Input!" << std::endl;
+        return;
     }
     if (this->arr[1].length() == 2 && (this->arr[1][0] == '0' || this->arr[1][0] == '1'))
     {
-        nbr = std::atoi(this->arr[1].c_str());
-        if (nbr < 1 || nbr > 12)
+        month = std::atoi(this->arr[1].c_str());
+        // if(month % 2 == 0 && month != 2)
+        //     flag = 30;
+        // else if(month % 2 != 0)
+        //     flag = 31;
+        if (month < 1 || month > 12)
         {
-            std::cout << this->arr[1] << " is an Invalid Input!" << std::endl;
-            return 0;
+            std::cout << month << " is an Invalid Input!" << std::endl;
+            return;
         }
     }
     else
     {
-        std::cout << this->arr[1] << " Invalid Input!" << std::endl;
-        return 0;
+        std::cout << month << " Invalid Input!" << std::endl;
+        return;
     }
     if (this->arr[2].length() == 2 && (this->arr[2][0] == '0' || this->arr[2][0] == '1' || this->arr[2][0] == '2' || this->arr[2][0] == '3'))
     {
-        nbr = std::atoi(this->arr[1].c_str());
-        if (nbr < 1 || nbr > 31)
+        days = std::atoi(this->arr[2].c_str());
+        std::cout << month << " is an Invalid Input!" << std::endl;
+        if (year % 4 == 0 && month == 2)
         {
-            std::cout << this->arr[2] << " is an Invalid Input!" << std::endl;
-            return 0;
+            if (days > 29)
+            {
+                std::cout << days << " is an Invalid Input!" << std::endl;
+                return;
+            }
         }
+        else if (year % 4 != 0 && month == 2)
+        {
+            if (days > 28)
+            {
+                // std::cout << year << "-" << month << "-" << days << " is an Invalid Input!" << std::endl;
+                return;
+            }
+        }
+        if(month % 2 == 0 && month != 2)
+        {
+            if(days > 30)
+            {
+                // std::cout << year << "-" << month << "-" << days << " is an Invalid Input!" << std::endl;
+                return;
+            }
+        }
+        else if(month % 2 != 0)
+        {
+            // std::cout << year << "-" << month << "-" << days << " is an Invalid Input!" << std::endl;
+            return;
+        }
+
     }
     else
     {
-        std::cout << this->arr[2] << " Invalid Input!" << std::endl;
-        return 0;
+        std::cout << days << " Invalid Input!" << std::endl;
+        return;
     }
-    return 0;
+    return;
 }
 
-int Bitcoin::splitParsValue()
+void Bitcoin::splitParsValue()
 {
     this->it = data.find(tokenKey);
 
-    if (this->tokenValue == "value")
-        return 0;
-    float nbr = std::atof(this->tokenValue.c_str());
-    if(this->tokenValue == "\0" && tokenKey == "\0")
-        return 0;
-    if (this->tokenValue == "\0")
+    if (this->tokenValue == "value" || this->tokenValue == "value ") // stil thinking about the space
+        return;
+    if (this->tokenValue == "\0" && tokenKey == "\0")
+        return;
+    if (this->tokenValue == "\0" || this->tokenValue[tokenValue.length() - 1] == '-')
     {
         std::cout << "Error: bad input => " << this->arr[0] << "-" << this->arr[1] << "-" << this->arr[2] << std::endl;
-        return 0;
+        return;
     }
-
+    for (int i = 0; tokenValue[i]; i++)
+    {
+        if (!(std::isdigit(tokenValue[i])) && tokenValue[i] != '-' && tokenValue[i] != ' ' && tokenValue[i] != '.')
+        {
+            std::cout << tokenValue << " Error: bad input" << std::endl;
+            return;
+        }
+        if (tokenValue[i] == '.' && tokenValue[i + 1] == '.')
+        {
+            std::cout << tokenValue << " Error: bad input" << std::endl;
+            return;
+        }
+    }
+    float nbr = std::atof(this->tokenValue.c_str());
     if (nbr < 0)
     {
         std::cout << "Error: not a positive number." << std::endl;
-        return 0;
+        return;
     }
     if (this->tokenValue.length() > 10 || (this->tokenValue.length() >= 10 && this->tokenValue[this->tokenValue.length() - 1] > '7'))
     {
         std::cout << "Error: too large number." << std::endl;
-        return 0;
+        return;
     }
     else
     {
@@ -139,15 +187,15 @@ int Bitcoin::splitParsValue()
             data.erase(tokenKey);
             result = nbr * std::atof(it->second.c_str());
             std::cout << tokenKey << " => " << tokenValue << " = " << result << std::endl;
-            return 0;
+            return;
         }
-        if(this->tokenKey == "date")
-            return 0;
+        if (this->tokenKey == "date")
+            return;
         result = nbr * std::atof(data[this->tokenKey].c_str());
         std::cout << tokenKey << " => " << tokenValue << " = " << result << std::endl;
-        return 0;
+        return;
     }
-    return 0;
+    return;
 }
 
 void Bitcoin::pars(char *str)

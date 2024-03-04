@@ -2,7 +2,7 @@
 #define RPN_HPP
 
 #include <iostream> 
-#include <vector>
+#include <stack>
 #include <cctype>
 #include <cstdlib>
 #include <sstream>
@@ -10,22 +10,14 @@
 class RPN
 {
 private:
-
-
-    int nbr;
-    std::string input;
-
+    std::stack<int> polish;
 public:
     RPN();
     RPN(const RPN &obj);
     ~RPN();
     RPN &operator=(const RPN &obj);
 
-    std::string &split();
-
-    void calcul();
-
-    void parsFill(char* str);
+    void parsFill(std::string str);
 
     void display() ;
 };

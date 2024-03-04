@@ -6,7 +6,7 @@ int main(int ac, char **av)
     {
         RPN obj;
         obj.parsFill(av[1]);
-        // obj.display();
+        obj.display();
         // obj.ft_RPN(av);
     }
     else{
