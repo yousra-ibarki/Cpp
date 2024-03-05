@@ -54,7 +54,7 @@ void Bitcoin::splitParsKey()
     flag = 0;
     std::istringstream iss(this->tokenKey);
     int i = 0;
-    if (this->tokenKey == "date" || this->tokenKey == "\0")
+    if (this->tokenKey == "date " || this->tokenKey == "\0")
         return;
     while (getline(iss, tokenValue, '-') && i < 3)
     {
@@ -89,7 +89,7 @@ void Bitcoin::splitParsKey()
         std::cout << month << " Invalid Input!" << std::endl;
         return;
     }
-    if (this->arr[2].length() == 2 && (this->arr[2][0] == '0' || this->arr[2][0] == '1' || this->arr[2][0] == '2' || this->arr[2][0] == '3'))
+    if (this->arr[2].length() == 3 && (this->arr[2][0] == '0' || this->arr[2][0] == '1' || this->arr[2][0] == '2' || this->arr[2][0] == '3'))
     {
         days = std::atoi(this->arr[2].c_str());
         if((year % 4 != 0 && month == 2 && days > 28) || days < 1)
@@ -119,7 +119,7 @@ void Bitcoin::splitParsValue()
         std::cout << tokenKey << " Error: invalid date" << std::endl;
         return ;
     }
-    if (this->tokenValue == "value ") // stil thinking about the space
+    if (this->tokenValue == " value ")
         return;
     if (this->tokenValue == "\0" && tokenKey == "\0")
         return;
