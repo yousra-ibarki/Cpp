@@ -17,7 +17,7 @@ private:
     std::string tokenV;
     // unsigned int nbr;
     bool odd; 
-    int lastValue;
+    int lastValue;std::pair<int, int> pairV;
 public:
     PmergeMe();
     ~PmergeMe();

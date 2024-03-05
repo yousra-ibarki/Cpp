@@ -60,14 +60,29 @@ void PmergeMe::FordJohnson(std::string str)
 {
     odd = true;
     parsfill(str);
-    std::cout << "before : ";
-    display();
-    std::cout << "size " << dataV.size() << std::endl;
+    // std::cout << "before : ";
+    // display();
+    // std::cout << "size " << dataV.size() << std::endl;
     if(dataV.size() % 2 == 0)
         odd = false;
     if(odd == true)
     {
+        this->lastValue = dataV.back(); 
         dataV.pop_back();
+        display();  //remove later
     }
+    for(itV = dataV.begin() ; itV != dataV.end() ; itV++)
+    {
+        itV++;
+        int tmp = *itV;
+        itV--;
+        pairV = std::make_pair(*itV, tmp);
+        if(*itV > tmp)
+            pairV.swap()
+        std::cout << "first " << pairV.first << " second " << pairV.second << std::endl;
+        itV++;
+    }
+    display();
+    
 
 }
