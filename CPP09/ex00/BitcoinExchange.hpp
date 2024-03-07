@@ -44,15 +44,9 @@ public:
 
     void display();
 
-    bool isnumber(std::string str)
-{
-    for (int i = 0; str[i]; i++)
-    {
-        if (!std::isdigit(str[i]))
-            return false;
-    }
-    return true;
-}
+    bool isnumber(std::string str);
+
+    std::string removeSpace(std::string str);
 
 };
 
