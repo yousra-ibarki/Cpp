@@ -104,7 +104,6 @@ void Bitcoin::splitParsKey()
     else
     {
         flag = 1;
-        // std::cout << tokenKey << "-" << tokenValue << " 1Invalid Input!" << std::endl;
         return;
     }
     return;
@@ -147,7 +146,7 @@ void Bitcoin::splitParsValue()
         std::cout << "Error: not a positive number." << std::endl;
         return;
     }
-    if (this->tokenValue.length() > 10 || (this->tokenValue.length() >= 10 && this->tokenValue[this->tokenValue.length() - 1] > '7'))
+    if ((isnumber(tokenValue) && this->tokenValue.length() > 10) || (this->tokenValue.length() >= 10 && this->tokenValue[this->tokenValue.length() - 1] > '7'))
     {
         std::cout << "Error: too large number." << std::endl;
         return;
