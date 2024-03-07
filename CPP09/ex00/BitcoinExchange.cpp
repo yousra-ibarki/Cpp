@@ -19,10 +19,15 @@ Bitcoin &Bitcoin::operator=(const Bitcoin &obj)
         return *this;
     else
     {
+        this->data = obj.data;
         this->it = obj.it;
         this->line = obj.line;
-        this->data = obj.data;
         this->result = obj.result;
+        this->flag = obj.flag;
+        this->year = obj.year;
+        this->days = obj.days;
+        this->tokenKey = obj.tokenKey;
+        this->tokenValue = obj.tokenValue;
     }
     return *this;
 }
