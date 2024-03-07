@@ -9,17 +9,31 @@
 #include <cstdlib>
 #include <sstream>
 #include <algorithm>
+#include <ctime>
+#include <deque>
+
 
 //J(0) = 0, J(1) = 1, J(n) = J(n-1) + 2*J(n-2)
 
 class PmergeMe{
 private:
+    clock_t start;
+    clock_t end;
+    double totalTime;
+
+    std::deque<int> dataD;
+    std::deque<int>::iterator itD;
+
     std::vector<int> dataV;
-    std::vector<std::pair<int, int> > data;
-    std::vector<std::pair<int, int> >::iterator it;
-
-
     std::vector<int>::iterator itV;
+
+    std::vector<std::pair<int, int> > tmpDataV;
+    std::vector<std::pair<int, int> >::iterator tmpItV;
+
+    std::deque<std::pair<int, int> > tmpDataD;
+    std::deque<std::pair<int, int> >::iterator tmpItD;
+
+
     std::string tokenV;
 
     int lastValue;
@@ -35,22 +49,28 @@ public:
 
     void parsfill(std::string &input);
 
-    void display();
-    void display2();
+    void displayV();
+    void displayD();
 
 
-    std::vector<std::pair<int, int> > createPairsSorted();
+    std::vector<std::pair<int, int> > createPairsSortedV();
+    std::deque<std::pair<int, int> > createPairsSortedD();
     bool isnumber(std::string str);
     // void split();
 
-    void insertionSort(std::vector<std::pair<int, int> >& pairs);
+    void insertionSortV(std::vector<std::pair<int, int> >& pairs);
+    void insertionSortD(std::deque<std::pair<int, int> >& pairs);
 
     int jacobsthalNbr(int len);
 
 
-    void mainPend(std::vector<std::pair<int, int> >& data);
+    void mainPendV(std::vector<std::pair<int, int> >& data);
+    void mainPendD(std::deque<std::pair<int, int> >& data);
 
     void binarySearch();
+    void sortVector();
+    void sortDeque();
+
 };
 
 

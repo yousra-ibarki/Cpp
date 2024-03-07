@@ -1,6 +1,6 @@
 NAME = PmergeMe
 
-SRC = main.cpp PmergeMe.cpp
+SRC = main.cpp PmergeMe.cpp vector.cpp deque.cpp
 	
 OBJ = $(SRC:.cpp=.o)
 
