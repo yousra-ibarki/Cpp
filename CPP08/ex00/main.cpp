@@ -7,16 +7,17 @@ int main(){
     vec.push_back(95);
     vec.push_back(57);
     vec.push_back(23);
-    // for(int i = 0; i < size; i++){
-    //     vec.push_back(i);
-    // }
-    // for(int j = 0; j < size;  j++)
-    //     std::cout << j << std::endl;
+    int size = 100;
+
+    for(int i = 0; i < size; i++){
+        vec.push_back(i);
+    }
+
     try{
-        easyfind(vec, 3);
+        easyfind(vec, 145);
 
     }
-    catch(unsigned long a){
-        std::cout <<  a << " is not int the first parameter" << std::endl;
+    catch(int a){
+        std::cout << "couldn't find " << a << std::endl;
     }
 }   

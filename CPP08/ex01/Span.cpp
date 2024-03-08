@@ -40,13 +40,17 @@ void Span::addNumber(int nbr)
 
 void Span::longestSpan()
 {
+    int longS;
     try
     {
-        if (elementN.size() == 2 || elementN.size() == 0)
+        if (elementN.size() == 1 || elementN.size() == 0)
             throw(ExceptionSpan());
         int max = *std::max_element(elementN.begin(), elementN.end());
         int min = *std::min_element(elementN.begin(), elementN.end());
-        std::cout << "The Longest Span is: " << max - min << std::endl;
+
+        longS = max - min;
+        std::cout << "max " << max << "min " << min << std::endl;
+        // std::cout << "The Longest Span is: " << longS << std::endl;
     }
     catch (std::exception &ex)
     {
@@ -57,10 +61,10 @@ void Span::longestSpan()
 void Span::shortestSpan()
 {
     int minS = INT_MAX;
-    int minSpan = 0;
+    // int minSpan = 0;
     try
     {
-        if (elementN.size() == 2 || elementN.size() == 0)
+        if (elementN.size() == 1 || elementN.size() == 0)
             throw(ExceptionSpan());
         for (size_t i = 0; i < this->N; ++i)
         {
@@ -68,12 +72,15 @@ void Span::shortestSpan()
             {
                 if (elementN[j] > elementN[i])
                 {
-                    minSpan = elementN[j] - elementN[i];
-                    if (minSpan < minS)
-                        minS = minSpan;
+                    minS = elementN[j] - elementN[i];
+                    // std::cout << "test " << minSpan << std::endl;
                 }
+                else
+                    minS = elementN[i] - elementN[j];
             }
         }
+        if (minS < 0)
+            minS = minS * -1 ;
         std::cout << "The Shortes Span is: " << minS << std::endl;
     }
     catch (std::exception &ex)
@@ -85,10 +92,11 @@ void Span::shortestSpan()
 void Span::addNumbers()
 {
     elementN.reserve(this->N);
-    srand(time(NULL));
+    // srand(time(NULL));
     for (unsigned int i = 0; i < this->N; i++)
     {
-        elementN.push_back(rand() % 100);
+        // elementN.push_back(rand() % 100);
+        elementN.push_back(i);
     }
 }
 

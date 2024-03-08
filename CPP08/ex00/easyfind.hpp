@@ -3,11 +3,11 @@
 
 #include <iostream>
 #include <vector>
-#include "algorithm"
+#include <algorithm>
 
 template <typename T>
 
-void easyfind(T &vec, unsigned long nbr){
+void easyfind(T &vec, int nbr){
 
     typename T::iterator out = std::find(vec.begin(), vec.end() , nbr);
 
