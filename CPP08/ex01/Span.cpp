@@ -40,17 +40,14 @@ void Span::addNumber(int nbr)
 
 void Span::longestSpan()
 {
-    int longS;
     try
     {
         if (elementN.size() == 1 || elementN.size() == 0)
             throw(ExceptionSpan());
-        int max = *std::max_element(elementN.begin(), elementN.end());
-        int min = *std::min_element(elementN.begin(), elementN.end());
+        std::vector<int>::iterator max = std::max_element(elementN.begin(), elementN.end());
+        std::vector<int>::iterator min = std::min_element(elementN.begin(), elementN.end());
 
-        longS = max - min;
-        std::cout << "max " << max << "min " << min << std::endl;
-        // std::cout << "The Longest Span is: " << longS << std::endl;
+        std::cout << "The Longest Span is: " << *max - *min << std::endl;
     }
     catch (std::exception &ex)
     {
@@ -61,7 +58,7 @@ void Span::longestSpan()
 void Span::shortestSpan()
 {
     int minS = INT_MAX;
-    // int minSpan = 0;
+    int minSpan = 0;
     try
     {
         if (elementN.size() == 1 || elementN.size() == 0)
@@ -72,15 +69,19 @@ void Span::shortestSpan()
             {
                 if (elementN[j] > elementN[i])
                 {
-                    minS = elementN[j] - elementN[i];
-                    // std::cout << "test " << minSpan << std::endl;
+                    minSpan = elementN[j] - elementN[i];
+                    if (minSpan < minS)
+                        minS = minSpan;
                 }
-                else
-                    minS = elementN[i] - elementN[j];
+                else if (elementN[j] < elementN[i])
+                {
+                    minSpan = elementN[i] - elementN[j];
+                    if (minSpan < minS)
+                        minS = minSpan;
+                }
+                
             }
         }
-        if (minS < 0)
-            minS = minS * -1 ;
         std::cout << "The Shortes Span is: " << minS << std::endl;
     }
     catch (std::exception &ex)
@@ -100,15 +101,6 @@ void Span::addNumbers()
     }
 }
 
-void Span::ft_display()
-{
-
-    for (this->iterat = elementN.begin(); iterat != elementN.end(); ++iterat)
-    {
-        std::cout << *iterat << " ";
-    }
-    std::cout << std::endl;
-}
 
 const char *Span::ExceptionSpan::what() const throw()
 {

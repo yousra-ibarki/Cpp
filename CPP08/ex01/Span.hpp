@@ -12,8 +12,8 @@
 class Span{
 private:
     unsigned int N;
-    std::vector<unsigned int> elementN;
-    std::vector<unsigned int>::iterator iterat;
+    std::vector<int> elementN;
+    std::vector<int>::iterator iterat;
 public:
     Span(unsigned int N);
     ~Span();
@@ -28,9 +28,6 @@ public:
     void shortestSpan();
 
     void addNumbers();
-
-    void ft_display() ;
-
 
     class ExceptionSpan : public std::exception{
     public:
