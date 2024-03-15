@@ -13,6 +13,7 @@
 class Bitcoin{
 private:
     std::map<std::string, std::string> data;
+    std::map<std::string, std::string> file;
     std::map<std::string, std::string>::iterator it;
     std::string line;
     std::ifstream file;

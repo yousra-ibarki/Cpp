@@ -1,5 +1,7 @@
 #include "BitcoinExchange.hpp"
 
+//permission of the file
+
 
 int main(int ac, char **av){
 
@@ -14,6 +16,5 @@ int main(int ac, char **av){
 
         obj.split("data.csv");
         obj.pars(av[1]);
-        // obj.display();
     }
 }

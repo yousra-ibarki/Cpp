@@ -22,13 +22,14 @@ RPN &RPN::operator=(const RPN &obj)
 void RPN::parsFill(std::string str)
 {
     int i = 0;
-    int nbr;
+    float nbr;
     std::string tmp;
+
     for (int i = 0; str[i]; i++)
     {
         if (!std::isdigit(str[i]) && str[i] != ' ' && str[i] != '+' && str[i] != '-' && str[i] != '*' && str[i] != '/')
         {
-            std::cout << str[i] << " Error: bad input!" << std::endl;
+            std::cout << "Error: bad input!" << std::endl;
             return;
         }
     }
@@ -37,26 +38,34 @@ void RPN::parsFill(std::string str)
         if (std::isdigit(str[i]))
         {
             tmp = str[i];
-            nbr = std::atoi(tmp.c_str());
+            nbr = std::atof(tmp.c_str());
+            polish.push(nbr);
+        }
+        else if(str[i] == '-' && std::isdigit(str[i + 1]))
+        {
+            i++;
+            tmp = str[i];
+            nbr = -1 * std::atof(tmp.c_str());
             polish.push(nbr);
         }
         else if (str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/')
         {
             nbr = polish.top();
             polish.pop();
-            if (str[i] == '+')
+
+            if (str[i] == '+' && !polish.empty())
             {
                 polish.top() = polish.top() + nbr;
             }
-            else if (str[i] == '-')
+            else if (str[i] == '-' && !polish.empty())
             {
                 polish.top() = polish.top() - nbr;
             }
-            else if (str[i] == '*')
+            else if (str[i] == '*' && !polish.empty())
             {
                 polish.top() = polish.top() * nbr;
             }
-            else if (str[i] == '/')
+            else if (str[i] == '/' && !polish.empty())
             {
                 polish.top() = polish.top() / nbr;
             }
@@ -70,12 +79,13 @@ void RPN::display()
     if (polish.size() > 1)
     {
         std::cout << "Error: Bad Input!" << std::endl;
-        return ;
+        return;
     }
 
     while (polish.size())
     {
-        std::cout << "stack " << polish.top() << std::endl;
+        std::cout << polish.top() << std::endl;
+
         polish.pop();
     }
 }

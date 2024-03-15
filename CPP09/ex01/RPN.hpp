@@ -10,7 +10,7 @@
 class RPN
 {
 private:
-    std::stack<int> polish;
+    std::stack<float> polish;
 public:
     RPN();
     RPN(const RPN &obj);

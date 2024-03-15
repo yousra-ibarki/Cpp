@@ -37,20 +37,28 @@ std::map<std::string, std::string> Bitcoin::split(std::string str)
     this->file.open(str);
     std::string tokenValue;
     std::string tokenKey;
-    while (this->file.eof() == false)
+    if(this->file.is_open())
     {
-        std::getline(this->file, this->line);
-        std::istringstream iss(line);
-        this->it = data.begin();
-        getline(iss, tokenValue, ',');
-        getline(iss, tokenKey, ',');
-        data[tokenValue] = tokenKey;
+        while (this->file.eof() == false)
+        {
+            std::getline(this->file, this->line);
+            std::istringstream iss(line);
+            this->it = data.begin();
+            getline(iss, tokenValue, ',');
+            getline(iss, tokenKey, ',');
+            data[tokenValue] = tokenKey;
+        }
+        file.close();
+        return this->data;
     }
-    return this->data;
-    file.close();
+    else
+    {
+        std::cerr << "cannot open the file" << std::endl;
+        exit(1);
+    }   
 }
 
-    bool Bitcoin::isnumber(std::string str)
+bool Bitcoin::isnumber(std::string str)
 {
     for (int i = 0; str[i]; i++)
     {
@@ -60,174 +68,24 @@ std::map<std::string, std::string> Bitcoin::split(std::string str)
     return true;
 }
 
-std::string Bitcoin::removeSpace(std::string str){
-    std::string result;
-
-    bool spaceFound = false;
-    for (std::string::iterator it = str.begin(); it != str.end(); ++it) {
-        if (*it == ' ') {
-            if (!spaceFound) {
-                result += *it; 
-                spaceFound = true;
-            }
-        } else {
-            result += *it;
-            spaceFound = false;
-        }
-    }
-    return result;
-}
-
-void Bitcoin::splitParsKey()
-{
-    year = 0;
-    month = 0;
-    days = 0;
-    std::string tokenDate;
-    flag = 0;
-    std::istringstream iss(this->tokenKey);
-    int i = 0;
-    tokenDate = removeSpace(tokenKey);
-    if(tokenDate == "date " || this->tokenKey == "\0" || this->tokenKey == "date" || tokenDate == " date ")
-        return ;
-    while (getline(iss, tokenDate, '-') && i < 3)
-    {
-        this->arr[i] = tokenDate;
-        i++;
-    }
-    if (this->arr[0].length() == 4)
-    {
-        year = std::atoi(this->arr[0].c_str());
-        if (year > 2022 || year < 2009)
-        {
-            flag = 1;
-            return;
-        }
-    }
-    else
-    {
-        std::cout <<"Error: Invalid Input!" << std::endl;
-        return;
-    }
-    if (this->arr[1].length() == 2 && (this->arr[1][0] == '0' || this->arr[1][0] == '1'))
-    {
-        month = std::atoi(this->arr[1].c_str());
-        if (month < 1 || month > 12)
-        {
-            std::cout << "Error: month is Invalid!" << std::endl;
-            return;
-        }
-    }
-    else
-    {
-        std::cout << "Error: Invalid Input!" << std::endl;
-        return;
-    }
-    this->arr[2] = removeSpace(this->arr[2]);
-    if (this->arr[2].length() == 3 && (this->arr[2][0] == '0' || this->arr[2][0] == '1' || this->arr[2][0] == '2' || this->arr[2][0] == '3'))
-    {
-        days = std::atoi(this->arr[2].c_str());
-        if((year % 4 != 0 && month == 2 && days > 28) || days < 1)
-            flag = 1;
-        else if((year % 4 == 0 && month == 2 && days > 29) || days < 0)
-            flag = 1;
-        else if((month % 2 == 0 && month != 2 && days > 30) || days < 0)
-            flag = 1;
-        else if((month % 2 != 0 && days > 31) || days < 0)
-            flag = 1;
-    }
-    else
-    {
-        flag = 1;
-        return;
-    }
-    return;
-}
-
-void Bitcoin::splitParsValue()
-{
-    this->it = data.find(tokenKey);
-    tokenValue = removeSpace(tokenValue);
-    if(flag == 1)
-    {
-        std::cout << "Error: invalid date " << tokenKey << std::endl;
-        return ;
-    }
-    if (this->tokenValue == " value ")
-        return;
-    if (this->tokenValue == "\0" && tokenKey == "\0")
-        return;
-    if (this->tokenValue == "\0" || this->tokenValue[tokenValue.length() - 1] == '-')
-    {
-        std::cout << "Error: bad input => " << this->arr[0] << "-" << this->arr[1] << "-" << this->arr[2] << std::endl;
-        return;
-    }
-    for (int i = 0; tokenValue[i]; i++)
-    {
-        if (!(std::isdigit(tokenValue[i])) && tokenValue[i] != '-' && tokenValue[i] != ' ' && tokenValue[i] != '.')
-        {
-            std::cout << "Error: bad input => " << tokenValue << std::endl;
-            return;
-        }
-        if (tokenValue[i] == '.' && tokenValue[i + 1] == '.')
-        {
-            std::cout << "Error: bad input =>" << tokenValue << std::endl;
-            return;
-        }
-    }
-    float nbr = std::atof(this->tokenValue.c_str());
-    if (nbr < 0)
-    {
-        std::cout << "Error: not a positive number." << std::endl;
-        return;
-    }
-    if ((isnumber(tokenValue) && this->tokenValue.length() > 10) || (this->tokenValue.length() >= 10 && this->tokenValue[this->tokenValue.length() - 1] > '7'))
-    {
-        std::cout << "Error: too large number." << std::endl;
-        return;
-    }
-    else
-    {
-        if (it == data.end())
-        {
-            data.insert(std::pair<std::string, std::string>(tokenKey, ""));
-            this->it = data.find(tokenKey);
-            --it;
-            data.erase(tokenKey);
-            result = nbr * std::atof(it->second.c_str());
-            std::cout << arr[0] << "-" << arr[1] << "-" << arr[2] << " => " << tokenValue << " = " << result << std::endl;
-            // std::cout << tokenKey << " => " << tokenValue << " = " << result << std::endl;
-            return;
-        }
-        if (this->tokenKey == "date ")
-            return;
-        result = nbr * std::atof(data[this->tokenKey].c_str());
-        std::cout << tokenKey << " => " << tokenValue << " = " << result << std::endl;
-        return;
-    }
-    return;
-}
 
 void Bitcoin::pars(char *str)
 {
     this->file2.open(str);
-    while (this->file2.eof() == false)
+    if (file2.is_open())
     {
-        std::getline(this->file2, this->line);
-        std::istringstream iss(line);
-        getline(iss, tokenKey, '|');
-        getline(iss, tokenValue, '|');
-        splitParsKey();
-        splitParsValue();
-        tokenKey.clear();
-        tokenValue.clear();
+        while (this->file2.eof() == false)
+        {
+            std::getline(this->file2, this->line);
+            std::istringstream iss(line);
+            getline(iss, tokenKey, '|');
+            getline(iss, tokenValue, '|');
+            splitParsKey();
+            splitParsValue();
+            tokenKey.clear();
+            tokenValue.clear();
+        }
     }
-}
-
-void Bitcoin::display()
-{
-    for (this->it = this->data.begin(); it != this->data.end(); it++)
-    {
-        std::cout << it->first << " , " << it->second << std::endl;
-    }
+    else
+        std::cout << "No such file" << std::endl;
 }
