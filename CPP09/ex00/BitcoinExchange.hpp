@@ -16,7 +16,6 @@ private:
     std::map<std::string, std::string>::iterator it;
     std::string line;
     std::ifstream file;
-    // std::ifstream file2;
     std::string arr[3];
     double rate;
     std::string tokenKey;
@@ -40,6 +39,8 @@ public:
     double getValue(std::string &date);
 
     std::string removeSpace(std::string str);
+
+    int ft_check();
 };
 
 #endif

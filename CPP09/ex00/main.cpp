@@ -1,8 +1,5 @@
 #include "BitcoinExchange.hpp"
 
-//permission of the file
-
-
 int main(int ac, char **av){
 
     (void)av;

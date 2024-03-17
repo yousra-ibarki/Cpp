@@ -1,5 +1,5 @@
 #include "BitcoinExchange.hpp"
-
+//.
 Bitcoin::Bitcoin()
 {
 }
@@ -119,7 +119,6 @@ double Bitcoin::getValue(std::string &date)
     {
         --it;
     }
-
     if (it != data.end())
     {
         rate = atof(it->second.c_str());
@@ -150,6 +149,29 @@ int Bitcoin::checkValue(double value, std::string &date)
     return 1;
 }
 
+int Bitcoin::ft_check(){
+    std::string to
+    while (this->file2.eof() == false)
+        {
+            std::getline(this->file2, this->line);
+            std::istringstream iss(line);
+
+            getline(iss, tokenKey, '|');
+            getline(iss, tokenValue, '|');
+            getline(iss, tmpStr, '|');
+            if (tmpStr != "\0")
+            {
+                std::cout << "ERROR " << std::endl;
+                return;
+            }
+            dataFile.push_back(std::make_pair(tokenKey, tokenValue));
+            tokenKey.clear();
+            tokenValue.clear();
+        }
+        close(file2);
+        return 1;
+}
+
 void Bitcoin::pars(char *str)
 {
     std::ifstream file2;
@@ -160,10 +182,9 @@ void Bitcoin::pars(char *str)
     file2.open(str);
     if (file2.is_open())
     {
-
         std::getline(file2, this->line);
-        std::istringstream format(line);
         line = removeSpace(line);
+        std::istringstream format(line);
         std::getline(format, first, '|');
         std::getline(format, second, '|');
        if(first != " date " && first != " date" && first != "date " && first != "date")
@@ -176,6 +197,7 @@ void Bitcoin::pars(char *str)
             std::cerr << "Error => " << line << std::endl;
             exit(1);
         }
+        ft_check();
         while (std::getline(file2, this->line))
         {
             std::istringstream iss(line);
@@ -184,7 +206,6 @@ void Bitcoin::pars(char *str)
                 std::cerr << "Error: Bad Input => " << this->line << std::endl;
                 continue;
             }
-
             if (pip == '|')
             {
                 if (checkDate(date) == 1 && checkValue(value, date) == 1)
