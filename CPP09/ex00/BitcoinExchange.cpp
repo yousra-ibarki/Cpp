@@ -21,6 +21,7 @@ Bitcoin &Bitcoin::operator=(const Bitcoin &obj)
         this->data = obj.data;
         this->it = obj.it;
         this->line = obj.line;
+        //continue;
     }
     return *this;
 }
@@ -182,10 +183,15 @@ int Bitcoin::ft_check(std::string line)
     std::istringstream pa(line);
     std::getline(pa, tokenKey, '|');
     std::getline(pa, tokenValue, '|');
+    if(tokenValue[1] == ' ' || tokenValue[0] != ' ')
+        return 0;
     std::istringstream iss(tokenValue);
     while (getline(iss, tok, ' '))
-        count++;
-    if (count != 2)
+    {
+        if(tok != " " && tok != "\0")
+            count++;
+    }   
+    if (count != 1)
     {
         return 0;
     }
@@ -201,7 +207,7 @@ int Bitcoin::ft_check(std::string line)
     std::getline(par, year, '-');
     std::getline(par, month, '-');
     std::getline(par, day, '-');
-    day = removeSpace(day);
+    // day = removeSpace(day);
     year = removeSpace(year);
 
     if (day[day.size() - 1] == ' ')
@@ -213,6 +219,8 @@ int Bitcoin::ft_check(std::string line)
 
     if (year.length() != 4)
     {
+        // puts("A");
+        std::cout << tokenKey << std::endl;
         return 0;
     }
     if (month.length() != 2 || !isnumber(month))
