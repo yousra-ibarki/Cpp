@@ -26,22 +26,38 @@ Bitcoin &Bitcoin::operator=(const Bitcoin &obj)
     return *this;
 }
 
-std::string Bitcoin::removeSpace(std::string str){
+std::string Bitcoin::removeSpace(std::string str)
+{
     std::string result;
 
     bool spaceFound = false;
-    for (std::string::iterator it = str.begin(); it != str.end(); ++it) {
-        if (*it == ' ') {
-            if (!spaceFound) {
-                result += *it; 
+    for (std::string::iterator it = str.begin(); it != str.end(); ++it)
+    {
+        if (*it == ' ')
+        {
+            if (!spaceFound)
+            {
+                result += *it;
                 spaceFound = true;
             }
-        } else {
+        }
+        else
+        {
             result += *it;
             spaceFound = false;
         }
     }
     return result;
+}
+
+bool Bitcoin::isnumber(std::string str)
+{
+    for (unsigned long i = 0; i < str.size(); i++)
+    {
+        if (!std::isdigit(str[i]))
+            return false;
+    }
+    return true;
 }
 
 std::map<std::string, std::string> Bitcoin::split(std::string str)
@@ -76,9 +92,9 @@ int Bitcoin::checkDate(std::string &date)
     int mo = 0;
     int dy = 0;
 
-    std::string year;
-    std::string month;
-    std::string day;
+    // std::string year;
+    // std::string month;
+    // std::string day;
 
     int leap = 0;
     char delimiter;
@@ -149,27 +165,53 @@ int Bitcoin::checkValue(double value, std::string &date)
     return 1;
 }
 
-int Bitcoin::ft_check(){
-    std::string to
-    while (this->file2.eof() == false)
-        {
-            std::getline(this->file2, this->line);
-            std::istringstream iss(line);
+int Bitcoin::ft_check(std::string line)
+{
+    // std::cout << "lien = " << line << std::endl;
+    int count = 0;
+    std::string tmp;
 
-            getline(iss, tokenKey, '|');
-            getline(iss, tokenValue, '|');
-            getline(iss, tmpStr, '|');
-            if (tmpStr != "\0")
-            {
-                std::cout << "ERROR " << std::endl;
-                return;
-            }
-            dataFile.push_back(std::make_pair(tokenKey, tokenValue));
-            tokenKey.clear();
-            tokenValue.clear();
-        }
-        close(file2);
-        return 1;
+    std::istringstream pa(line);
+
+    std::getline(pa, tokenKey, '|');
+    std::getline(pa, tokenValue, '|');
+    std::getline(pa, tmp, '|');
+
+    if (tmp != "\0")
+        return 0;
+
+    for (int i = 0; tokenValue[i]; i++)
+    {
+        if (tokenValue[i] == '.')
+            count++;
+        if (count > 1)
+            return 0;
+    }
+
+    std::istringstream par(tokenKey);
+    std::getline(par, year, '-');
+    std::getline(par, month, '-');
+    std::getline(par, day, '-');
+    day = removeSpace(day);
+    year = removeSpace(year);
+
+    if (day[day.size() - 1] == ' ')
+    {
+        day.erase(day.size() - 1);
+    }
+    if (year[0] == ' ')
+        year.erase(year.begin() + 1);
+
+    if (year.length() != 4 || !isnumber(year))
+        return 0;
+    if (month.length() != 2 || !isnumber(month))
+        return 0;
+    if (day.length() != 2 || !isnumber(day))
+    {
+        return 0;
+    }
+
+    return 1;
 }
 
 void Bitcoin::pars(char *str)
@@ -187,19 +229,23 @@ void Bitcoin::pars(char *str)
         std::istringstream format(line);
         std::getline(format, first, '|');
         std::getline(format, second, '|');
-       if(first != " date " && first != " date" && first != "date " && first != "date")
+        if (first != " date " && first != " date" && first != "date " && first != "date")
         {
             std::cerr << "Error => " << line << std::endl;
             exit(1);
         }
-       if(second != " value " && second != " value" && second != "value " && second != "value")
+        if (second != " value " && second != " value" && second != "value " && second != "value")
         {
             std::cerr << "Error => " << line << std::endl;
             exit(1);
         }
-        ft_check();
         while (std::getline(file2, this->line))
         {
+            if (ft_check(line) == 0)
+            {
+                std::cerr << "Error: bad input => " << line << std::endl;
+                continue;
+            }
             std::istringstream iss(line);
             if (!(iss >> date >> pip >> value))
             {

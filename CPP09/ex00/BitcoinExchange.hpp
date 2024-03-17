@@ -20,6 +20,9 @@ private:
     double rate;
     std::string tokenKey;
     std::string tokenValue;
+    std::string year;
+    std::string month;
+    std::string day;
 
 public:
     Bitcoin();
@@ -40,7 +43,10 @@ public:
 
     std::string removeSpace(std::string str);
 
-    int ft_check();
+    int ft_check(std::string str);
+
+    bool    isnumber(std::string str);
+
 };
 
 #endif
