@@ -12,6 +12,7 @@ std::deque<std::pair<int, int> > PmergeMe::createPairsSortedD()
         this->lastValue = dataD.back();
         dataD.pop_back();
     }
+
     for (itD = dataD.begin(); itD != dataD.end(); itD++)
     {
         itD++;
@@ -86,7 +87,6 @@ void PmergeMe::sortDeque()
     std::cout << "before: ";
     displayD();
     start = std::clock();
-
     tmpDataD = createPairsSortedD();
   
     insertionSortD(tmpDataD);

@@ -1,6 +1,6 @@
 NAME = btc
 
-SRC = main.cpp BitcoinExchange.cpp parsKey.cpp parsValue.cpp
+SRC = main.cpp BitcoinExchange.cpp 
 	
 OBJ = $(SRC:.cpp=.o)
 

@@ -45,9 +45,9 @@ public:
     PmergeMe& operator=(const PmergeMe& obj);
     PmergeMe(const PmergeMe& obj);
 
-    void FordJohnson(std::string str);
+    void FordJohnson(int ac, char **av);
 
-    void parsfill(std::string &input);
+    void parsfill(std::string input);
 
     void displayV();
     void displayD();
@@ -56,12 +56,10 @@ public:
     std::vector<std::pair<int, int> > createPairsSortedV();
     std::deque<std::pair<int, int> > createPairsSortedD();
     bool isnumber(std::string str);
-    // void split();
 
     void insertionSortV(std::vector<std::pair<int, int> >& pairs);
     void insertionSortD(std::deque<std::pair<int, int> >& pairs);
 
-    int jacobsthalNbr(int len);
 
 
     void mainPendV(std::vector<std::pair<int, int> >& data);
@@ -75,3 +73,6 @@ public:
 
 
 #endif
+
+
+//  ./PmergeMe " 4 7 12 45 "

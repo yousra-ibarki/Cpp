@@ -22,7 +22,10 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &obj)
 
 bool PmergeMe::isnumber(std::string str)
 {
-    for (int i = 0; str[i]; i++)
+    int i = 0;
+    if(str[0] == '+')
+        i++;
+    for (; str[i]; i++)
     {
         if (!std::isdigit(str[i]))
             return false;
@@ -30,23 +33,17 @@ bool PmergeMe::isnumber(std::string str)
     return true;
 }
 
-void PmergeMe::parsfill(std::string &input)
+void PmergeMe::parsfill(std::string input)
 {
-    std::istringstream string(input);
-
-    for (unsigned long i = 0; input[i]; i++)
+    if (PmergeMe::isnumber(input) && input != "\0")
     {
-        if (!std::isdigit(input[i]) && input[i] != ' ')
-        {
-            std::cout << "Error: " << input[i] << " is not a number" << std::endl;
-            exit(1);
-        }
+        dataV.push_back(std::atoi(input.c_str()));
+        dataD.push_back(std::atoi(input.c_str()));
     }
-    while (getline(string, tokenV, ' '))
+    else
     {
-        if (isnumber(tokenV) == true && tokenV != "\0")
-            dataV.push_back(std::atoi(tokenV.c_str()));
-            dataD.push_back(std::atoi(tokenV.c_str()));
+        std::cerr << "Error!" << std::endl;
+        exit(1);
     }
 }
 
@@ -64,10 +61,15 @@ void PmergeMe::displayD()
     std::cout << std::endl;
 }
 
-void PmergeMe::FordJohnson(std::string str)
+void PmergeMe::FordJohnson(int ac, char **av)
 {
     odd = true;
-    parsfill(str);
+    int i = 1;
+    while (i < ac)
+    {
+        parsfill(av[i]);
+        i++;
+    }
     sortVector();
     sortDeque();
 }

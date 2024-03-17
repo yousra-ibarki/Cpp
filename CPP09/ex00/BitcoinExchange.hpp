@@ -9,46 +9,37 @@
 #include <map>
 #include <sstream>
 
-
-class Bitcoin{
+class Bitcoin
+{
 private:
     std::map<std::string, std::string> data;
-    std::map<std::string, std::string> file;
     std::map<std::string, std::string>::iterator it;
     std::string line;
     std::ifstream file;
-    std::ifstream file2;
+    // std::ifstream file2;
     std::string arr[3];
-    float result;
-    int flag;
-    int year;
-    int month;
-    int days;
+    double rate;
     std::string tokenKey;
     std::string tokenValue;
-
 
 public:
     Bitcoin();
     ~Bitcoin();
 
-    Bitcoin(const Bitcoin& obj);
-    Bitcoin& operator=(const Bitcoin& obj);
+    Bitcoin(const Bitcoin &obj);
+    Bitcoin &operator=(const Bitcoin &obj);
 
     std::map<std::string, std::string> split(std::string str);
 
-    void splitParsKey();
-
-    void splitParsValue();
-
     void pars(char *str);
 
-    void display();
+    int checkDate(std::string &date);
 
-    bool isnumber(std::string str);
+    int checkValue(double value, std::string &date);
+
+    double getValue(std::string &date);
 
     std::string removeSpace(std::string str);
-
 };
 
 #endif

@@ -29,7 +29,7 @@ void RPN::parsFill(std::string str)
     {
         if (!std::isdigit(str[i]) && str[i] != ' ' && str[i] != '+' && str[i] != '-' && str[i] != '*' && str[i] != '/')
         {
-            std::cout << "Error: bad input!" << std::endl;
+            std::cout << "Error!" << std::endl;
             return;
         }
     }
@@ -41,7 +41,7 @@ void RPN::parsFill(std::string str)
             nbr = std::atof(tmp.c_str());
             polish.push(nbr);
         }
-        else if(str[i] == '-' && std::isdigit(str[i + 1]))
+        else if (str[i] == '-' && std::isdigit(str[i + 1]))
         {
             i++;
             tmp = str[i];
@@ -50,6 +50,11 @@ void RPN::parsFill(std::string str)
         }
         else if (str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/')
         {
+            if(polish.size() <= 1)
+            {
+                std::cerr << "Error!" << std::endl;
+                exit(1);
+            }
             nbr = polish.top();
             polish.pop();
 
@@ -81,11 +86,9 @@ void RPN::display()
         std::cout << "Error: Bad Input!" << std::endl;
         return;
     }
-
     while (polish.size())
     {
         std::cout << polish.top() << std::endl;
-
         polish.pop();
     }
 }
