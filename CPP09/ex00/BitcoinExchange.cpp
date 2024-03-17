@@ -1,5 +1,4 @@
 #include "BitcoinExchange.hpp"
-//.
 Bitcoin::Bitcoin()
 {
 }
@@ -107,7 +106,7 @@ int Bitcoin::checkDate(std::string &date)
     ss << yr;
     year = ss.str();
 
-    if (yr < 0 || mo < 1 || mo > 12 || dy < 1 || dy > 31 || year.length() != 4)
+    if (yr < 0 || mo < 1 || mo > 12 || dy < 1 || dy > 31)
     {
         return 0;
     }
@@ -167,19 +166,30 @@ int Bitcoin::checkValue(double value, std::string &date)
 
 int Bitcoin::ft_check(std::string line)
 {
-    // std::cout << "lien = " << line << std::endl;
     int count = 0;
     std::string tmp;
+    std::string tok;
+
+    for (int i = 0; line[i]; i++)
+    {
+        if (line[i] == '|')
+            count++;
+        if (count > 1)
+            return 0;
+    }
+    count = 0;
 
     std::istringstream pa(line);
-
     std::getline(pa, tokenKey, '|');
     std::getline(pa, tokenValue, '|');
-    std::getline(pa, tmp, '|');
-
-    if (tmp != "\0")
+    std::istringstream iss(tokenValue);
+    while (getline(iss, tok, ' '))
+        count++;
+    if (count != 2)
+    {
         return 0;
-
+    }
+    count = 0;
     for (int i = 0; tokenValue[i]; i++)
     {
         if (tokenValue[i] == '.')
@@ -187,7 +197,6 @@ int Bitcoin::ft_check(std::string line)
         if (count > 1)
             return 0;
     }
-
     std::istringstream par(tokenKey);
     std::getline(par, year, '-');
     std::getline(par, month, '-');
@@ -202,10 +211,14 @@ int Bitcoin::ft_check(std::string line)
     if (year[0] == ' ')
         year.erase(year.begin() + 1);
 
-    if (year.length() != 4 || !isnumber(year))
+    if (year.length() != 4)
+    {
         return 0;
+    }
     if (month.length() != 2 || !isnumber(month))
+    {
         return 0;
+    }
     if (day.length() != 2 || !isnumber(day))
     {
         return 0;
